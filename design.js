@@ -230,7 +230,7 @@
   let drawToken = 0;
   async function drawLayers(){
     const my = ++drawToken, here = D.layers.filter(L => L.side === D.side);
-    const bms = await Promise.all(here.map(bitmapOf)); if(my !== drawToken) return;
+    const bms = await Promise.all(here.map(bitmapOf)); if(my !== drawToken || !$('#dLayers')) return;   // page may have changed meanwhile
     $('#dLayers').innerHTML = here.map((L, i) => {
       const [w, h] = dims(L, bms[i]); L._w = w; L._h = h;
       const st = `left:${(L.x - w / 2) / VB_W * 100}%;top:${(L.y - h / 2) / VB_H * 100}%;width:${w / VB_W * 100}%;height:${h / VB_H * 100}%;transform:rotate(${L.rot || 0}deg) scaleX(${L.flip ? -1 : 1});opacity:${L.opacity == null ? 1 : L.opacity}`;
@@ -248,7 +248,7 @@
 
   /* ---------- selected-item panel ---------- */
   function drawSelBox(){
-    const L = sel(), box = $('#dSelBox'); if(!L || L.side !== D.side){ box.hidden = true; return; }
+    const L = sel(), box = $('#dSelBox'); if(!box) return; if(!L || L.side !== D.side){ box.hidden = true; return; }
     box.hidden = false;
     const inks = (cur, fn) => `<div class="d-inks">${INKS.map((k, i) => `<button type="button" class="${cur === i ? 'on' : ''}${k.metal ? ' metal' : ''}" title="${k.name}" aria-label="${k.name}" style="background:${k.metal ? `linear-gradient(135deg,#fff,${k.hex} 35%,${shadeHex(k.hex, -0.3)} 70%,${k.hex})` : k.hex}" onclick="${fn}(${i})"></button>`).join('')}<label class="d-custom" title="Any colour"><input type="color" value="${typeof cur === 'string' ? cur : '#e0457b'}" onchange="${fn}(this.value)"><span>Any colour</span></label></div>`;
     const presets = presetsOf(L.side);
@@ -418,6 +418,7 @@
     return out.filter(k => CONFIG.decoration[k]);
   }
   function summary(){
+    if(!$('#dSummary')) return;
     const qty = Object.values(D.sizes).reduce((a, b) => a + b, 0), pl = priceLine(D.p, Math.max(qty, 1), decos());
     $('#dSummary').innerHTML = `<div class="line"><span>${esc(D.p.name)}</span><span>${gbp(D.p.price)}</span></div>
       ${decos().map(d => `<div class="line"><span>${esc(CONFIG.decoration[d].label)}</span><span>${CONFIG.showPrices ? '+' + gbp(CONFIG.decoration[d].each) : '✓'}</span></div>`).join('')}
