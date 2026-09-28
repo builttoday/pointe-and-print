@@ -20,9 +20,6 @@
   const METHODS = [
     ['print', 'Print', 'Bright, full-colour logos and big back designs'],
     ['emb', 'Embroidery', 'A premium stitched finish for smaller logos'],
-    ['glitter', 'Glitter vinyl', 'Sparkly lettering, a dance-show favourite'],
-    ['foil', 'Metallic foil', 'A mirror-shine gold, silver or rose-gold finish'],
-    ['diamante', 'Diamanté', 'Rhinestone designs that catch the stage lights'],
   ];
   const SLEEVED = { hoodie: 'long', zoodie: 'long', cropHoodie: 'long', cropZoodie: 'long', cropSweat: 'long', trackJacket: 'long', tee: 'short' };
   const SIDE_LABEL = { front: 'Front', back: 'Back', left: 'Left sleeve', right: 'Right sleeve' };
@@ -411,9 +408,8 @@
   function decos(){
     const used = s => D.layers.some(L => L.side === s), out = [];
     if(used('front')) out.push(D.method === 'emb' ? 'frontEmb' : 'frontPrint');
-    if(used('back')) out.push('backPrint');
-    if(used('left') || used('right')) out.push('sleevePrint');
-    if(['glitter', 'foil', 'diamante'].includes(D.method) && D.layers.length) out.push(D.method);
+    if(used('back')) out.push(D.method === 'emb' ? 'backEmb' : 'backPrint');
+    if(used('left') || used('right')) out.push(D.method === 'emb' ? 'sleeveEmb' : 'sleevePrint');
     if(D.names.on) out.push('name');
     return out.filter(k => CONFIG.decoration[k]);
   }
