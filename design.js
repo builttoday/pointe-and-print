@@ -125,7 +125,7 @@
     if(ow > 0){ ctx.strokeStyle = oink.hex; ctx.lineWidth = ow * 2; each(ch => ctx.strokeText(ch, 0, 0)); }
     each(ch => { ctx.fillStyle = paint(ctx, ink, 0, -fpx / 2, 0, fpx / 2); ctx.fillText(ch, 0, 0); });
     const out = { canvas: cv, url: cv.toDataURL(), w: cv.width / PX, h: cv.height / PX };
-    if(fontReady) bitmaps[key] = out;
+    if(fontReady){ const ks = Object.keys(bitmaps); if(ks.length > 300) ks.slice(0, 150).forEach(k => delete bitmaps[k]); bitmaps[key] = out; }
     return out;
   }
   function artSVG(a, ink, w, h){
@@ -238,7 +238,7 @@
     const my = ++drawToken, here = D.layers.filter(L => L.side === D.side);
     const bms = await Promise.all(here.map(bitmapOf)); if(my !== drawToken || !$('#dLayers')) return;   // page may have changed meanwhile
     $('#dLayers').innerHTML = here.map((L, i) => {
-      const [w, h] = dims(L, bms[i]); L._w = w; L._h = h;
+      const [w, h] = dims(L, bms[i]); L._w = w; L._h = h; if(L.type === 'text'){ L._bw = w; L._bh = h; L._rs = L.size; }
       const st = `left:${(L.x - w / 2) / VB_W * 100}%;top:${(L.y - h / 2) / VB_H * 100}%;width:${w / VB_W * 100}%;height:${h / VB_H * 100}%;transform:rotate(${L.rot || 0}deg) scaleX(${L.flip ? -1 : 1});opacity:${L.opacity == null ? 1 : L.opacity}`;
       return `<div class="d-layer${L.id === D.sel ? ' sel' : ''}" data-id="${L.id}" style="${st}"><img src="${bms[i].url}" alt="" draggable="false"></div>`;
     }).join('');
@@ -246,13 +246,37 @@
     $('#dLayerList').innerHTML = here.length ? `<div class="d-arthead">On the ${SIDE_LABEL[D.side].toLowerCase()} (top first)</div>` + here.slice().reverse().map(L => `<button type="button" class="${L.id === D.sel ? 'on' : ''}" onclick="dzSelect(${L.id})">${L.type === 'text' ? 'T' : L.type === 'art' ? '★' : '▣'} ${esc(L.type === 'text' ? L.text : L.type === 'art' ? ((window.DESIGN_ART || []).find(a => a.id === L.art) || {}).label : assets[L.asset].name)}</button>`).join('') : '';
     if(!dragging) drawSelBox();
   }
+  /* keep every item inside the print area: shrink it if its (rotated) outline is too big, then keep it in bounds */
   function clamp(L){
-    const turned = Math.abs(Math.abs(L.rot || 0) - 90) < 20, lw = turned ? L._h : L._w, lh = turned ? L._w : L._h;
-    const [ax, ay, aw, ah] = areaOf(L.side), w = Math.min(lw || 10, aw), h = Math.min(lh || 10, ah);
-    L.x = Math.max(ax + w / 2, Math.min(ax + aw - w / 2, L.x)); L.y = Math.max(ay + h / 2, Math.min(ay + ah - h / 2, L.y));
+    const [ax, ay, aw, ah] = areaOf(L.side), t = (L.rot || 0) * Math.PI / 180, c = Math.abs(Math.cos(t)), sn = Math.abs(Math.sin(t));
+    let w = L._w || 10, h = L._h || 10;
+    const bw = w * c + h * sn, bh = w * sn + h * c, k = Math.min(1, aw / bw, ah / bh);
+    if(k < 0.999){
+      if(L.type === 'text'){ L.size = Math.max(2, L.size * k); if(L._bw) { L._bw *= k; L._bh *= k; } }
+      else L.w *= k;
+      w *= k; h *= k; L._w = w; L._h = h; L._shrunk = true;
+    }
+    const hw = (w * c + h * sn) / 2, hh = (w * sn + h * c) / 2;
+    L.x = Math.max(ax + hw, Math.min(ax + aw - hw, L.x)); L.y = Math.max(ay + hh, Math.min(ay + ah - hh, L.y));
+  }
+  /* after an item was shrunk to fit, move its Size slider to match */
+  function syncSize(L){
+    if(!L._shrunk) return; L._shrunk = false;
+    const lab = [...document.querySelectorAll('#dSelBox .d-slider')].find(l => l.querySelector('span').textContent === 'Size'); if(!lab) return;
+    const inp = lab.querySelector('input'), v = L.type === 'text' ? L.size : L.w;
+    inp.value = v; inp.style.setProperty('--p', (inp.value - inp.min) / (inp.max - inp.min) * 100 + '%'); lab.querySelector('output').textContent = Math.round(inp.value * 10) / 10;
   }
 
   /* ---------- selected-item panel ---------- */
+  function rng(label, key, min, max, step, val, unit, div){
+    div = div || 1; const pct = (val * div - min) / (max - min) * 100;
+    return `<label class="d-slider"><span>${label}</span><input type="range" min="${min}" max="${max}" step="${step}" value="${val * div}" style="--p:${pct}%" data-unit="${unit || ''}" oninput="dzSlide(this, '${key}', ${div})" onchange="dzCommit()"><output>${Math.round(val * div * 10) / 10}${unit || ''}</output></label>`;
+  }
+  window.dzSlide = (el, key, div) => {
+    el.style.setProperty('--p', (el.value - el.min) / (el.max - el.min) * 100 + '%');
+    el.nextElementSibling.textContent = el.value + (el.dataset.unit || '');
+    dzSet(key, +el.value / div, 1);
+  };
   function drawSelBox(){
     const L = sel(), box = $('#dSelBox'); if(!box) return; if(!L || L.side !== D.side){ box.hidden = true; return; }
     box.hidden = false;
@@ -262,22 +286,22 @@
     if(L.type === 'text'){
       markFont(L.font);
       h += `<input class="d-input" id="dEditText" value="${esc(L.text)}" maxlength="40" oninput="dzSet('text', this.value, 1)" onchange="dzCommit()">
-        <label class="d-slider" style="margin-top:10px">Font<select class="d-select" onchange="dzSet('font', +this.value)">${FONTS.map((f, i) => `<option value="${i}" ${i === L.font ? 'selected' : ''}>${f.label} (${f.id})</option>`).join('')}</select></label>
+        <label class="d-slider d-sel" style="margin-top:10px"><span>Font</span><select class="d-select" onchange="dzSet('font', +this.value)">${FONTS.map((f, i) => `<option value="${i}" ${i === L.font ? 'selected' : ''}>${f.label} (${f.id})</option>`).join('')}</select></label>
         <div class="d-toggles"><button type="button" class="${L.bold ? 'on' : ''}" onclick="dzSet('bold', ${!L.bold})"><b>B</b> Bold</button><button type="button" class="${L.italic ? 'on' : ''}" onclick="dzSet('italic', ${!L.italic})"><i>I</i> Italic</button><button type="button" class="${L.upper ? 'on' : ''}" onclick="dzSet('upper', ${!L.upper})">AA Capitals</button><button type="button" class="${L.shadow ? 'on' : ''}" onclick="dzSet('shadow', ${!L.shadow})">Shadow</button></div>
-        <label class="d-slider">Size<input type="range" min="3" max="40" step="0.5" value="${L.size}" oninput="dzSet('size', +this.value, 1)" onchange="dzCommit()"></label>
-        <label class="d-slider">Spacing<input type="range" min="-10" max="80" value="${L.spacing}" oninput="dzSet('spacing', +this.value, 1)" onchange="dzCommit()"></label>
-        <label class="d-slider">Curve<input type="range" min="-100" max="100" value="${L.arc}" oninput="dzSet('arc', +this.value, 1)" onchange="dzCommit()"></label>
+        ${rng('Size', 'size', 3, 40, 0.5, L.size)}
+        ${rng('Spacing', 'spacing', -10, 80, 1, L.spacing)}
+        ${rng('Curve', 'arc', -100, 100, 1, L.arc)}
         <p class="meta" style="margin:0 0 6px">Curve right for an arch, left for a smile.</p>
         <div class="d-sub">Text colour</div>${inks(L.ink, 'dzInk')}
-        <label class="d-slider" style="margin-top:10px">Outline<input type="range" min="0" max="6" step="0.5" value="${L.outline}" oninput="dzSet('outline', +this.value, 1)" onchange="dzCommit()"></label>
+        ${rng('Outline', 'outline', 0, 6, 0.5, L.outline)}
         ${L.outline ? `<div class="d-sub">Outline colour</div>${inks(L.outlineInk, 'dzOutlineInk')}` : ''}`;
     } else {
-      h += `<label class="d-slider">Size<input type="range" min="4" max="${Math.round(areaOf(L.side)[2])}" value="${Math.round(L.w)}" oninput="dzSet('w', +this.value, 1)" onchange="dzCommit()"></label>`;
+      h += rng('Size', 'w', 4, Math.round(areaOf(L.side)[2]), 0.5, Math.round(L.w * 2) / 2);
       if(L.type === 'art') h += `<div class="d-sub">Colour</div>${inks(L.ink, 'dzInk')}`;
       if(L.type === 'image') h += `<label class="row d-check"><input type="checkbox" ${L.clean ? 'checked' : ''} onchange="dzClean(this.checked)"><div><b>Remove white background</b><small>Makes white areas of your picture see-through</small></div></label>`;
     }
-    h += `<label class="d-slider">Rotate<input type="range" min="-180" max="180" value="${L.rot || 0}" oninput="dzSet('rot', +this.value, 1)" onchange="dzCommit()"></label>
-      <label class="d-slider">Opacity<input type="range" min="20" max="100" value="${Math.round((L.opacity == null ? 1 : L.opacity) * 100)}" oninput="dzSet('opacity', this.value / 100, 1)" onchange="dzCommit()"></label>
+    h += `${rng('Rotate', 'rot', -180, 180, 1, L.rot || 0, '°')}
+      ${rng('See-through', 'opacity', 20, 100, 1, L.opacity == null ? 1 : L.opacity, '%', 100)}
       ${presets.length ? `<div class="d-sub">Put it on the ${SIDE_LABEL[L.side].toLowerCase()}</div><div class="d-toggles">${presets.map((pr, i) => `<button type="button" onclick="dzPlace(${i})">${pr.label}</button>`).join('')}</div>` : ''}
       <div class="d-toggles"><button type="button" onclick="dzCentre()">Centre</button><button type="button" onclick="dzFlip()">Flip</button><button type="button" onclick="dzDup()">Duplicate</button><button type="button" onclick="dzOrder(1)">Bring forward</button><button type="button" onclick="dzOrder(-1)">Send back</button><button type="button" onclick="dzResetStyle()">Reset style</button><button type="button" class="danger" onclick="dzDelete()">Remove</button></div>`;
     box.innerHTML = h;
@@ -287,7 +311,31 @@
   const snap = () => JSON.stringify(D.layers.map(({ _w, _h, ...rest }) => rest));
   function remember(){ D.hist.push(snap()); if(D.hist.length > 60) D.hist.shift(); D.fut = []; }
   let pendingSnap = null;
-  window.dzCommit = () => { if(pendingSnap){ D.hist.push(pendingSnap); D.fut = []; pendingSnap = null; } drawSelBox(); };
+  window.dzCommit = () => {
+    if(pendingSnap){ D.hist.push(pendingSnap); D.fut = []; pendingSnap = null; }
+    const L = sel(); drawLayers().then(() => { if(L){ clamp(L); drawLayers(); } drawSelBox(); });   // sharp redraw once the slider is let go
+  };
+  function place(L){
+    const el = document.querySelector(`.d-layer[data-id="${L.id}"]`); if(!el) return null;
+    Object.assign(el.style, { left: (L.x - L._w / 2) / VB_W * 100 + '%', top: (L.y - L._h / 2) / VB_H * 100 + '%', width: L._w / VB_W * 100 + '%', height: L._h / VB_H * 100 + '%',
+      transform: `rotate(${L.rot || 0}deg) scaleX(${L.flip ? -1 : 1})`, opacity: L.opacity == null ? 1 : L.opacity });
+    return el;
+  }
+  let busy = false;
+  function fastUpdate(L, k){
+    L._v = (L._v || 0) + 1;
+    if(k === 'opacity'){ place(L); return; }
+    if(k === 'rot'){ clamp(L); place(L); syncSize(L); return; }
+    if(k === 'w'){ const r = (L._h || 1) / (L._w || 1); L._w = L.w; L._h = L.w * r; clamp(L); place(L); syncSize(L); return; }
+    if(k === 'size' && L._rs){ const r = L.size / L._rs; L._w = L._bw * r; L._h = L._bh * r; clamp(L); place(L); syncSize(L); return; }   // stretch now, redraw sharp on release
+    if(busy) return; busy = true;
+    requestAnimationFrame(async () => {
+      const v0 = L._v, b = await bitmapOf(L), [w, h] = dims(L, b);
+      Object.assign(L, { _w: w, _h: h, _bw: w, _bh: h, _rs: L.size }); clamp(L); syncSize(L);
+      const el = place(L); if(el) el.querySelector('img').src = b.url;
+      busy = false; if(L._v !== v0) fastUpdate(L, k);     // catch up with anything that changed meanwhile
+    });
+  }
   const keepSel = () => { if(!D.layers.some(L => L.id === D.sel)) D.sel = null; const L = sel(); if(L) D.side = L.side; D.draftId = null; };
   window.dzUndo = () => { if(!D.hist.length) return; D.fut.push(snap()); D.layers = JSON.parse(D.hist.pop()); keepSel(); drawAll(); };
   window.dzRedo = () => { if(!D.fut.length) return; D.hist.push(snap()); D.layers = JSON.parse(D.fut.pop()); keepSel(); drawAll(); };
@@ -351,7 +399,9 @@
   window.dzSet = (k, v, live) => {
     const L = sel(); if(!L) return;
     if(live){ if(!pendingSnap) pendingSnap = snap(); } else remember();
-    L[k] = v; if(k === 'size') L.baseSize = v; drawLayers().then(() => { const L2 = sel(); if(L2){ clamp(L2); if(!live) drawSelBox(); } });
+    L[k] = v; if(k === 'size') L.baseSize = v;
+    if(live){ fastUpdate(L, k); return; }
+    drawLayers().then(() => { const L2 = sel(); if(L2){ clamp(L2); if(!live) drawSelBox(); } });
     if(!live && k !== 'text') drawSelBox();
   };
   window.dzInk = v => { if(typeof v === 'number'){ D.ink = v; D.inkChosen = true; } dzSet('ink', v); };

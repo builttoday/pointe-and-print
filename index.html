@@ -179,10 +179,10 @@
   .side-tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
   .d-stage{position:relative;aspect-ratio:240/260;background:var(--bg-soft);border-radius:var(--radius);overflow:hidden;touch-action:none;user-select:none}
   #dGarment,#dGarment svg{position:absolute;inset:0;width:100%;height:100%}
-  .d-area{position:absolute;border:1.5px dashed rgba(184,82,111,.8);border-radius:4px;pointer-events:none}
+  .d-area{position:absolute;pointer-events:none}   /* print area: used for placement, not drawn */
   .d-layers{position:absolute;inset:0}
-  .d-layer{position:absolute;display:flex;align-items:center;justify-content:center;cursor:grab;outline:1px dashed transparent}
-  .d-layer:hover{outline-color:rgba(0,0,0,.35)} .d-layer.sel{outline:2px solid var(--rose)}
+  .d-layer{position:absolute;display:flex;align-items:center;justify-content:center;cursor:grab;outline:none}
+  .d-layer.sel{cursor:move}
   .d-layer img{width:100%;height:100%;object-fit:contain;pointer-events:none}
   .d-layer span{white-space:nowrap;line-height:1;pointer-events:none}
   .d-select,.d-input{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;background:#fff}
@@ -193,7 +193,16 @@
   .d-inks{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
   .d-inks button{width:28px;height:28px;border-radius:50%;border:1px solid rgba(0,0,0,.25);cursor:pointer;padding:0;outline-offset:3px}
   .d-inks button.on{outline:2px solid var(--ink)}
-  .d-slider{display:grid;grid-template-columns:70px 1fr;align-items:center;gap:10px;font-size:.88rem;margin:6px 0} .d-slider input{width:100%;accent-color:var(--rose)}
+  .d-slider{display:grid;grid-template-columns:78px 1fr 46px;align-items:center;gap:12px;font-size:.88rem;margin:10px 0}
+  .d-slider.d-sel{grid-template-columns:78px 1fr}
+  .d-slider output{font-size:.8rem;color:var(--ink-soft);text-align:right;font-variant-numeric:tabular-nums}
+  .d-slider input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;margin:10px 0;cursor:pointer;
+    background:linear-gradient(to right,var(--rose) 0 var(--p,50%),var(--line) var(--p,50%) 100%)}
+  .d-slider input[type=range]:focus{outline:none}
+  .d-slider input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--rose);box-shadow:0 1px 5px rgba(0,0,0,.25);cursor:grab;transition:transform .1s}
+  .d-slider input[type=range]:active::-webkit-slider-thumb{cursor:grabbing;transform:scale(1.15)}
+  .d-slider input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--rose);box-shadow:0 1px 5px rgba(0,0,0,.25);cursor:grab}
+  .d-slider input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(184,82,111,.3)}
   .design-band{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;background:var(--blush);border-radius:var(--radius);padding:36px 44px}
   .design-band h2{font-weight:400;font-size:2rem;margin:0 0 8px} .design-band p{color:var(--ink-soft);margin:0 0 20px}
   .design-band .art{display:flex;justify-content:center} .design-band .art svg{height:240px}
@@ -220,7 +229,7 @@
   .d-guide{position:absolute;top:0;bottom:0;width:0;border-left:1.5px dashed var(--rose);pointer-events:none}
   .d-toolbar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
   .d-layerlist{display:flex;flex-direction:column;gap:6px;margin-top:10px} .d-layerlist button{text-align:left;border-radius:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .d-stage:focus{outline:2px solid var(--rose);outline-offset:2px}
+  .d-stage:focus{outline:none}
   #dNames{margin-top:6px;font-family:inherit}
   .photo{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
   footer.site{background:var(--bg-soft);padding:54px 0 26px;margin-top:0;font-size:.92rem}
