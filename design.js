@@ -101,6 +101,7 @@
     if(bitmaps[key]) return bitmaps[key];
     const fpx = L.size * PX;
     try { await document.fonts.load(fontStr(L, 40), L.text); } catch(e){}
+    const fontReady = document.fonts.check(fontStr(L, 40), L.text);
     const m = document.createElement('canvas').getContext('2d'); m.font = fontStr(L, fpx);
     const chars = [...(L.upper ? L.text.toUpperCase() : L.text)], gap = L.spacing / 100 * fpx;
     const ws = chars.map(ch => m.measureText(ch).width), total = ws.reduce((a, b) => a + b, 0) + gap * Math.max(0, chars.length - 1);
@@ -123,7 +124,9 @@
     if(L.shadow){ ctx.fillStyle = 'rgba(0,0,0,.35)'; each(ch => ctx.fillText(ch, fpx * 0.07, fpx * 0.07)); }
     if(ow > 0){ ctx.strokeStyle = oink.hex; ctx.lineWidth = ow * 2; each(ch => ctx.strokeText(ch, 0, 0)); }
     each(ch => { ctx.fillStyle = paint(ctx, ink, 0, -fpx / 2, 0, fpx / 2); ctx.fillText(ch, 0, 0); });
-    return (bitmaps[key] = { canvas: cv, url: cv.toDataURL(), w: cv.width / PX, h: cv.height / PX });
+    const out = { canvas: cv, url: cv.toDataURL(), w: cv.width / PX, h: cv.height / PX };
+    if(fontReady) bitmaps[key] = out;
+    return out;
   }
   function artSVG(a, ink, w, h){
     const grad = ink.metal ? `<defs><linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".2" stop-color="${ink.hex}"/><stop offset=".55" stop-color="${shadeHex(ink.hex, -0.35)}"/><stop offset=".8" stop-color="${ink.hex}"/><stop offset="1" stop-color="#fff7e0"/></linearGradient></defs>` : '';
@@ -160,7 +163,7 @@
         <div class="d-stage" id="dStage" tabindex="0" aria-label="Design area. Arrow keys move the selected item."><div id="dGarment"></div><div class="d-area" id="dArea"></div><div class="d-guide" id="dGuide" hidden></div><div class="d-layers" id="dLayers"></div></div>
         <div class="d-toolbar">
           <button type="button" onclick="dzUndo()" title="Undo (Ctrl+Z)">↶ Undo</button><button type="button" onclick="dzRedo()" title="Redo (Ctrl+Y)">↷ Redo</button>
-          <button type="button" onclick="dzClearSide()">Clear this side</button>
+          <button type="button" onclick="dzClearSide()">Clear this side</button><button type="button" onclick="dzStartAgain()">Start again</button>
         </div>
         <div class="d-layerlist" id="dLayerList"></div>
       </div>
@@ -172,8 +175,8 @@
         <div class="opt"><h4>3. Add to your design</h4>
           <div class="d-tabs">${['text', 'graphics', 'upload', 'templates'].map(t => `<button type="button" data-tab="${t}" class="${t === 'text' ? 'on' : ''}" onclick="dzTab('${t}')">${{ text: 'Text', graphics: 'Graphics', upload: 'Upload', templates: 'Templates' }[t]}</button>`).join('')}</div>
           <div class="d-tabpane" data-pane="text">
-            <div class="d-row"><input id="dText" class="d-input" maxlength="40" placeholder="Type your text, e.g. Starlight Dance" onkeydown="if(event.key==='Enter')dzAddText()"><button class="btn" type="button" onclick="dzAddText()">Add</button></div>
-            <p class="meta">Pick a style, then add. You can change everything afterwards.</p>
+            <div class="d-row"><input id="dText" class="d-input" maxlength="40" placeholder="Start typing, e.g. Starlight Dance" autocomplete="off" oninput="dzTyping(this.value)" onkeydown="if(event.key==='Enter')dzAddText()"><button class="btn" type="button" onclick="dzAddText()">Add another</button></div>
+            <p class="meta">Your text appears on the garment as you type. Click a style to change it.</p>
             <div class="d-fonts" id="dFontPick">${FONTS.map((f, i) => `<button type="button" class="${i === 2 ? 'on' : ''}" style="font-family:${f.css};font-weight:${f.weight}" onclick="dzPickFont(${i})">${f.label}</button>`).join('')}</div>
           </div>
           <div class="d-tabpane" data-pane="graphics" hidden>
@@ -207,7 +210,13 @@
       </div>
     </div>`;
   };
-  window.initDesign = function(){ drawAll(); if(!window._dzKeys){ window._dzKeys = 1; document.addEventListener('keydown', onKey); window.addEventListener('resize', () => D && drawLayers()); } };
+  window.initDesign = function(){
+    drawAll();
+    if(!window._dzKeys){ window._dzKeys = 1; document.addEventListener('keydown', onKey); window.addEventListener('resize', () => D && drawLayers());
+      if(document.fonts) document.fonts.addEventListener('loadingdone', () => { if(D && $('#dLayers')) drawLayers(); }); }
+    // start fetching every font now, so styles switch instantly
+    if(document.fonts) FONTS.forEach(f => document.fonts.load(`${f.weight} 40px '${f.id}'`).catch(() => {}));
+  };
 
   function drawAll(){
     const c = D.p.colours[D.colour];
@@ -251,6 +260,7 @@
     const presets = presetsOf(L.side);
     let h = `<h4>Selected: ${L.type === 'text' ? 'text' : L.type === 'art' ? 'graphic' : 'picture'}</h4>`;
     if(L.type === 'text'){
+      markFont(L.font);
       h += `<input class="d-input" id="dEditText" value="${esc(L.text)}" maxlength="40" oninput="dzSet('text', this.value, 1)" onchange="dzCommit()">
         <label class="d-slider" style="margin-top:10px">Font<select class="d-select" onchange="dzSet('font', +this.value)">${FONTS.map((f, i) => `<option value="${i}" ${i === L.font ? 'selected' : ''}>${f.label} (${f.id})</option>`).join('')}</select></label>
         <div class="d-toggles"><button type="button" class="${L.bold ? 'on' : ''}" onclick="dzSet('bold', ${!L.bold})"><b>B</b> Bold</button><button type="button" class="${L.italic ? 'on' : ''}" onclick="dzSet('italic', ${!L.italic})"><i>I</i> Italic</button><button type="button" class="${L.upper ? 'on' : ''}" onclick="dzSet('upper', ${!L.upper})">AA Capitals</button><button type="button" class="${L.shadow ? 'on' : ''}" onclick="dzSet('shadow', ${!L.shadow})">Shadow</button></div>
@@ -269,7 +279,7 @@
     h += `<label class="d-slider">Rotate<input type="range" min="-180" max="180" value="${L.rot || 0}" oninput="dzSet('rot', +this.value, 1)" onchange="dzCommit()"></label>
       <label class="d-slider">Opacity<input type="range" min="20" max="100" value="${Math.round((L.opacity == null ? 1 : L.opacity) * 100)}" oninput="dzSet('opacity', this.value / 100, 1)" onchange="dzCommit()"></label>
       ${presets.length ? `<div class="d-sub">Put it on the ${SIDE_LABEL[L.side].toLowerCase()}</div><div class="d-toggles">${presets.map((pr, i) => `<button type="button" onclick="dzPlace(${i})">${pr.label}</button>`).join('')}</div>` : ''}
-      <div class="d-toggles"><button type="button" onclick="dzCentre()">Centre</button><button type="button" onclick="dzFlip()">Flip</button><button type="button" onclick="dzDup()">Duplicate</button><button type="button" onclick="dzOrder(1)">Bring forward</button><button type="button" onclick="dzOrder(-1)">Send back</button><button type="button" class="danger" onclick="dzDelete()">Remove</button></div>`;
+      <div class="d-toggles"><button type="button" onclick="dzCentre()">Centre</button><button type="button" onclick="dzFlip()">Flip</button><button type="button" onclick="dzDup()">Duplicate</button><button type="button" onclick="dzOrder(1)">Bring forward</button><button type="button" onclick="dzOrder(-1)">Send back</button><button type="button" onclick="dzResetStyle()">Reset style</button><button type="button" class="danger" onclick="dzDelete()">Remove</button></div>`;
     box.innerHTML = h;
   }
 
@@ -278,8 +288,9 @@
   function remember(){ D.hist.push(snap()); if(D.hist.length > 60) D.hist.shift(); D.fut = []; }
   let pendingSnap = null;
   window.dzCommit = () => { if(pendingSnap){ D.hist.push(pendingSnap); D.fut = []; pendingSnap = null; } drawSelBox(); };
-  window.dzUndo = () => { if(!D.hist.length) return; D.fut.push(snap()); D.layers = JSON.parse(D.hist.pop()); D.sel = null; drawAll(); };
-  window.dzRedo = () => { if(!D.fut.length) return; D.hist.push(snap()); D.layers = JSON.parse(D.fut.pop()); D.sel = null; drawAll(); };
+  const keepSel = () => { if(!D.layers.some(L => L.id === D.sel)) D.sel = null; const L = sel(); if(L) D.side = L.side; D.draftId = null; };
+  window.dzUndo = () => { if(!D.hist.length) return; D.fut.push(snap()); D.layers = JSON.parse(D.hist.pop()); keepSel(); drawAll(); };
+  window.dzRedo = () => { if(!D.fut.length) return; D.hist.push(snap()); D.layers = JSON.parse(D.fut.pop()); keepSel(); drawAll(); };
 
   /* ---------- editing ---------- */
   function addLayer(L, place, dy){
@@ -294,12 +305,28 @@
     return L;
   }
   window.dzTab = t => { D.tab = t; document.querySelectorAll('.d-tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === t)); document.querySelectorAll('.d-tabpane').forEach(p => p.hidden = p.dataset.pane !== t); };
-  window.dzPickFont = i => { D.font = i; document.querySelectorAll('#dFontPick button').forEach((b, k) => b.classList.toggle('on', k === i)); };
+  /* font styles: change the selected text straight away (and set the style for new text) */
+  function markFont(i){ document.querySelectorAll('#dFontPick button').forEach((b, k) => b.classList.toggle('on', k === i)); }
+  window.dzPickFont = i => {
+    D.font = i; markFont(i);
+    const L = sel(); if(L && L.type === 'text'){ remember(); L.font = i; fitAfterDraw(L).then(drawSelBox); }
+  };
+  /* typing shows the text on the garment immediately; "Add another" starts a new line of text */
+  window.dzTyping = v => {
+    const t = v.replace(/^\s+/, '');
+    let L = D.layers.find(x => x.id === D.draftId);
+    if(!t){ if(L){ D.layers = D.layers.filter(x => x !== L); D.draftId = null; D.sel = null; if(D.hist.length) D.hist.pop(); drawAll(); } return; }
+    if(!L){
+      const [, , aw] = areaOf(D.side);
+      L = addLayer({ type: 'text', text: t, font: D.font, size: Math.min(14, aw / 5), baseSize: Math.min(14, aw / 5), bold: false, italic: false, upper: false, spacing: 0, arc: 0, ink: D.inkChosen ? D.ink : contrastInk(), outline: 0, outlineInk: 1, shadow: false });
+      D.draftId = L.id; drawAll();
+    } else { L.text = t; D.sel = L.id; }
+    fitAfterDraw(L, true);
+  };
   window.dzAddText = () => {
-    const t = $('#dText').value.trim(); if(!t){ toast('Type some text first'); return; }
-    const [, , aw] = areaOf(D.side);
-    const L = addLayer({ type: 'text', text: t, font: D.font, size: Math.min(14, aw / Math.max(3, t.length) * 1.6), bold: false, italic: false, upper: false, spacing: 0, arc: 0, ink: D.inkChosen ? D.ink : contrastInk(), outline: 0, outlineInk: 1, shadow: false });
-    $('#dText').value = ''; drawAll(); fitAfterDraw(L);
+    const box = $('#dText');
+    if(!D.draftId){ if(!box.value.trim()) toast('Type some text first'); box.focus(); return; }
+    D.draftId = null; box.value = ''; box.focus(); toast('Added. Type again to add another line of text.');
   };
   window.dzAddArt = id => { const [, , aw, ah] = areaOf(D.side); addLayer({ type: 'art', art: id, ink: D.ink === 0 ? 1 : D.ink, w: Math.min(aw, ah) * 0.5 }); drawAll(); };
   window.dzUpload = input => {
@@ -319,11 +346,12 @@
     made.forEach(L => { const { _place, _dy, ...rest } = L; if(!sidesFor().includes(rest.side)) return; if(rest.type === 'text' && rest.ink === 1) rest.ink = ci; if(rest.type === 'text' && rest.outline && rest.outlineInk === 1) rest.outlineInk = ci ? 0 : 1; addLayer(rest, _place, _dy); });
     D.hist = hist; D.side = made[0].side; drawAll(); toast('Template added. Click any part to change it.');
   };
-  window.dzSelect = id => { D.sel = id; drawLayers(); };
+  function leaveDraft(id){ if(D.draftId && id !== D.draftId){ D.draftId = null; const b = $('#dText'); if(b) b.value = ''; } }
+  window.dzSelect = id => { leaveDraft(id); D.sel = id; drawLayers(); };
   window.dzSet = (k, v, live) => {
     const L = sel(); if(!L) return;
     if(live){ if(!pendingSnap) pendingSnap = snap(); } else remember();
-    L[k] = v; drawLayers().then(() => { const L2 = sel(); if(L2){ clamp(L2); if(!live) drawSelBox(); } });
+    L[k] = v; if(k === 'size') L.baseSize = v; drawLayers().then(() => { const L2 = sel(); if(L2){ clamp(L2); if(!live) drawSelBox(); } });
     if(!live && k !== 'text') drawSelBox();
   };
   window.dzInk = v => { if(typeof v === 'number'){ D.ink = v; D.inkChosen = true; } dzSet('ink', v); };
@@ -342,6 +370,22 @@
     if(j < 0 || j >= same.length) return; const a = D.layers.indexOf(same[i]), b = D.layers.indexOf(same[j]); [D.layers[a], D.layers[b]] = [D.layers[b], D.layers[a]]; drawLayers(); };
   window.dzDelete = () => { if(!sel()) return; remember(); D.layers = D.layers.filter(L => L.id !== D.sel); D.sel = null; drawAll(); };
   window.dzClearSide = () => { if(!D.layers.some(L => L.side === D.side)) return; remember(); D.layers = D.layers.filter(L => L.side !== D.side); D.sel = null; drawAll(); toast('Cleared. Undo brings it back.'); };
+  /* back to plain: keeps the words/picture, colour and position */
+  window.dzResetStyle = () => {
+    const L = sel(); if(!L) return; remember();
+    Object.assign(L, { rot: 0, flip: false, opacity: 1 });
+    if(L.type === 'text'){ Object.assign(L, { bold: false, italic: false, upper: false, spacing: 0, arc: 0, outline: 0, shadow: false }); if(L.baseSize) L.size = L.baseSize; fitAfterDraw(L).then(drawSelBox); }
+    else { const [, , aw, ah] = areaOf(L.side); const r = (L._h || 1) / (L._w || 1); L.w = Math.min(aw, ah / r) * 0.5; if(L.type === 'image') L.clean = false; drawLayers().then(() => { clamp(L); drawLayers(); }); }
+    toast('Style reset. Undo brings it back.');
+  };
+  /* clear everything on every side and go back to the default finish */
+  window.dzStartAgain = () => {
+    if(!D.layers.length && D.method === 'print') return;
+    remember(); D.layers = []; D.sel = null; D.draftId = null; D.side = 'front'; D.method = 'print';
+    const box = $('#dText'); if(box) box.value = '';
+    document.querySelectorAll('input[name=dMethod]').forEach(i => i.checked = i.value === 'print');
+    drawAll(); toast('Design cleared. Undo brings it back.');
+  };
   window.dzSide = s => { D.side = s; D.sel = null; drawAll(); };
   window.dzColour = i => { D.colour = i; drawAll(); };
   window.dzProduct = code => { const p = (window.PRODUCTS || []).find(x => x.code === code); if(!p) return;
@@ -367,11 +411,17 @@
   window.dzNamePlaceholder = () => { const side = sidesFor().includes('back') ? 'back' : 'front', pr = presetsOf(side)[1] ? presetsOf(side)[1].label : null;
     addLayer({ side, type: 'text', text: 'NAME', font: 2, size: 14, bold: false, italic: false, upper: true, spacing: 8, arc: 0, ink: contrastInk(), outline: 0, outlineInk: 1, shadow: false, isName: true }, pr); drawAll(); };
 
-  async function fitAfterDraw(L){ await drawLayers(); const [, , aw] = areaOf(L.side); if(L._w > aw){ L.size *= aw / L._w * 0.95; await drawLayers(); } clamp(L); drawLayers(); }
+  /* draw, then shrink text that is wider than the print area (live typing starts from its original size each time) */
+  async function fitAfterDraw(L, live){
+    if(live && L.baseSize) L.size = L.baseSize;
+    await drawLayers(); const [, , aw, ah] = areaOf(L.side);
+    const s = Math.min(1, aw / (L._w || 1), ah / (L._h || 1)); if(s < 1){ L.size = Math.max(3, L.size * s * 0.95); await drawLayers(); }
+    clamp(L); await drawLayers();
+  }
 
   /* ---------- dragging, snapping, keys ---------- */
   function startDrag(e){
-    const id = +e.currentTarget.dataset.id; D.sel = id; const L = sel(); if(!L) return;
+    const id = +e.currentTarget.dataset.id; leaveDraft(id); D.sel = id; const L = sel(); if(!L) return;
     e.preventDefault(); const r = $('#dStage').getBoundingClientRect(), k = VB_W / r.width;
     const sx = e.clientX, sy = e.clientY, ox = L.x, oy = L.y, before = snap(); let moved = false;
     const [ax, , aw] = areaOf(L.side), cx = ax + aw / 2, guide = $('#dGuide');
