@@ -1972,6 +1972,12 @@ window.PRODUCTS = [
   "blurb": "Kids' cotton retro shorts with contrast piping, ages 5/6 to 11/12.",
   "colours": [
    {
+    "name": "Navy/White",
+    "hex": "#1f2a56",
+    "accent": "#f7f7f5",
+    "photo": "images/SM069/navy-white.jpg"
+   },
+   {
     "name": "Black",
     "hex": "#141414",
     "photo": "images/SM069/black.jpg"
@@ -1981,12 +1987,6 @@ window.PRODUCTS = [
     "hex": "#141414",
     "accent": "#f7f7f5",
     "photo": "images/SM069/black-white.jpg"
-   },
-   {
-    "name": "Navy/White",
-    "hex": "#1f2a56",
-    "accent": "#f7f7f5",
-    "photo": "images/SM069/navy-white.jpg"
    }
   ],
   "colourNote": "",
