@@ -1915,6 +1915,12 @@ window.PRODUCTS = [
   "blurb": "Short cotton retro shorts with contrast piping in six colourways. Fun for street and hip hop classes.",
   "colours": [
    {
+    "name": "Red/Yellow",
+    "hex": "#c62828",
+    "accent": "#f7d43a",
+    "photo": "images/SK069/red-yellow.jpg"
+   },
+   {
     "name": "Black",
     "hex": "#141414",
     "photo": "images/SK069/black.jpg"
@@ -1942,12 +1948,6 @@ window.PRODUCTS = [
     "hex": "#c62828",
     "accent": "#f7f7f5",
     "photo": "images/SK069/red-white.jpg"
-   },
-   {
-    "name": "Red/Yellow",
-    "hex": "#c62828",
-    "accent": "#f7d43a",
-    "photo": "images/SK069/red-yellow.jpg"
    }
   ],
   "colourNote": "",
