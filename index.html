@@ -335,10 +335,11 @@ function productPic(p, c, label){
   return src ? `<img class="photo" src="${esc(src)}" alt="${esc(label || p.name)}" loading="lazy">` : garmentSVG(p.shape, c.hex, { label: label || p.name, accent: c.accent });
 }
 
-/* ---------- live stock: stock.json is refreshed every hour from Ralawise by a GitHub Action ---------- */
+/* ---------- live stock (SWITCHED OFF): with STOCK null, no stock labels show and no size is blocked ---------- */
 let STOCK = null;
 const sizeKey = s => s.replace(' yrs', '').replace(/[\s\/.]/g, '').toUpperCase().replace('XXS', '2XS').slice(0, 5);
-fetch('stock.json?t=' + Date.now()).then(r => r.ok ? r.json() : null).then(j => { if(j && j.stock){ STOCK = j; render(); } }).catch(() => {});
+// switched off 2026-09-30 (William): no stock shown on the site. To switch back on, restore:
+// fetch('stock.json?t=' + Date.now()).then(r => r.ok ? r.json() : null).then(j => { if(j && j.stock){ STOCK = j; render(); } }).catch(() => {});
 /* stock for one colour and size: { n, next } (a tracksuit set counts the scarcer of top and pants), or null if not known */
 function stockOf(c, size){
   if(!STOCK || !c || !c.sku) return null;
