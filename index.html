@@ -276,22 +276,22 @@ const CONFIG = {
   // stays switched off; customers send an order request instead.
   paymentUrl: '',
   // false = every price shows as "£TBA" (prices below are kept, just hidden). true = show prices.
-  showPrices: false,
+  showPrices: true,
   // true = order and quote forms don't send; they say ordering opens soon. Set false once formEndpoint (and email) are set.
   previewOnly: true,
   announce: 'Printed and embroidered to order · Adult and kids’ sizes · Free mock-up with every quote',
   // EXAMPLE PRICES ONLY — replace with your own (garment cost + decoration + margin).
   decoration: {
     none:        { label: 'Plain (no decoration)', each: 0 },
-    frontPrint:  { label: 'Printed logo, front',   each: 0 },
-    frontEmb:    { label: 'Embroidered logo, front', each: 0 },
-    backPrint:   { label: 'Large print on the back', each: 0 },
-    name:        { label: 'Personalised name or initials', each: 0 },
-    sleevePrint: { label: 'Sleeve print', each: 0 },
-    backEmb:     { label: 'Embroidered design, back', each: 0 },
-    sleeveEmb:   { label: 'Sleeve embroidery', each: 0 },
+    frontPrint:  { label: 'Printed logo, front',   each: 4.00 },
+    frontEmb:    { label: 'Embroidered logo, front', each: 5.50 },
+    backPrint:   { label: 'Large print on the back', each: 5.00 },
+    name:        { label: 'Personalised name or initials', each: 3.50 },
+    sleevePrint: { label: 'Sleeve print', each: 3.00 },
+    backEmb:     { label: 'Embroidered design, back', each: 7.00 },
+    sleeveEmb:   { label: 'Sleeve embroidery', each: 4.00 },
   },
-  setupFee: {},   // one-off digitising fee for embroidery (example)
+  setupFee: { frontEmb: 15 },   // one-off digitising fee for embroidery (example)
   // no bulk discounts (William, 2026-09-30). To bring them back add tiers, e.g. { from: 10, off: 0.05 }.
   bulk: [ { from: 1, off: 0 } ],
 };

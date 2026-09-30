@@ -1,4 +1,4 @@
-/* Product data. Prices are set when the shop opens. */
+/* Product data. */
 window.PRODUCTS = [
  {
   "code": "JH016",
@@ -7,7 +7,7 @@ window.PRODUCTS = [
   "category": "hoodies",
   "audience": "women",
   "shape": "cropHoodie",
-  "price": 0,
+  "price": 8.74,
   "sizes": "XXS – XL",
   "sizeList": [
    "XXS",
@@ -51,7 +51,7 @@ window.PRODUCTS = [
   "category": "hoodies",
   "audience": "women",
   "shape": "cropSweat",
-  "price": 0,
+  "price": 10.94,
   "sizes": "XXS – XL",
   "sizeList": [
    "XXS",
@@ -100,7 +100,7 @@ window.PRODUCTS = [
   "category": "hoodies",
   "audience": "adult",
   "shape": "hoodie",
-  "price": 0,
+  "price": 13.74,
   "sizes": "XS – 5XL",
   "sizeList": [
    "XS",
@@ -187,7 +187,7 @@ window.PRODUCTS = [
   "category": "hoodies",
   "audience": "kids",
   "shape": "hoodie",
-  "price": 0,
+  "price": 9.11,
   "sizes": "1/2 – 12/13 yrs",
   "sizeList": [
    "1/2 yrs",
@@ -271,7 +271,7 @@ window.PRODUCTS = [
   "category": "hoodies",
   "audience": "adult",
   "shape": "zoodie",
-  "price": 0,
+  "price": 17.49,
   "sizes": "S – 5XL",
   "sizeList": [
    "S",
@@ -347,7 +347,7 @@ window.PRODUCTS = [
   "category": "hoodies",
   "audience": "kids",
   "shape": "zoodie",
-  "price": 0,
+  "price": 11.86,
   "sizes": "3/4 – 12/13 yrs",
   "sizeList": [
    "3/4 yrs",
@@ -460,7 +460,7 @@ window.PRODUCTS = [
   "category": "tops",
   "audience": "adult",
   "shape": "tee",
-  "price": 0,
+  "price": 4.94,
   "sizes": "XS – 5XL",
   "sizeList": [
    "XS",
@@ -537,7 +537,7 @@ window.PRODUCTS = [
   "category": "tops",
   "audience": "kids",
   "shape": "tee",
-  "price": 0,
+  "price": 3.11,
   "sizes": "3/4 – 12/13 yrs",
   "sizeList": [
    "3/4 yrs",
@@ -610,7 +610,7 @@ window.PRODUCTS = [
   "category": "tops",
   "audience": "women",
   "shape": "cropTop",
-  "price": 0,
+  "price": 3.56,
   "sizes": "XXS – XL",
   "sizeList": [
    "XXS",
@@ -724,7 +724,7 @@ window.PRODUCTS = [
   "category": "tops",
   "audience": "women",
   "shape": "cropTop",
-  "price": 0,
+  "price": 3.74,
   "sizes": "XS – XL",
   "sizeList": [
    "XS",
@@ -757,7 +757,7 @@ window.PRODUCTS = [
   "category": "tops",
   "audience": "women",
   "shape": "cropTop",
-  "price": 0,
+  "price": 4.99,
   "sizes": "XXS – XL",
   "sizeList": [
    "XXS",
@@ -791,7 +791,7 @@ window.PRODUCTS = [
   "category": "tops",
   "audience": "kids",
   "shape": "cropTop",
-  "price": 0,
+  "price": 3.31,
   "sizes": "5/6 – 11/12 yrs",
   "sizeList": [
    "5/6 yrs",
@@ -818,7 +818,7 @@ window.PRODUCTS = [
   "category": "tops",
   "audience": "kids",
   "shape": "cropTop",
-  "price": 0,
+  "price": 9.25,
   "sizes": "5/6 – 11/13 yrs",
   "sizeList": [
    "5/6 yrs",
@@ -845,7 +845,7 @@ window.PRODUCTS = [
   "category": "tops",
   "audience": "women",
   "shape": "sportsBra",
-  "price": 0,
+  "price": 11.88,
   "sizes": "XXS – 2XL",
   "sizeList": [
    "XXS",
@@ -890,7 +890,7 @@ window.PRODUCTS = [
   "category": "tops",
   "audience": "women",
   "shape": "sportsBra",
-  "price": 0,
+  "price": 9.99,
   "sizes": "XS – 4XL",
   "sizeList": [
    "XS",
@@ -926,7 +926,7 @@ window.PRODUCTS = [
   "category": "bottoms",
   "audience": "women",
   "shape": "leggings",
-  "price": 0,
+  "price": 10.94,
   "sizes": "XXS – 4XL",
   "sizeList": [
    "XXS",
@@ -968,7 +968,7 @@ window.PRODUCTS = [
   "category": "bottoms",
   "audience": "women",
   "shape": "leggings",
-  "price": 0,
+  "price": 15.31,
   "sizes": "XXS/XS – 2XL/3XL",
   "sizeList": [
    "XXS/XS",
@@ -1015,7 +1015,7 @@ window.PRODUCTS = [
   "category": "bottoms",
   "audience": "women",
   "shape": "leggings",
-  "price": 0,
+  "price": 7.49,
   "sizes": "XS – XL",
   "sizeList": [
    "XS",
@@ -1043,7 +1043,7 @@ window.PRODUCTS = [
   "category": "bottoms",
   "audience": "kids",
   "shape": "leggings",
-  "price": 0,
+  "price": 6.24,
   "sizes": "3/4 – 11/12 yrs",
   "sizeList": [
    "3/4 yrs",
@@ -1071,7 +1071,7 @@ window.PRODUCTS = [
   "category": "bottoms",
   "audience": "kids",
   "shape": "leggings",
-  "price": 0,
+  "price": 8.94,
   "sizes": "5/6 – 12/13 yrs",
   "sizeList": [
    "5/6 yrs",
@@ -1103,7 +1103,7 @@ window.PRODUCTS = [
   "category": "bottoms",
   "audience": "kids",
   "shape": "leggings",
-  "price": 0,
+  "price": 7.75,
   "sizes": "5/6 – 12/13 yrs",
   "sizeList": [
    "5/6 yrs",
@@ -1140,7 +1140,7 @@ window.PRODUCTS = [
   "category": "bottoms",
   "audience": "adult",
   "shape": "joggers",
-  "price": 0,
+  "price": 10.36,
   "sizes": "XS – 2XL",
   "sizeList": [
    "XS",
@@ -1189,7 +1189,7 @@ window.PRODUCTS = [
   "category": "bottoms",
   "audience": "kids",
   "shape": "joggers",
-  "price": 0,
+  "price": 8.74,
   "sizes": "5/6 – 12/13 yrs",
   "sizeList": [
    "5/6 yrs",
@@ -1226,7 +1226,7 @@ window.PRODUCTS = [
   "category": "bags",
   "audience": "kids",
   "shape": "bag",
-  "price": 0,
+  "price": 8.69,
   "sizes": "One size",
   "sizeList": [
    "One size"
@@ -1275,7 +1275,7 @@ window.PRODUCTS = [
   "category": "tracksuits",
   "audience": "adult",
   "shape": "tracksuit",
-  "price": 0,
+  "price": 34.44,
   "sizes": "2XS – 5XL",
   "sizeList": [
    "XXS",
@@ -1384,7 +1384,7 @@ window.PRODUCTS = [
   "category": "tracksuits",
   "audience": "kids",
   "shape": "tracksuit",
-  "price": 0,
+  "price": 26.99,
   "sizes": "3/4 – 13 yrs",
   "sizeList": [
    "3/4 yrs",
