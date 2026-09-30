@@ -1269,6 +1269,691 @@ window.PRODUCTS = [
   "notes": ""
  },
  {
+  "code": "BG010",
+  "name": "Drawstring gym bag",
+  "brand": "BagBase",
+  "category": "bags",
+  "audience": "all",
+  "shape": "gymsac",
+  "price": 2.75,
+  "sizes": "One size",
+  "sizeList": [
+   "One size"
+  ],
+  "fabric": "210D Polyester. Silver: 210D Nylon",
+  "blurb": "A light drawstring bag in 24 colours for shoes, water and a hoodie. Add a name so it never gets mixed up at class.",
+  "colours": [
+   {
+    "name": "Sky Blue",
+    "hex": "#8fc7e8",
+    "photo": "images/BG010/sky-blue.jpg"
+   },
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/BG010/black.jpg"
+   },
+   {
+    "name": "Bottle Green",
+    "hex": "#1f4d34",
+    "photo": "images/BG010/bottle-green.jpg"
+   },
+   {
+    "name": "Bright Red",
+    "hex": "#d7262e",
+    "photo": "images/BG010/bright-red.jpg"
+   },
+   {
+    "name": "Bright Royal",
+    "hex": "#2447a8",
+    "photo": "images/BG010/bright-royal.jpg"
+   },
+   {
+    "name": "Burgundy",
+    "hex": "#6d1f33",
+    "photo": "images/BG010/burgundy.jpg"
+   },
+   {
+    "name": "Classic Pink",
+    "hex": "#f2a7c3",
+    "photo": "images/BG010/classic-pink.jpg"
+   },
+   {
+    "name": "Classic Red",
+    "hex": "#c62828",
+    "photo": "images/BG010/classic-red.jpg"
+   },
+   {
+    "name": "Fluorescent Orange",
+    "hex": "#ff7a1a",
+    "photo": "images/BG010/fluorescent-orange.jpg"
+   },
+   {
+    "name": "Fluorescent Yellow",
+    "hex": "#e8f53a",
+    "photo": "images/BG010/fluorescent-yellow.jpg"
+   },
+   {
+    "name": "French Navy",
+    "hex": "#1f2a56",
+    "photo": "images/BG010/french-navy.jpg"
+   },
+   {
+    "name": "Fuchsia",
+    "hex": "#d0237a",
+    "photo": "images/BG010/fuchsia.jpg"
+   },
+   {
+    "name": "Graphite Grey",
+    "hex": "#4b4f55",
+    "photo": "images/BG010/graphite-grey.jpg"
+   },
+   {
+    "name": "Kelly Green",
+    "hex": "#2e9e4f",
+    "photo": "images/BG010/kelly-green.jpg"
+   },
+   {
+    "name": "Light Grey",
+    "hex": "#cfcfcf",
+    "photo": "images/BG010/light-grey.jpg"
+   },
+   {
+    "name": "Lime",
+    "hex": "#a6d93b",
+    "photo": "images/BG010/lime.jpg"
+   },
+   {
+    "name": "Ocean Blue",
+    "hex": "#1c6fa8",
+    "photo": "images/BG010/ocean-blue.jpg"
+   },
+   {
+    "name": "Orange",
+    "hex": "#ef7d22",
+    "photo": "images/BG010/orange.jpg"
+   },
+   {
+    "name": "Purple",
+    "hex": "#6b2d8e",
+    "photo": "images/BG010/purple.jpg"
+   },
+   {
+    "name": "Sapphire Blue",
+    "hex": "#1f5fbf",
+    "photo": "images/BG010/sapphire-blue.jpg"
+   },
+   {
+    "name": "Silver",
+    "hex": "#c4c7cc",
+    "photo": "images/BG010/silver.jpg"
+   },
+   {
+    "name": "Surf Blue",
+    "hex": "#3fa7d6",
+    "photo": "images/BG010/surf-blue.jpg"
+   },
+   {
+    "name": "White",
+    "hex": "#f7f7f5",
+    "photo": "images/BG010/white.jpg"
+   },
+   {
+    "name": "Yellow",
+    "hex": "#f7d43a",
+    "photo": "images/BG010/yellow.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "BG540",
+  "name": "Dance shoe bag",
+  "brand": "BagBase",
+  "category": "bags",
+  "audience": "all",
+  "shape": "shoeBag",
+  "price": 4.44,
+  "sizes": "One size",
+  "sizeList": [
+   "One size"
+  ],
+  "fabric": "600D/420D Polyester combination",
+  "blurb": "A small drawstring bag sized for ballet, tap or jazz shoes, with a name or logo on the front.",
+  "colours": [
+   {
+    "name": "French Navy",
+    "hex": "#1f2a56",
+    "photo": "images/BG540/french-navy.jpg"
+   },
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/BG540/black.jpg"
+   },
+   {
+    "name": "Bright Royal",
+    "hex": "#2447a8",
+    "photo": "images/BG540/bright-royal.jpg"
+   },
+   {
+    "name": "Classic Red",
+    "hex": "#c62828",
+    "photo": "images/BG540/classic-red.jpg"
+   },
+   {
+    "name": "Fuchsia",
+    "hex": "#d0237a",
+    "photo": "images/BG540/fuchsia.jpg"
+   },
+   {
+    "name": "Grey Marl",
+    "hex": "#a9a9ab",
+    "photo": "images/BG540/grey-marl.jpg"
+   },
+   {
+    "name": "Ice Grey",
+    "hex": "#dfe3e6",
+    "photo": "images/BG540/ice-grey.jpg"
+   },
+   {
+    "name": "Lime Green",
+    "hex": "#9bd63b",
+    "photo": "images/BG540/lime-green.jpg"
+   },
+   {
+    "name": "Orange",
+    "hex": "#ef7d22",
+    "photo": "images/BG540/orange.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "B140S",
+  "name": "Mini barrel bag",
+  "brand": "BagBase",
+  "category": "bags",
+  "audience": "kids",
+  "shape": "barrel",
+  "price": 6.44,
+  "sizes": "One size",
+  "sizeList": [
+   "One size"
+  ],
+  "fabric": "600D Polyester",
+  "blurb": "A small barrel bag for younger dancers, big enough for shoes, a snack and a spare top.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/B140S/black.jpg"
+   },
+   {
+    "name": "Black/Fuchsia",
+    "hex": "#141414",
+    "accent": "#d0237a",
+    "photo": "images/B140S/black-fuchsia.jpg"
+   },
+   {
+    "name": "Classic Pink/White",
+    "hex": "#f2a7c3",
+    "accent": "#f7f7f5",
+    "photo": "images/B140S/classic-pink-white.jpg"
+   },
+   {
+    "name": "French Navy/Off White",
+    "hex": "#1f2a56",
+    "accent": "#f1eee6",
+    "photo": "images/B140S/french-navy-off-white.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "BG140",
+  "name": "Barrel bag",
+  "brand": "BagBase",
+  "category": "bags",
+  "audience": "all",
+  "shape": "barrel",
+  "price": 9.36,
+  "sizes": "One size",
+  "sizeList": [
+   "One size"
+  ],
+  "fabric": "600D Polyester",
+  "blurb": "A roomy barrel bag with a shoulder strap in two-tone colours. Great for show days and exams.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/BG140/black.jpg"
+   },
+   {
+    "name": "Black/Fuchsia",
+    "hex": "#141414",
+    "accent": "#d0237a",
+    "photo": "images/BG140/black-fuchsia.jpg"
+   },
+   {
+    "name": "Black/Grey",
+    "hex": "#141414",
+    "accent": "#9a9a9a",
+    "photo": "images/BG140/black-grey.jpg"
+   },
+   {
+    "name": "Bright Royal/Off White",
+    "hex": "#2447a8",
+    "accent": "#f1eee6",
+    "photo": "images/BG140/bright-royal-off-white.jpg"
+   },
+   {
+    "name": "Burgundy/Off White",
+    "hex": "#6d1f33",
+    "accent": "#f1eee6",
+    "photo": "images/BG140/burgundy-off-white.jpg"
+   },
+   {
+    "name": "Classic Pink/White",
+    "hex": "#f2a7c3",
+    "accent": "#f7f7f5",
+    "photo": "images/BG140/classic-pink-white.jpg"
+   },
+   {
+    "name": "Classic Red/Off White",
+    "hex": "#c62828",
+    "accent": "#f1eee6",
+    "photo": "images/BG140/classic-red-off-white.jpg"
+   },
+   {
+    "name": "French Navy/Classic Red",
+    "hex": "#1f2a56",
+    "accent": "#c62828",
+    "photo": "images/BG140/french-navy-classic-red.jpg"
+   },
+   {
+    "name": "French Navy/Off White",
+    "hex": "#1f2a56",
+    "accent": "#f1eee6",
+    "photo": "images/BG140/french-navy-off-white.jpg"
+   },
+   {
+    "name": "Grey Marl/Black",
+    "hex": "#a9a9ab",
+    "accent": "#141414",
+    "photo": "images/BG140/grey-marl-black.jpg"
+   },
+   {
+    "name": "Kelly Green/Off White",
+    "hex": "#2e9e4f",
+    "accent": "#f1eee6",
+    "photo": "images/BG140/kelly-green-off-white.jpg"
+   },
+   {
+    "name": "Light Grey/French Navy",
+    "hex": "#cfcfcf",
+    "accent": "#1f2a56",
+    "photo": "images/BG140/light-grey-french-navy.jpg"
+   },
+   {
+    "name": "Mint Green/White",
+    "hex": "#aee3cb",
+    "accent": "#f7f7f5",
+    "photo": "images/BG140/mint-green-white.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "BG560",
+  "name": "Training holdall",
+  "brand": "BagBase",
+  "category": "bags",
+  "audience": "all",
+  "shape": "holdall",
+  "price": 13.69,
+  "sizes": "One size",
+  "sizeList": [
+   "One size"
+  ],
+  "fabric": "100% Recycled 600D polyester",
+  "blurb": "A compact holdall for older dancers, with room for kit, shoes and a change of clothes.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/BG560/black.jpg"
+   },
+   {
+    "name": "Fresh Pink",
+    "hex": "#f4a9c4",
+    "photo": "images/BG560/fresh-pink.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "SK427",
+  "name": "Women's cycling shorts",
+  "brand": "SF Clothing",
+  "category": "shorts",
+  "audience": "women",
+  "shape": "shorts",
+  "price": 6.38,
+  "sizes": "XS – XL",
+  "sizeList": [
+   "XS",
+   "S",
+   "M",
+   "L",
+   "XL"
+  ],
+  "fabric": "88% Polyester, 12% Elastane single Jersey. Jacquard band: 60% Nylon, 30% Polyester, 10% Elastane.",
+  "blurb": "Stretchy, high-waisted cycling shorts with a smart jacquard waistband. A studio favourite for jazz, street and commercial.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/SK427/black.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "SM427",
+  "name": "Kids' cycling shorts",
+  "brand": "SF Clothing",
+  "category": "shorts",
+  "audience": "kids",
+  "shape": "shorts",
+  "price": 6.0,
+  "sizes": "5/6 – 11/12 yrs",
+  "sizeList": [
+   "5/6 yrs",
+   "7/8 yrs",
+   "9/10 yrs",
+   "11/12 yrs"
+  ],
+  "fabric": "88% Polyester, 12% Elastane single Jersey. Jacquard band: 60% Nylon, 30% Polyester, 10% Elastane.",
+  "blurb": "Kids' stretch cycling shorts with a jacquard waistband, ages 5/6 to 11/12.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/SM427/black.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "TL301",
+  "name": "Women's seamless shorts",
+  "brand": "Tombo",
+  "category": "shorts",
+  "audience": "women",
+  "shape": "shorts",
+  "price": 6.56,
+  "sizes": "XXS/XS – L/XL",
+  "sizeList": [
+   "XXS/XS",
+   "S/M",
+   "L/XL"
+  ],
+  "fabric": "60% Nylon, 32% Polyester, 8% Elastane tubular single Jersey. Black: 96% Nylon, 4% Elastane",
+  "blurb": "Smooth, seamless shorts that move with you and sit flat under a crop top.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/TL301/black.jpg"
+   },
+   {
+    "name": "Dark Grey Marl",
+    "hex": "#55575c",
+    "photo": "images/TL301/dark-grey-marl.jpg"
+   },
+   {
+    "name": "Purple Marl",
+    "hex": "#6d5a86",
+    "photo": "images/TL301/purple-marl.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "TL309",
+  "name": "Kids' seamless shorts",
+  "brand": "Tombo",
+  "category": "shorts",
+  "audience": "kids",
+  "shape": "shorts",
+  "price": 5.88,
+  "sizes": "5/6 – 11/13 yrs",
+  "sizeList": [
+   "5/6 yrs",
+   "7/8 yrs",
+   "9/10 yrs",
+   "11/13 yrs"
+  ],
+  "fabric": "60% Nylon, 32% Polyester, 8% Elastane. Black: 96% Nylon, 4% Elastane",
+  "blurb": "Seamless kids' shorts with nothing to rub, ages 5/6 to 11/13.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/TL309/black.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "TR046",
+  "name": "Women's legging shorts",
+  "brand": "TriDri",
+  "category": "shorts",
+  "audience": "women",
+  "shape": "shorts",
+  "price": 7.44,
+  "sizes": "XXS – 4XL",
+  "sizeList": [
+   "XXS",
+   "XS",
+   "S",
+   "M",
+   "L",
+   "XL",
+   "2XL",
+   "3XL",
+   "4XL"
+  ],
+  "fabric": "90% Polyester, 10% Elastane",
+  "blurb": "Stretch legging shorts in sizes XXS to 4XL, ideal for warm studios and summer schools.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/TR046/black.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "SK069",
+  "name": "Women's retro shorts",
+  "brand": "SF Clothing",
+  "category": "shorts",
+  "audience": "women",
+  "shape": "shorts",
+  "price": 5.88,
+  "sizes": "XS – 2XL",
+  "sizeList": [
+   "XS",
+   "S",
+   "M",
+   "L",
+   "XL",
+   "2XL"
+  ],
+  "fabric": "100% Cotton single jersey",
+  "blurb": "Short cotton retro shorts with contrast piping in six colourways. Fun for street and hip hop classes.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/SK069/black.jpg"
+   },
+   {
+    "name": "Black/White",
+    "hex": "#141414",
+    "accent": "#f7f7f5",
+    "photo": "images/SK069/black-white.jpg"
+   },
+   {
+    "name": "Heather Grey/Black",
+    "hex": "#b9b9b9",
+    "accent": "#141414",
+    "photo": "images/SK069/heather-grey-black.jpg"
+   },
+   {
+    "name": "Navy/White",
+    "hex": "#1f2a56",
+    "accent": "#f7f7f5",
+    "photo": "images/SK069/navy-white.jpg"
+   },
+   {
+    "name": "Red/White",
+    "hex": "#c62828",
+    "accent": "#f7f7f5",
+    "photo": "images/SK069/red-white.jpg"
+   },
+   {
+    "name": "Red/Yellow",
+    "hex": "#c62828",
+    "accent": "#f7d43a",
+    "photo": "images/SK069/red-yellow.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "SM069",
+  "name": "Kids' retro shorts",
+  "brand": "SF Clothing",
+  "category": "shorts",
+  "audience": "kids",
+  "shape": "shorts",
+  "price": 4.94,
+  "sizes": "5/6 – 11/12 yrs",
+  "sizeList": [
+   "5/6 yrs",
+   "7/8 yrs",
+   "9/10 yrs",
+   "11/12 yrs"
+  ],
+  "fabric": "100% Cotton single Jersey",
+  "blurb": "Kids' cotton retro shorts with contrast piping, ages 5/6 to 11/12.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/SM069/black.jpg"
+   },
+   {
+    "name": "Black/White",
+    "hex": "#141414",
+    "accent": "#f7f7f5",
+    "photo": "images/SM069/black-white.jpg"
+   },
+   {
+    "name": "Navy/White",
+    "hex": "#1f2a56",
+    "accent": "#f7f7f5",
+    "photo": "images/SM069/navy-white.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
+  "code": "TR062",
+  "name": "Women's jogger shorts",
+  "brand": "TriDri",
+  "category": "shorts",
+  "audience": "women",
+  "shape": "shorts",
+  "price": 7.06,
+  "sizes": "XXS – 4XL",
+  "sizeList": [
+   "XXS",
+   "XS",
+   "S",
+   "M",
+   "L",
+   "XL",
+   "2XL",
+   "3XL",
+   "4XL"
+  ],
+  "fabric": "60% Cotton, 40% Recycled Polyester. Heather Grey: 90% Cotton, 10% Viscose.",
+  "blurb": "Soft jogger shorts to wear over leggings or to and from class, in sizes XXS to 4XL.",
+  "colours": [
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/TR062/black.jpg"
+   },
+   {
+    "name": "Charcoal",
+    "hex": "#4a4a4a",
+    "photo": "images/TR062/charcoal.jpg"
+   },
+   {
+    "name": "Heather Grey",
+    "hex": "#b9b9b9",
+    "photo": "images/TR062/heather-grey.jpg"
+   },
+   {
+    "name": "Nude",
+    "hex": "#d8b49a",
+    "photo": "images/TR062/nude.jpg"
+   },
+   {
+    "name": "Olive",
+    "hex": "#6b6b3a",
+    "photo": "images/TR062/olive.jpg"
+   },
+   {
+    "name": "Sage Green",
+    "hex": "#9cae8e",
+    "photo": "images/TR062/sage-green.jpg"
+   },
+   {
+    "name": "Stone",
+    "hex": "#cbbfa8",
+    "photo": "images/TR062/stone.jpg"
+   },
+   {
+    "name": "White",
+    "hex": "#f7f7f5",
+    "photo": "images/TR062/white.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": ""
+ },
+ {
   "code": "LV871/LV881",
   "name": "Team tracksuit (top and pants)",
   "brand": "Finden & Hales",
@@ -1293,9 +1978,9 @@ window.PRODUCTS = [
   "blurb": "A matching knitted tracksuit, top and pants, in two-tone team colours. The go-to kit for competitions.",
   "colours": [
    {
-    "name": "Burgundy",
-    "hex": "#6d1f33",
-    "photo": "images/LV871-LV881/burgundy.jpg"
+    "name": "Navy",
+    "hex": "#1f2a56",
+    "photo": "images/LV871-LV881/navy.jpg"
    },
    {
     "name": "Black",
@@ -1339,9 +2024,9 @@ window.PRODUCTS = [
     "photo": "images/LV871-LV881/bottle-white.jpg"
    },
    {
-    "name": "Navy",
-    "hex": "#1f2a56",
-    "photo": "images/LV871-LV881/navy.jpg"
+    "name": "Burgundy",
+    "hex": "#6d1f33",
+    "photo": "images/LV871-LV881/burgundy.jpg"
    },
    {
     "name": "Navy/Royal",
@@ -1398,9 +2083,9 @@ window.PRODUCTS = [
   "blurb": "The kids' version of our team tracksuit, ages 3/4 to 13, in the same colours as the adult one.",
   "colours": [
    {
-    "name": "Navy",
-    "hex": "#1f2a56",
-    "photo": "images/LV873-LV883/navy.jpg"
+    "name": "Burgundy",
+    "hex": "#6d1f33",
+    "photo": "images/LV873-LV883/burgundy.jpg"
    },
    {
     "name": "Black",
@@ -1444,9 +2129,9 @@ window.PRODUCTS = [
     "photo": "images/LV873-LV883/bottle-white.jpg"
    },
    {
-    "name": "Burgundy",
-    "hex": "#6d1f33",
-    "photo": "images/LV873-LV883/burgundy.jpg"
+    "name": "Navy",
+    "hex": "#1f2a56",
+    "photo": "images/LV873-LV883/navy.jpg"
    },
    {
     "name": "Navy/Royal",

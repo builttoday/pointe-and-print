@@ -74,6 +74,32 @@
       <path d="M50 70 L190 70 L200 232 L40 232 Z" fill="${c}" ${S}/>
       <path d="M44 120 L196 120" ${S}/>
       ${logo(92, 150, 56, 36)}`,
+    shorts: (c, d) => `
+      <path d="M64 70 L176 70 L190 184 L130 194 L120 128 L110 194 L50 184 Z" fill="${c}" ${S}/>
+      <path d="M64 70 L176 70 L177 92 L63 92 Z" fill="${d}" ${S}/>
+      ${logo(72, 104, 38, 24)}`,
+    gymsac: (c, d) => `
+      <path d="M66 44 L174 44 L178 234 L62 234 Z" fill="${c}" ${S}/>
+      <path d="M66 58 L174 58" ${S}/>
+      <path d="M70 50 Q60 150 64 230 M170 50 Q180 150 176 230" fill="none" stroke="${d}" stroke-width="4"/>
+      ${logo(88, 100, 64, 44)}`,
+    shoeBag: (c, d) => `
+      <path d="M78 74 L162 74 L166 226 L74 226 Z" fill="${c}" ${S}/>
+      <path d="M78 88 L162 88" ${S}/>
+      <path d="M100 74 Q120 40 140 74" fill="none" stroke="${d}" stroke-width="4"/>
+      ${logo(94, 128, 52, 36)}`,
+    barrel: (c, d) => `
+      <path d="M92 104 Q92 62 120 62 Q148 62 148 104" fill="none" stroke="#1a1a1a" stroke-width="7"/>
+      <path d="M92 104 Q92 62 120 62 Q148 62 148 104" fill="none" stroke="${d}" stroke-width="4"/>
+      <rect x="34" y="100" width="172" height="120" rx="58" fill="${c}" ${S}/>
+      <path d="M58 104 Q44 160 58 216 M182 104 Q196 160 182 216" fill="none" stroke="${d}" stroke-width="6"/>
+      ${logo(84, 138, 72, 42)}`,
+    holdall: (c, d) => `
+      <path d="M84 104 Q84 64 120 64 Q156 64 156 104" fill="none" stroke="#1a1a1a" stroke-width="7"/>
+      <path d="M84 104 Q84 64 120 64 Q156 64 156 104" fill="none" stroke="${d}" stroke-width="4"/>
+      <path d="M30 104 L210 104 Q222 104 220 118 L214 216 Q212 226 200 226 L40 226 Q28 226 26 216 L20 118 Q18 104 30 104 Z" fill="${c}" ${S}/>
+      <path d="M22 132 L218 132" ${S}/>
+      ${logo(80, 150, 80, 44)}`,
     tracksuit: (c, d) => `
       <g transform="translate(-6 8) scale(.62)">
         <path d="M78 58 L48 72 L22 190 L44 196 L66 118 L66 240 L174 240 L174 118 L196 196 L218 190 L192 72 L162 58 L140 50 L120 70 L100 50 Z" fill="${c}" ${S}/>
@@ -102,6 +128,7 @@
     cropSweat: (c, d) => `<path d="M78 58 L48 72 L22 170 L44 176 L66 118 L66 196 L174 196 L174 118 L196 176 L218 170 L192 72 L162 58 Q120 64 78 58 Z" fill="${c}" ${S}/><path d="M90 54 Q120 60 150 54 L150 62 Q120 68 90 62 Z" fill="${d}" ${S}/><path d="M66 186 L174 186" ${S}/>`,
     tee: (c, d) => `<path d="M84 50 L48 66 L24 112 L52 126 L68 104 L68 236 L172 236 L172 104 L188 126 L216 112 L192 66 L156 50 Q120 60 84 50 Z" fill="${c}" ${S}/><path d="M90 52 Q120 60 150 52" fill="none" ${S}/>`,
     trackJacket: (c, d) => `<path d="M78 58 L48 72 L22 190 L44 196 L66 118 L66 240 L174 240 L174 118 L196 196 L218 190 L192 72 L162 58 Q120 64 78 58 Z" fill="${c}" ${S}/><path d="M48 72 L22 190 L32 193 L58 76 Z M192 72 L218 190 L208 193 L182 76 Z" fill="${d}"/><path d="M90 30 L150 30 L160 58 Q120 66 80 58 Z" fill="${d}" ${S}/><path d="M66 228 L174 228" ${S}/>`,
+    shorts: (c, d) => `<path d="M64 70 L176 70 L190 184 L130 194 L120 128 L110 194 L50 184 Z" fill="${c}" ${S}/><path d="M64 70 L176 70 L177 92 L63 92 Z" fill="${d}" ${S}/>`,
     joggers: (c, d) => `<path d="M70 34 L170 34 L178 70 L168 236 L132 236 L122 106 L118 106 L108 236 L72 236 L62 70 Z" fill="${c}" ${S}/><path d="M70 34 L170 34 L171 52 L69 52 Z" fill="${d}" ${S}/><path d="M72 228 L108 228 L108 250 L72 250 Z M132 228 L168 228 L168 250 L132 250 Z" fill="${d}" ${S}/>`,
   };
   /* where a customer may place artwork, per shape and side, in drawing units (240 x 260) */
@@ -111,7 +138,9 @@
     cropSweat: { front: [74, 116, 92, 64], back: [72, 68, 96, 110] }, tee: { front: [76, 70, 88, 150], back: [76, 64, 88, 156] },
     cropTop: { front: [78, 86, 84, 62], back: [78, 80, 84, 70] }, sportsBra: { front: [82, 96, 76, 38], back: [72, 100, 96, 50] },
     leggings: { front: [74, 56, 92, 50], back: [74, 34, 92, 70] }, joggers: { front: [66, 54, 108, 70], back: [66, 54, 108, 70] },
-    bag: { front: [52, 76, 136, 150], back: [52, 76, 136, 150] }, trackJacket: { front: [128, 78, 40, 46], back: [72, 64, 96, 156] },
+    bag: { front: [52, 76, 136, 150], back: [52, 76, 136, 150] }, shorts: { front: [60, 96, 120, 60], back: [66, 72, 108, 60] },
+    gymsac: { front: [80, 72, 80, 150], back: [80, 72, 80, 150] }, shoeBag: { front: [86, 96, 68, 118], back: [86, 96, 68, 118] },
+    barrel: { front: [66, 118, 108, 86], back: [66, 118, 108, 86] }, holdall: { front: [44, 138, 152, 78], back: [44, 138, 152, 78] }, trackJacket: { front: [128, 78, 40, 46], back: [72, 64, 96, 156] },
   };
   window.designShape = shape => shape === 'tracksuit' ? 'trackJacket' : shape;
   window.garmentSVG = function(shape, hex, opts = {}){

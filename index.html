@@ -65,10 +65,11 @@
   .slide .art{display:flex;justify-content:center;align-items:flex-end;gap:0;height:100%;padding:30px 0}
   .slide .art svg{height:330px;width:auto;filter:drop-shadow(0 18px 24px rgba(0,0,0,.12))}
   .slide .art svg+svg{margin-left:-50px;height:290px}
+  .slide .art img{height:430px;width:auto;max-width:100%;aspect-ratio:5/6;object-fit:cover;object-position:top;border-radius:var(--radius);box-shadow:0 18px 40px rgba(0,0,0,.14)}
   .dots{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
   .dots button{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--ink);background:transparent;padding:0;cursor:pointer}
   .dots button.on{background:var(--ink)}
-  @media(max-width:760px){ .slide{grid-template-columns:1fr;padding:34px 0 60px;min-height:0} .slide .art svg{height:220px} .slide .art svg+svg{height:190px} }
+  @media(max-width:760px){ .slide{grid-template-columns:1fr;padding:34px 0 60px;min-height:0} .slide .art svg{height:220px} .slide .art svg+svg{height:190px} .slide .art img{height:300px} }
 
   /* ---- sections ---- */
   section.block{padding:70px 0}
@@ -76,11 +77,11 @@
   .sec-head h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:400;margin:6px 0 8px}
   .sec-head p{color:var(--ink-soft);margin:0 auto;max-width:36em}
   .sec-head .upper{font-size:.76rem;color:var(--rose);font-weight:600}
-  .cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
   @media(max-width:860px){.cat-grid{grid-template-columns:repeat(3,1fr)}} @media(max-width:520px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
   .cat{background:var(--bg-soft);border-radius:var(--radius);padding:18px 14px 16px;text-align:center;text-decoration:none;transition:.2s}
   .cat:hover{transform:translateY(-3px);background:var(--blush)}
-  .cat svg{height:130px;margin:0 auto 10px} .cat span{font-weight:500;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem}
+  .cat svg{height:130px;margin:0 auto 10px} .cat img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;border-radius:calc(var(--radius) - 4px);margin:0 0 12px} .cat span{font-weight:500;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem}
   .values{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:center}
   .values .ico{width:62px;height:62px;border-radius:50%;background:var(--blush);display:grid;place-items:center;margin:0 auto 14px;font-size:1.6rem}
   .values h3{font-weight:500;margin:0 0 6px;font-size:1.15rem} .values p{color:var(--ink-soft);margin:0}
@@ -90,8 +91,9 @@
   .occ{position:relative;border-radius:var(--radius);overflow:hidden;min-height:250px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;color:#fff}
   .occ h3{margin:0 0 4px;font-weight:500;font-size:1.25rem;position:relative} .occ p{margin:0;font-size:.92rem;opacity:.92;position:relative}
   .occ .bg{position:absolute;inset:0;display:flex;justify-content:center;padding-top:14px}
-  .occ .bg svg{height:150px;opacity:.95}
-  .occ:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.55))}
+  .occ .bg svg{height:150px;opacity:.95} .occ .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+  .occ:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(0,0,0,.35) 55%,rgba(0,0,0,.78))}
+  .occ{min-height:320px} .occ h3,.occ p{z-index:1;text-shadow:0 1px 6px rgba(0,0,0,.35)}
   @media(max-width:900px){.occ-grid{grid-template-columns:repeat(2,1fr)}} @media(max-width:520px){.occ-grid{grid-template-columns:1fr}}
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
   .step{border-top:2px solid var(--ink);padding-top:16px}
@@ -205,7 +207,7 @@
   .d-slider input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(184,82,111,.3)}
   .design-band{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;background:var(--blush);border-radius:var(--radius);padding:36px 44px}
   .design-band h2{font-weight:400;font-size:2rem;margin:0 0 8px} .design-band p{color:var(--ink-soft);margin:0 0 20px}
-  .design-band .art{display:flex;justify-content:center} .design-band .art svg{height:240px}
+  .design-band .art{display:flex;justify-content:center} .design-band .art svg{height:240px} .design-band .art img{height:300px;width:auto;aspect-ratio:5/6;object-fit:cover;object-position:top;border-radius:var(--radius)}
   @media(max-width:760px){.design-band{grid-template-columns:1fr;padding:26px}}
   .b-item .th img{width:100%;border-radius:8px}
   .d-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
@@ -304,6 +306,7 @@ const CATS = [
   { id: 'hoodies', name: 'Hoodies & zoodies', shape: 'cropHoodie', col: '#e8a3b8' },
   { id: 'tops', name: 'Crop tops & tees', shape: 'cropTop', col: '#141414' },
   { id: 'bottoms', name: 'Leggings & joggers', shape: 'leggings', col: '#1f2a56' },
+  { id: 'shorts', name: 'Shorts', shape: 'shorts', col: '#141414' },
   { id: 'tracksuits', name: 'Tracksuits', shape: 'tracksuit', col: '#1f2a56' },
   { id: 'bags', name: 'Bags', shape: 'bag', col: '#e8a3b8' },
 ];
@@ -348,22 +351,22 @@ function basketTotal(){
 /* ---------- views ---------- */
 function home(){
   const slides = [
-    { k: 'Dance school kit', h: 'Your school.<br>Your colours.<br>Your kit.', p: 'Hoodies, zoodies, crop tops and leggings with your dance school’s logo, in adult and kids’ sizes.', a: ['cropHoodie', '#e8a3b8', 'leggings', '#141414'], cta: ['#/schools', 'Kit out your school'] },
-    { k: 'Competition season', h: 'Walk in<br>as a team.', p: 'Matching tracksuits and zoodies with your team name, printed or embroidered, ready for the big day.', a: ['zoodie', '#1f2a56', 'joggers', '#1f2a56'], cta: ['#/shop/tracksuits', 'Shop tracksuits'] },
-    { k: 'Made for one', h: 'Their name,<br>on their kit.', p: 'Personalise a crop top, hoodie or dance bag with a name or initials. A gift they’ll actually wear.', a: ['cropTop', '#7b2d8e', 'bag', '#f3dfe0'], cta: ['#/shop', 'Personalise something'] },
+    { k: 'Dance school kit', h: 'Your school.<br>Your colours.<br>Your kit.', p: 'Hoodies, zoodies, crop tops, shorts and leggings with your dance school’s logo, in adult and kids’ sizes.', img: 'images/home/hero-school.jpg', alt: 'Two dancers in black cycling shorts and crop tops', cta: ['#/schools', 'Kit out your school'] },
+    { k: 'Competition season', h: 'Walk in<br>as a team.', p: 'Matching tracksuits and zoodies with your team name, printed or embroidered, ready for the big day.', img: 'images/home/hero-competition.jpg', alt: 'Two dancers in matching navy and sky team tracksuits', cta: ['#/shop/tracksuits', 'Shop tracksuits'] },
+    { k: 'Made for one', h: 'Their name,<br>on their kit.', p: 'Personalise a crop top, hoodie or dance bag with a name or initials. A gift they’ll actually wear.', img: 'images/home/hero-personal.jpg', alt: 'A young dancer with a pink dance bag', cta: ['#/shop', 'Personalise something'] },
   ];
-  const cats = CATS.map(c => `<a class="cat" href="#/shop/${c.id}">${garmentSVG(c.shape, c.col, { label: c.name })}<span>${esc(c.name)}</span></a>`).join('');
+  const cats = CATS.map(c => `<a class="cat" href="#/shop/${c.id}"><img src="images/home/cat-${c.id}.jpg" alt="" loading="lazy"><span>${esc(c.name)}</span></a>`).join('');
   const occ = [
-    ['School uniform', 'Matching kit for every class, from tots to seniors.', '#/schools', 'hoodie', '#b8526f', '#5a2233'],
-    ['Competition kit', 'Team tracksuits and zoodies that look sharp on stage and off.', '#/shop/tracksuits', 'tracksuit', '#1f2a56', '#0e1430'],
-    ['Show & event merch', 'Hoodies and tees for shows, festivals and nationals.', '#/contact', 'tee', '#141414', '#2b2b2b'],
-    ['Personalised gifts', 'A name on a dance bag or crop top. No minimum.', '#/shop/bags', 'bag', '#e8a3b8', '#a0566b'],
-  ].map(o => `<a class="occ" href="${o[2]}" style="background:${o[5]}"><div class="bg">${garmentSVG(o[3], o[4], { noLogo: true })}</div><h3>${o[0]}</h3><p>${o[1]}</p></a>`).join('');
+    ['School uniform', 'Matching kit for every class, from tots to seniors.', '#/schools', 'school', '', '#5a2233'],
+    ['Competition kit', 'Team tracksuits and zoodies that look sharp on stage and off.', '#/shop/tracksuits', 'competition', '', '#0e1430'],
+    ['Show & event merch', 'Hoodies, tees and shorts for shows, festivals and nationals.', '#/contact', 'show', '', '#2b2b2b'],
+    ['Personalised gifts', 'A name on a dance bag or crop top. No minimum.', '#/shop/bags', 'gifts', '', '#a0566b'],
+  ].map(o => `<a class="occ" href="${o[2]}" style="background:${o[5]}"><div class="bg"><img src="images/home/occ-${o[3]}.jpg" alt="" loading="lazy"></div><h3>${o[0]}</h3><p>${o[1]}</p></a>`).join('');
   return `
   <section class="hero"><div class="wrap">
     ${slides.map((s, i) => `<div class="slide${i ? '' : ' on'}"><div><div class="kicker upper">${s.k}</div><h1>${s.h}</h1><p>${s.p}</p>
       <div class="actions"><a class="btn" href="${s.cta[0]}">${s.cta[1]}</a><a class="btn ghost" href="#/contact">Get a free quote</a></div></div>
-      <div class="art">${garmentSVG(s.a[0], s.a[1])}${garmentSVG(s.a[2], s.a[3])}</div></div>`).join('')}
+      <div class="art"><img src="${s.img}" alt="${s.alt}"${i ? ' loading="lazy"' : ''}></div></div>`).join('')}
     <div class="dots">${slides.map((_, i) => `<button aria-label="Slide ${i + 1}" class="${i ? '' : 'on'}" onclick="goSlide(${i})"></button>`).join('')}</div>
   </div></section>
 
@@ -376,7 +379,7 @@ function home(){
     <div class="design-band"><div><div class="upper" style="font-size:.76rem;color:var(--rose);font-weight:600">New</div><h2>Design your own kit</h2>
       <p>Pick a hoodie, tracksuit or crop top, add your logo and text, drag it into place and see exactly how it will look, front and back.</p>
       <a class="btn" href="#/design">Start designing</a></div>
-      <div class="art">${garmentSVG('cropHoodie', '#b9a8e0', { label: 'Design your own' })}</div></div>
+      <div class="art"><img src="images/home/design.jpg" alt="A dancer in a lavender cropped quarter-zip" loading="lazy"></div></div>
   </div></section>
 
   <section class="block soft"><div class="wrap">

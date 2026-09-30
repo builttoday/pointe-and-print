@@ -40,6 +40,11 @@
     leggings: { front: [P('Left hip', 124, 58, 38, 26), P('Right hip', 78, 58, 38, 26)], back: [P('Waistband', 80, 36, 80, 14), P('Seat', 80, 56, 80, 40)] },
     joggers: { front: [P('Left thigh', 128, 70, 40, 30), P('Right thigh', 72, 70, 40, 30)], back: [P('Waistband', 80, 56, 80, 18), P('Seat', 76, 76, 88, 40)] },
     bag: { front: [P('Centre', 70, 104, 100, 64), P('Full front', 56, 80, 128, 140)], back: [P('Centre', 70, 104, 100, 64), P('Full back', 56, 80, 128, 140)] },
+    shorts: { front: [P('Left hip', 130, 100, 44, 26), P('Right hip', 66, 100, 44, 26)], back: [P('Waistband', 80, 74, 80, 16), P('Seat', 72, 96, 96, 34)] },
+    gymsac: { front: [P('Centre', 88, 100, 64, 50), P('Full front', 82, 76, 76, 146)], back: [P('Centre', 88, 100, 64, 50), P('Full back', 82, 76, 76, 146)] },
+    shoeBag: { front: [P('Centre', 94, 120, 52, 40), P('Full front', 88, 100, 64, 112)], back: [P('Centre', 94, 120, 52, 40), P('Full back', 88, 100, 64, 112)] },
+    barrel: { front: [P('Centre', 84, 134, 72, 44), P('Full side', 68, 120, 104, 82)], back: [P('Centre', 84, 134, 72, 44), P('Full side', 68, 120, 104, 82)] },
+    holdall: { front: [P('Centre', 76, 150, 88, 48), P('Full front', 48, 140, 144, 74)], back: [P('Centre', 76, 150, 88, 48), P('Full back', 48, 140, 144, 74)] },
   };
   const SLEEVE_AREA = { long: [102, 46, 36, 160], short: [98, 44, 44, 54] };
   const SLEEVE_PRESETS = { long: [P('Upper arm', 104, 50, 32, 40), P('Down the sleeve', 106, 50, 28, 150)], short: [P('Sleeve', 100, 48, 40, 34)] };
