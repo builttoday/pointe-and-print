@@ -175,7 +175,8 @@
       <div class="d-panel">
         <div class="opt" style="margin-top:0"><h4>1. Garment</h4>
           <select id="dProduct" class="d-select" onchange="dzProduct(this.value)">${list.map(x => `<option value="${esc(x.code)}"${x === p ? ' selected' : ''}>${esc(x.name)} (${esc(x.code)})</option>`).join('')}</select></div>
-        <div class="opt"><h4>2. Garment colour <small id="dColName"></small></h4><div class="swatches" id="dSwatches"></div></div>
+        <div class="opt"><h4>2. Garment colour <small id="dColName"></small></h4><div class="swatches" id="dSwatches"></div>
+          <div class="d-ref" id="dRef"></div></div>
 
         <div class="opt"><h4>3. Add to your design</h4>
           <div class="d-tabs">${['text', 'graphics', 'upload', 'templates'].map(t => `<button type="button" data-tab="${t}" class="${t === 'text' ? 'on' : ''}" onclick="dzTab('${t}')">${{ text: 'Text', graphics: 'Graphics', upload: 'Upload', templates: 'Templates' }[t]}</button>`).join('')}</div>
@@ -227,6 +228,10 @@
     const c = D.p.colours[D.colour];
     $('#dColName').textContent = c.name;
     $('#dSwatches').innerHTML = D.p.colours.map((x, i) => `<button type="button" class="${i === D.colour ? 'on' : ''}" title="${esc(x.name)}" aria-label="${esc(x.name)}" style="background:${x.accent ? `linear-gradient(135deg, ${x.hex} 50%, ${x.accent} 50%)` : x.hex}" onclick="dzColour(${i})"></button>`).join('');
+    // photo of the real garment in the chosen colour, as a reference next to the drawing
+    const ref = c.photo || D.p.photo;
+    $('#dRef').innerHTML = ref ? `<img src="${esc(ref)}" alt="${esc(D.p.name)} in ${esc(c.name)}"><div><b>The real garment</b><small>${esc(D.p.name)} in ${esc(c.name)}. Your design is printed or embroidered onto this.</small></div>` : '';
+    $('#dRef').hidden = !ref;
     $('#dSizeRange').textContent = D.p.sizes;
     $('#dSizes').innerHTML = D.p.sizeList.map(s => `<label>${esc(s)}<input type="number" min="0" max="999" inputmode="numeric" placeholder="0" value="${D.sizes[s] || ''}" data-size="${esc(s)}" onfocus="this.select()" oninput="dzQty(this)" ${D.names.on ? 'disabled' : ''}></label>`).join('');
     if(!sidesFor().includes(D.side)) D.side = 'front';
