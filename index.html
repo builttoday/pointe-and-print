@@ -292,6 +292,9 @@ const CONFIG = {
   // (e.g. a free Formspree or Web3Forms form). Until then the site shows the
   // request and offers to email it instead.
   formEndpoint: '',
+  // Where "Get a quote" requests go, WITHOUT showing William's email: a FormSubmit alias
+  // ('https://formsubmit.co/ajax/<code>') or a Web3Forms access key ('web3forms:<key>'). Empty = quote form off.
+  quoteEndpoint: 'web3forms:0b9c6b43-3ece-44a5-9d16-ff0dcad59547',   // Web3Forms key (sends to William's inbox; free plan: no file uploads)
   // A Stripe Payment Link or checkout URL. Leave empty and the "Pay now" button
   // stays switched off; customers send an order request instead.
   paymentUrl: '',
@@ -619,7 +622,7 @@ function orderForm(kind){
       <label class="field"><span>Dance school, team or event</span><input name="organisation"></label>
       <label class="field"><span>Date you need it by</span><input name="needed_by" type="date"></label>
       <label class="field"><span>Delivery postcode (UK only)</span><input name="postcode" autocomplete="postal-code"></label>
-      <label class="field full"><span>Your logo (PNG, JPG, PDF or SVG)</span><input name="logo" type="file" accept=".png,.jpg,.jpeg,.pdf,.svg,.ai,.eps"></label>
+      ${isQuote && (CONFIG.quoteEndpoint || '').startsWith('web3forms:') ? '<p class="meta full" style="margin:12px 0 0">Got a logo? We’ll reply by email, and you can send it to us then.</p>' : '<label class="field full"><span>Your logo (PNG, JPG, PDF or SVG)</span><input name="logo" type="file" accept=".png,.jpg,.jpeg,.pdf,.svg,.ai,.eps"></label>'}
       <label class="field full"><span>${isQuote ? 'Tell us what you need *' : 'Anything else we should know?'}</span><textarea name="message" rows="5" ${isQuote ? 'required' : ''} placeholder="${isQuote ? 'e.g. 40 zoodies for our competition team, navy with our logo on the front, kids 5/6 to adult L' : ''}"></textarea></label>
     </div>
     <div class="actions"><button class="btn" type="submit">${isQuote ? 'Send quote request' : 'Send order for mock-up'}</button>
@@ -653,6 +656,17 @@ async function sendOrder(e, kind){
       fd.append('design_' + (n + 1) + '_' + side, new Blob([a], { type: 'image/jpeg' }), `design-${n + 1}-${side}.jpg`); });
     designAssets(i.design.assets).forEach((a, k) => fd.append('design_' + (n + 1) + '_artwork_' + (k + 1), a.file, a.name)); }); fd.append('_subject', (kind === 'quote' ? 'Quote request' : 'New order') + ' - ' + (fd.get('organisation') || fd.get('name')));
   const out = $('#formResult');
+  if(kind === 'quote' && CONFIG.quoteEndpoint){        // quote requests go to William's inbox; his address is never in the page
+    let url = CONFIG.quoteEndpoint;
+    if(url.startsWith('web3forms:')){ fd.append('access_key', url.slice(10)); fd.append('subject', fd.get('_subject')); fd.append('from_name', 'Pointe & Print website'); fd.append('replyto', fd.get('email') || ''); fd.delete('logo'); url = 'https://api.web3forms.com/submit'; }
+    else fd.append('_template', 'table');
+    fd.append('_captcha', 'false');
+    try {
+      const r = await fetch(url, { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
+      if(!r.ok) throw new Error(r.status);
+      location.hash = '#/thanks'; return false;
+    } catch(err){ out.innerHTML = '<div class="notice">Sorry, that didn’t send. Please try again in a minute.</div>'; return false; }
+  }
   if(CONFIG.formEndpoint){
     try {
       const r = await fetch(CONFIG.formEndpoint, { method: 'POST', body: fd, headers: { Accept: 'application/json' } });
