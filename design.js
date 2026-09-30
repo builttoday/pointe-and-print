@@ -183,7 +183,7 @@
         <div class="d-stage" id="dStage" tabindex="0" aria-label="Design area. Arrow keys move the selected item."><div id="dGarment"></div><div class="d-area" id="dArea"></div><div class="d-guide" id="dGuide" hidden></div><div class="d-layers" id="dLayers"></div></div>
         <div class="d-toolbar">
           <button type="button" onclick="dzUndo()" title="Undo (Ctrl+Z)">↶ Undo</button><button type="button" onclick="dzRedo()" title="Redo (Ctrl+Y)">↷ Redo</button>
-          <button type="button" onclick="dzClearSide()">Clear this side</button><button type="button" onclick="dzStartAgain()">Start again</button>
+          <button type="button" onclick="dzClearSide()">Clear this side</button><button type="button" class="danger" onclick="dzStartAgain()">Remove all</button>
         </div>
         <div class="d-layerlist" id="dLayerList"></div>
       </div>
@@ -270,7 +270,7 @@
       return `<div class="d-layer${L.id === D.sel ? ' sel' : ''}" data-id="${L.id}" style="${st}"><img src="${bms[i].url}" alt="" draggable="false"></div>`;
     }).join('');
     document.querySelectorAll('.d-layer').forEach(el => el.addEventListener('pointerdown', startDrag));
-    $('#dLayerList').innerHTML = here.length ? `<div class="d-arthead">On the ${SIDE_LABEL[D.side].toLowerCase()} (top first)</div>` + here.slice().reverse().map(L => `<button type="button" class="${L.id === D.sel ? 'on' : ''}" onclick="dzSelect(${L.id})">${L.type === 'text' ? 'T' : L.type === 'art' ? '★' : '▣'} ${esc(L.type === 'text' ? L.text : L.type === 'art' ? ((window.DESIGN_ART || []).find(a => a.id === L.art) || {}).label : assets[L.asset].name)}</button>`).join('') : '';
+    $('#dLayerList').innerHTML = here.length ? `<div class="d-arthead">On the ${SIDE_LABEL[D.side].toLowerCase()} (top first)</div>` + here.slice().reverse().map(L => `<button type="button" class="${L.id === D.sel ? 'on' : ''}" onclick="dzSelect(${L.id})">${L.type === 'text' ? 'T' : L.type === 'art' ? '★' : '▣'} ${esc(L.type === 'text' ? L.text : L.type === 'art' ? ((window.DESIGN_ART || []).find(a => a.id === L.art) || {}).label : assets[L.asset].name)}</button>`).join('') + `<button type="button" class="d-removeall" onclick="dzStartAgain()">✕ Remove all${D.layers.length > here.length ? ' (every side)' : ''}</button>` : '';
     if(!dragging) drawSelBox();
   }
   /* keep every item inside the print area: shrink it if its (rotated) outline is too big, then keep it in bounds */
@@ -461,7 +461,7 @@
     remember(); D.layers = []; D.sel = null; D.draftId = null; D.side = 'front'; D.method = 'print';
     const box = $('#dText'); if(box) box.value = '';
     document.querySelectorAll('input[name=dMethod]').forEach(i => i.checked = i.value === 'print');
-    drawAll(); toast('Design cleared. Undo brings it back.');
+    drawAll(); toast('Everything removed. Undo brings it back.');
   };
   /* switching side keeps what's in the text box, and offers a one-click button to put it on this side too */
   window.dzSide = s => { const dr = D.layers.find(x => x.id === D.draftId); if(dr && dr.side !== s) D.draftId = null; D.side = s; D.sel = null; drawAll(); };
