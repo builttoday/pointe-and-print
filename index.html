@@ -631,8 +631,8 @@ function orderForm(kind){
       <label class="field full"><span>${isQuote ? 'Tell us what you need *' : 'Anything else we should know?'}</span><textarea name="message" rows="5" ${isQuote ? 'required' : ''} placeholder="${isQuote ? 'e.g. 40 zoodies for our competition team, navy with our logo on the front, kids 5/6 to adult L' : ''}"></textarea></label>
     </div>
     <div class="actions"><button class="btn" type="submit">${isQuote ? 'Send quote request' : 'Send order for mock-up'}</button>
-    ${!isQuote ? `<button class="btn rose" type="button" onclick="payNow()" ${CONFIG.paymentUrl ? '' : 'disabled title="Online payment is not switched on yet"'}>Pay now</button>` : ''}</div>
-    ${!isQuote && !CONFIG.paymentUrl ? '<p class="meta" style="margin-top:8px">Online payment is coming soon. For now, send your order and we’ll reply with a mock-up, final price and a secure payment link.</p>' : ''}
+    </div>
+    ${!isQuote ? '<p class="meta" style="margin-top:8px"><b>Payment is by bank transfer.</b> Nothing to pay now: when you approve your free mock-up we’ll email your final total and our bank details.</p>' : ''}
   </form><div id="formResult"></div>`;
 }
 function checkout(){
@@ -654,12 +654,17 @@ function orderText(kind, fd){
 }
 async function sendOrder(e, kind){
   e.preventDefault();
-  const fd = new FormData(e.target), text = orderText(kind, fd);
+  const fd = new FormData(e.target);
+  // order reference (e.g. PP-1001-4827): shown to the customer and used as their bank transfer reference
+  const d = new Date(), ref = `${kind === 'quote' ? 'PQ' : 'PP'}-${String(d.getDate()).padStart(2, '0')}${String(d.getMonth() + 1).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`;
+  fd.append('reference', ref); lastRef = ref; lastKind = kind;
+  const text = `Reference: ${ref}
+` + orderText(kind, fd);
   fd.append('order_summary', text);
   if(kind !== 'quote') basket.forEach((i, n) => { if(!i.design) return;
     Object.entries(i.design.previews).forEach(([side, url]) => { const b = atob(url.split(',')[1]), a = new Uint8Array(b.length); for(let k = 0; k < b.length; k++) a[k] = b.charCodeAt(k);
       fd.append('design_' + (n + 1) + '_' + side, new Blob([a], { type: 'image/jpeg' }), `design-${n + 1}-${side}.jpg`); });
-    designAssets(i.design.assets).forEach((a, k) => fd.append('design_' + (n + 1) + '_artwork_' + (k + 1), a.file, a.name)); }); fd.append('_subject', (kind === 'quote' ? 'Quote request' : 'New order') + ' - ' + (fd.get('organisation') || fd.get('name')));
+    designAssets(i.design.assets).forEach((a, k) => fd.append('design_' + (n + 1) + '_artwork_' + (k + 1), a.file, a.name)); }); fd.append('_subject', (kind === 'quote' ? 'Quote request ' : 'New order ') + ref + ' - ' + (fd.get('organisation') || fd.get('name')));
   const out = $('#formResult');
   if(CONFIG.quoteEndpoint && !CONFIG.previewOnly){     // orders and quote requests go to William's inbox; his address is never in the page
     let url = CONFIG.quoteEndpoint;
@@ -696,7 +701,7 @@ async function sendOrder(e, kind){
     <pre style="white-space:pre-wrap;font-size:.82rem;background:var(--bg-soft);padding:14px;border-radius:10px">${esc(text)}</pre>`;
   return false;
 }
-function payNow(){ if(CONFIG.paymentUrl) location.href = CONFIG.paymentUrl; }
+let lastRef = '', lastKind = '';
 
 function contact(){
   return `<div class="page-head"><div class="wrap"><h1>Get a free quote</h1><p>Tell us what you need and send your logo. We’ll reply with a mock-up and a price.</p></div></div>
@@ -730,6 +735,7 @@ function faq(){
   const qs = [
     ['Is there a minimum order?', 'No minimum: personalised items can be ordered one at a time.'],
     ['Where do you deliver?', 'We deliver to UK addresses only.'],
+    ['How do I pay?', 'By bank transfer. There’s nothing to pay when you order: once you approve your free mock-up we email your final total and our bank details. Please use your order reference when you pay.'],
     ['Is there a setup charge?', 'Yes: a one-off £15 charge for setting up new artwork, once per order however many items it goes on. If you reorder with the same artwork, you don’t pay it again.'],
     ['Can I see my design before it’s made?', 'Yes. Every order gets a free digital mock-up, and nothing is made until you approve it.'],
     ['What file should my logo be?', 'A PNG with a transparent background or a vector file (SVG, PDF, AI or EPS) is best, but send whatever you have and we’ll let you know.'],
@@ -738,7 +744,7 @@ function faq(){
   ];
   return `<div class="page-head"><div class="wrap"><h1>FAQs</h1></div></div><div class="prose faq">${qs.map(q => `<details><summary>${q[0]}</summary><p>${q[1]}</p></details>`).join('')}</div>`;
 }
-function thanks(){ return `<div class="wrap empty"><h1 style="font-weight:400">Thank you!</h1><p>We’ve got your request and will reply with a mock-up and price.</p><a class="btn" href="#/">Back to home</a></div>`; }
+function thanks(){ return `<div class="wrap empty"><h1 style="font-weight:400">Thank you!</h1>${lastRef ? `<p>Your reference: <b>${esc(lastRef)}</b></p>` : ''}<p>We’ve got your ${lastKind === 'quote' ? 'request' : 'order'} and will reply by email with a free mock-up and your price.</p>${lastKind === 'quote' ? '' : '<p class="meta">Payment is by bank transfer once you’ve approved your mock-up. Please use your reference when you pay.</p>'}<a class="btn" href="#/">Back to home</a></div>`; }
 function notFound(){ return `<div class="wrap empty"><p>Sorry, we couldn’t find that page.</p><a class="btn" href="#/shop">Go to the shop</a></div>`; }
 
 /* ---------- router ---------- */
