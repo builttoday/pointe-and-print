@@ -1159,6 +1159,11 @@ window.PRODUCTS = [
   "blurb": "Soft cuffed joggers that match our hoodies and zoodies. Add your logo to the leg.",
   "colours": [
    {
+    "name": "Heather Grey",
+    "hex": "#b9b9b9",
+    "photo": "images/JH072/heather-grey.jpg"
+   },
+   {
     "name": "Charcoal",
     "hex": "#4a4a4a",
     "photo": "images/JH072/charcoal.jpg"
@@ -1167,11 +1172,6 @@ window.PRODUCTS = [
     "name": "Deep Black",
     "hex": "#0b0b0b",
     "photo": "images/JH072/deep-black.jpg"
-   },
-   {
-    "name": "Heather Grey",
-    "hex": "#b9b9b9",
-    "photo": "images/JH072/heather-grey.jpg"
    },
    {
     "name": "Jet Black",
