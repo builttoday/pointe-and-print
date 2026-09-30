@@ -77,7 +77,7 @@
   .sec-head h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:400;margin:6px 0 8px}
   .sec-head p{color:var(--ink-soft);margin:0 auto;max-width:36em}
   .sec-head .upper{font-size:.76rem;color:var(--rose);font-weight:600}
-  .cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}
   @media(max-width:860px){.cat-grid{grid-template-columns:repeat(3,1fr)}} @media(max-width:520px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
   .cat{background:var(--bg-soft);border-radius:var(--radius);padding:18px 14px 16px;text-align:center;text-decoration:none;transition:.2s}
   .cat:hover{transform:translateY(-3px);background:var(--blush)}
@@ -115,7 +115,7 @@
   .card{text-decoration:none;display:block}
   .card .img{background:var(--bg-soft);border-radius:var(--radius);aspect-ratio:1/1.05;display:grid;place-items:center;padding:18px;transition:.2s;position:relative}
   .card:hover .img{background:var(--blush)}
-  .card .img svg{height:88%} .card .tag{position:absolute;top:12px;left:12px;background:#fff;border-radius:999px;font-size:.68rem;padding:4px 10px;text-transform:uppercase;letter-spacing:.1em;font-weight:500}
+  .card .img svg{height:88%} .card .tags{position:absolute;top:12px;left:12px;display:flex;gap:6px;z-index:1} .card .tag.eco{background:#e3f1e8;color:#1f6b45} .card .tag{background:#fff;border-radius:999px;font-size:.68rem;padding:4px 10px;text-transform:uppercase;letter-spacing:.1em;font-weight:500}
   .card h3{font-size:1rem;font-weight:500;margin:12px 0 2px} .card .meta{font-size:.84rem;color:var(--ink-soft)}
   .card .price{margin-top:4px;font-weight:500}
   .swatch-row{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
@@ -258,7 +258,7 @@
 <footer class="site"><div class="wrap">
   <div class="f-grid">
     <div><div class="brand" id="brandFoot" style="font-size:1.25rem"></div><p style="color:var(--ink-soft);max-width:22em">Custom dancewear for dance schools, teams and dancers. Your logo, your colours, adult and kids' sizes.</p></div>
-    <div><h4>Shop</h4><a href="#/shop/hoodies">Hoodies &amp; zoodies</a><a href="#/shop/tops">Crop tops &amp; tees</a><a href="#/shop/bottoms">Leggings &amp; joggers</a><a href="#/shop/shorts">Shorts</a><a href="#/shop/tracksuits">Tracksuits</a><a href="#/shop/bags">Bags</a></div>
+    <div><h4>Shop</h4><a href="#/shop/hoodies">Hoodies &amp; zoodies</a><a href="#/shop/tops">Crop tops &amp; tees</a><a href="#/shop/bottoms">Leggings &amp; joggers</a><a href="#/shop/shorts">Shorts</a><a href="#/shop/tracksuits">Tracksuits</a><a href="#/shop/bags">Bags</a><a href="#/shop/sustainable">Sustainable</a></div>
     <div><h4>Help</h4><a href="#/how">How it works</a><a href="#/schools">For dance schools</a><a href="#/faq">FAQs</a><a href="#/contact">Get a quote</a></div>
     <div><h4>Contact</h4><a id="footEmail" href="#"></a><a href="#/contact">Send us your logo</a></div>
   </div>
@@ -313,7 +313,12 @@ const CATS = [
   { id: 'shorts', name: 'Shorts', shape: 'shorts', col: '#141414' },
   { id: 'tracksuits', name: 'Tracksuits', shape: 'tracksuit', col: '#1f2a56' },
   { id: 'bags', name: 'Bags', shape: 'bag', col: '#e8a3b8' },
+  { id: 'premium', name: 'Premium', shape: 'hoodie', col: '#141414' },
+  { id: 'sustainable', name: 'Sustainable', shape: 'leggings', col: '#1f2a56' },   // a collection across categories (products with p.eco)
 ];
+const inCat = (p, id) => id === 'sustainable' ? !!p.eco : p.category === id;
+// categories with at least one product (a new, still-empty category such as Premium stays hidden until it has products)
+const liveCats = () => CATS.filter(c => P().some(p => inCat(p, c.id)));
 const P = () => window.PRODUCTS || [];
 const byCode = code => P().find(p => p.code === code);
 const swBg = c => c.accent ? `linear-gradient(135deg, ${c.hex} 50%, ${c.accent} 50%)` : c.hex;
@@ -359,7 +364,7 @@ function home(){
     { k: 'Competition season', h: 'Walk in<br>as a team.', p: 'Matching tracksuits and zoodies with your team name, printed or embroidered, ready for the big day.', img: 'images/home/hero-competition.jpg', alt: 'Two dancers in matching navy and sky team tracksuits', cta: ['#/shop/tracksuits', 'Shop tracksuits'] },
     { k: 'Made for one', h: 'Their name,<br>on their kit.', p: 'Personalise a crop top, hoodie or dance bag with a name or initials. A gift they’ll actually wear.', img: 'images/home/hero-personal.jpg', alt: 'A smiling young dancer mid-kick in a black crop top and shorts', cta: ['#/shop', 'Personalise something'] },
   ];
-  const cats = CATS.map(c => `<a class="cat" href="#/shop/${c.id}"><img src="images/home/cat-${c.id}.jpg" alt="" loading="lazy"><span>${esc(c.name)}</span></a>`).join('');
+  const cats = liveCats().map(c => `<a class="cat" href="#/shop/${c.id}"><img src="images/home/cat-${c.id}.jpg" alt="" loading="lazy"><span>${esc(c.name)}</span></a>`).join('');
   const occ = [
     ['School uniform', 'Matching kit for every class, from tots to seniors.', '#/schools', 'school', '', '#5a2233'],
     ['Competition kit', 'Team tracksuits and zoodies that look sharp on stage and off.', '#/shop/tracksuits', 'competition', '', '#0e1430'],
@@ -431,17 +436,17 @@ function goSlide(i){
 function card(p){
   const c = p.colours[0];
   return `<a class="card" href="#/product/${encodeURIComponent(p.code)}">
-    <div class="img">${p.audience === 'kids' ? '<span class="tag">Kids</span>' : ''}${productPic(p, c)}</div>
+    <div class="img">${p.audience === 'kids' || p.eco ? `<span class="tags">${p.audience === 'kids' ? '<span class="tag">Kids</span>' : ''}${p.eco ? '<span class="tag eco">Recycled</span>' : ''}</span>` : ''}${productPic(p, c)}</div>
     <h3>${esc(p.name)}</h3><div class="meta">${esc(p.brand)} · ${esc(p.sizes)}</div>
     <div class="price">${CONFIG.showPrices ? `From ${gbp(p.price + CONFIG.decoration.frontPrint.each)} <span class="meta">with your logo</span>` : '£TBA'}</div>
     <div class="swatch-row">${p.colours.slice(0, 8).map(c => `<i style="background:${swBg(c)}" title="${esc(c.name)}"></i>`).join('')}${p.colours.length > 8 ? `<span class="meta">+${p.colours.length - 8}</span>` : ''}</div>
   </a>`;
 }
 function shop(cat){
-  const list = P().filter(p => !cat || p.category === cat);
+  const list = P().filter(p => !cat || inCat(p, cat));
   const title = cat ? (CATS.find(c => c.id === cat) || {}).name : 'Shop all dancewear';
   return `<div class="page-head"><div class="wrap"><h1>${esc(title || 'Shop')}</h1><p>Every item can be printed or embroidered with your logo, names or text.</p></div></div>
-  <div class="wrap"><div class="filters"><a class="chip${cat ? '' : ' on'}" href="#/shop">All</a>${CATS.map(c => `<a class="chip${c.id === cat ? ' on' : ''}" href="#/shop/${c.id}">${esc(c.name)}</a>`).join('')}</div>
+  <div class="wrap"><div class="filters"><a class="chip${cat ? '' : ' on'}" href="#/shop">All</a>${liveCats().map(c => `<a class="chip${c.id === cat ? ' on' : ''}" href="#/shop/${c.id}">${esc(c.name)}</a>`).join('')}</div>
   <div class="p-grid">${list.map(card).join('') || '<p class="empty">Nothing here yet.</p>'}</div></div>`;
 }
 
@@ -474,7 +479,7 @@ function product(code){
       <div class="actions"><button class="btn" onclick="addToBasket()">Add to basket</button><a class="btn ghost" href="#/design/${encodeURIComponent(p.code)}">Design it yourself</a></div>
 
       <div class="details">
-        <details open><summary>About this garment</summary><p>${esc(p.fabric || '')}</p>${p.colourNote ? `<p>${esc(p.colourNote)}</p>` : ''}${p.notes ? `<p>${esc(p.notes)}</p>` : ''}</details>
+        <details open><summary>About this garment</summary>${p.eco ? `<p><b style="color:#1f6b45">Made from ${esc(p.eco)}.</b></p>` : ''}<p>${esc(p.fabric || '')}</p>${p.colourNote ? `<p>${esc(p.colourNote)}</p>` : ''}${p.notes ? `<p>${esc(p.notes)}</p>` : ''}</details>
         <details><summary>Your logo</summary><p>Upload your logo at checkout. Any clear image works; a PNG or vector file gives the sharpest result. We send you a free mock-up to approve before anything is made.</p></details>
         ${!CONFIG.showPrices ? '' : ''}<details${CONFIG.showPrices && CONFIG.bulk.some(t => t.off) ? '' : ' hidden'}><summary>Bulk pricing</summary><ul>${CONFIG.bulk.filter(t => t.off).map(t => `<li>${t.from}+ of one item: ${Math.round(t.off * 100)}% off</li>`).join('')}</ul></details>
       </div>

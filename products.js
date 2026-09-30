@@ -528,7 +528,8 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "10 of 56 colours shown; ask for others.",
-  "notes": ""
+  "notes": "",
+  "eco": "100% recycled polyester"
  },
  {
   "code": "JC01J",
@@ -601,7 +602,8 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "10 of 31 colours shown; ask for others.",
-  "notes": ""
+  "notes": "",
+  "eco": "100% recycled polyester"
  },
  {
   "code": "TR019",
@@ -917,7 +919,8 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "eco": "80% recycled polyester"
  },
  {
   "code": "TR532",
@@ -959,7 +962,8 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "eco": "80% recycled polyester"
  },
  {
   "code": "TL370",
@@ -1094,7 +1098,8 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "eco": "80% recycled polyester"
  },
  {
   "code": "TR17B",
@@ -1636,7 +1641,8 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "eco": "100% recycled polyester"
  },
  {
   "code": "SK427",
@@ -1951,7 +1957,8 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "eco": "40% recycled polyester"
  },
  {
   "code": "LV871/LV881",
