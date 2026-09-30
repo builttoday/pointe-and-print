@@ -44,6 +44,7 @@
     gymsac: { front: [P('Centre', 88, 100, 64, 50), P('Full front', 82, 76, 76, 146)], back: [P('Centre', 88, 100, 64, 50), P('Full back', 82, 76, 76, 146)] },
     shoeBag: { front: [P('Centre', 94, 120, 52, 40), P('Full front', 88, 100, 64, 112)], back: [P('Centre', 94, 120, 52, 40), P('Full back', 88, 100, 64, 112)] },
     barrel: { front: [P('Centre', 84, 134, 72, 44), P('Full side', 68, 120, 104, 82)], back: [P('Centre', 84, 134, 72, 44), P('Full side', 68, 120, 104, 82)] },
+    tote: { front: [P('Centre', 76, 128, 88, 64), P('Full front', 62, 102, 116, 124)], back: [P('Centre', 76, 128, 88, 64), P('Full back', 62, 102, 116, 124)] },
     holdall: { front: [P('Centre', 76, 150, 88, 48), P('Full front', 48, 140, 144, 74)], back: [P('Centre', 76, 150, 88, 48), P('Full back', 48, 140, 144, 74)] },
   };
   const SLEEVE_AREA = { long: [102, 46, 36, 160], short: [98, 44, 44, 54] };

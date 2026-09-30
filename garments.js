@@ -94,6 +94,11 @@
       <rect x="34" y="100" width="172" height="120" rx="58" fill="${c}" ${S}/>
       <path d="M58 104 Q44 160 58 216 M182 104 Q196 160 182 216" fill="none" stroke="${d}" stroke-width="6"/>
       ${logo(84, 138, 72, 42)}`,
+    tote: (c, d) => `
+      <path d="M86 92 L86 40 Q86 20 104 20 L104 92 M154 92 L154 40 Q154 20 136 20 L136 92" fill="none" stroke="#1a1a1a" stroke-width="7"/>
+      <path d="M86 92 L86 40 Q86 20 104 20 L104 92 M154 92 L154 40 Q154 20 136 20 L136 92" fill="none" stroke="${d}" stroke-width="4"/>
+      <path d="M46 84 L194 84 L198 244 L42 244 Z" fill="${c}" ${S}/>
+      ${logo(78, 130, 84, 64)}`,
     holdall: (c, d) => `
       <path d="M84 104 Q84 64 120 64 Q156 64 156 104" fill="none" stroke="#1a1a1a" stroke-width="7"/>
       <path d="M84 104 Q84 64 120 64 Q156 64 156 104" fill="none" stroke="${d}" stroke-width="4"/>
@@ -140,7 +145,7 @@
     leggings: { front: [74, 56, 92, 50], back: [74, 34, 92, 70] }, joggers: { front: [66, 54, 108, 70], back: [66, 54, 108, 70] },
     bag: { front: [52, 76, 136, 150], back: [52, 76, 136, 150] }, shorts: { front: [60, 96, 120, 60], back: [66, 72, 108, 60] },
     gymsac: { front: [80, 72, 80, 150], back: [80, 72, 80, 150] }, shoeBag: { front: [86, 96, 68, 118], back: [86, 96, 68, 118] },
-    barrel: { front: [66, 118, 108, 86], back: [66, 118, 108, 86] }, holdall: { front: [44, 138, 152, 78], back: [44, 138, 152, 78] }, trackJacket: { front: [128, 78, 40, 46], back: [72, 64, 96, 156] },
+    barrel: { front: [66, 118, 108, 86], back: [66, 118, 108, 86] }, holdall: { front: [44, 138, 152, 78], back: [44, 138, 152, 78] }, tote: { front: [58, 98, 124, 132], back: [58, 98, 124, 132] }, trackJacket: { front: [128, 78, 40, 46], back: [72, 64, 96, 156] },
   };
   window.designShape = shape => shape === 'tracksuit' ? 'trackJacket' : shape;
   window.garmentSVG = function(shape, hex, opts = {}){

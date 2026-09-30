@@ -65,9 +65,9 @@ window.PRODUCTS = [
   "blurb": "A cropped sweatshirt with a short front zip and no hood. Neat, warm and easy to wear to the studio.",
   "colours": [
    {
-    "name": "Lavender",
-    "hex": "#b8a5d9",
-    "photo": "images/JH037/lavender.jpg"
+    "name": "Dusty Rose",
+    "hex": "#c98f98",
+    "photo": "images/JH037/dusty-rose.jpg"
    },
    {
     "name": "Arctic White",
@@ -80,9 +80,9 @@ window.PRODUCTS = [
     "photo": "images/JH037/deep-black.jpg"
    },
    {
-    "name": "Dusty Rose",
-    "hex": "#c98f98",
-    "photo": "images/JH037/dusty-rose.jpg"
+    "name": "Lavender",
+    "hex": "#b8a5d9",
+    "photo": "images/JH037/lavender.jpg"
    },
    {
     "name": "Sky Blue",
@@ -117,9 +117,9 @@ window.PRODUCTS = [
   "blurb": "The dance-school favourite: a soft, midweight hoodie in a huge range of colours, in adult sizes up to 5XL.",
   "colours": [
    {
-    "name": "Oxford Navy",
-    "hex": "#1c2541",
-    "photo": "images/JH001/oxford-navy.jpg"
+    "name": "Hot Pink",
+    "hex": "#e0457b",
+    "photo": "images/JH001/hot-pink.jpg"
    },
    {
     "name": "Jet Black",
@@ -142,11 +142,6 @@ window.PRODUCTS = [
     "photo": "images/JH001/baby-pink.jpg"
    },
    {
-    "name": "Hot Pink",
-    "hex": "#e0457b",
-    "photo": "images/JH001/hot-pink.jpg"
-   },
-   {
     "name": "Dusty Pink",
     "hex": "#d8a7ae",
     "photo": "images/JH001/dusty-pink.jpg"
@@ -165,6 +160,11 @@ window.PRODUCTS = [
     "name": "Purple",
     "hex": "#6b2d8e",
     "photo": "images/JH001/purple.jpg"
+   },
+   {
+    "name": "Oxford Navy",
+    "hex": "#1c2541",
+    "photo": "images/JH001/oxford-navy.jpg"
    },
    {
     "name": "Sky Blue",
@@ -201,9 +201,9 @@ window.PRODUCTS = [
   "blurb": "The kids' version of our classic hoodie, from age 1/2 up to 12/13, so the whole school can match.",
   "colours": [
    {
-    "name": "Hot Pink",
-    "hex": "#e0457b",
-    "photo": "images/JH01J/hot-pink.jpg"
+    "name": "Baby Pink",
+    "hex": "#f5c9d6",
+    "photo": "images/JH01J/baby-pink.jpg"
    },
    {
     "name": "Jet Black",
@@ -221,9 +221,9 @@ window.PRODUCTS = [
     "photo": "images/JH01J/arctic-white.jpg"
    },
    {
-    "name": "Baby Pink",
-    "hex": "#f5c9d6",
-    "photo": "images/JH01J/baby-pink.jpg"
+    "name": "Hot Pink",
+    "hex": "#e0457b",
+    "photo": "images/JH01J/hot-pink.jpg"
    },
    {
     "name": "Dusty Pink",
@@ -360,14 +360,19 @@ window.PRODUCTS = [
   "blurb": "A kids' full-zip hoodie, ages 3/4 to 12/13. Ideal for team kit and show days.",
   "colours": [
    {
-    "name": "Baby Pink",
-    "hex": "#f5c9d6",
-    "photo": "images/JH50J/baby-pink.jpg"
+    "name": "Hot Pink",
+    "hex": "#e0457b",
+    "photo": "images/JH50J/hot-pink.jpg"
    },
    {
     "name": "Arctic White",
     "hex": "#f7f7f5",
     "photo": "images/JH50J/arctic-white.jpg"
+   },
+   {
+    "name": "Baby Pink",
+    "hex": "#f5c9d6",
+    "photo": "images/JH50J/baby-pink.jpg"
    },
    {
     "name": "Burgundy",
@@ -403,11 +408,6 @@ window.PRODUCTS = [
     "name": "Heather Grey",
     "hex": "#b9b9b9",
     "photo": "images/JH50J/heather-grey.jpg"
-   },
-   {
-    "name": "Hot Pink",
-    "hex": "#e0457b",
-    "photo": "images/JH50J/hot-pink.jpg"
    },
    {
     "name": "Jet Black",
@@ -477,9 +477,9 @@ window.PRODUCTS = [
   "blurb": "A light, breathable T-shirt made from recycled polyester. Great for rehearsals and show merch.",
   "colours": [
    {
-    "name": "Digital Lavender",
-    "hex": "#b9a8e0",
-    "photo": "images/JC001/digital-lavender.jpg"
+    "name": "Baby Pink",
+    "hex": "#f5c9d6",
+    "photo": "images/JC001/baby-pink.jpg"
    },
    {
     "name": "Jet Black",
@@ -490,11 +490,6 @@ window.PRODUCTS = [
     "name": "Arctic White",
     "hex": "#f7f7f5",
     "photo": "images/JC001/arctic-white.jpg"
-   },
-   {
-    "name": "Baby Pink",
-    "hex": "#f5c9d6",
-    "photo": "images/JC001/baby-pink.jpg"
    },
    {
     "name": "Hot Pink",
@@ -510,6 +505,11 @@ window.PRODUCTS = [
     "name": "Hyper Pink",
     "hex": "#ff4f9e",
     "photo": "images/JC001/hyper-pink.jpg"
+   },
+   {
+    "name": "Digital Lavender",
+    "hex": "#b9a8e0",
+    "photo": "images/JC001/digital-lavender.jpg"
    },
    {
     "name": "Purple",
@@ -551,9 +551,9 @@ window.PRODUCTS = [
   "blurb": "A light, breathable kids' tee in bright dance colours, ages 3/4 to 12/13.",
   "colours": [
    {
-    "name": "French Navy",
-    "hex": "#1f2a56",
-    "photo": "images/JC01J/french-navy.jpg"
+    "name": "Hot Pink",
+    "hex": "#e0457b",
+    "photo": "images/JC01J/hot-pink.jpg"
    },
    {
     "name": "Jet Black",
@@ -564,11 +564,6 @@ window.PRODUCTS = [
     "name": "Arctic White",
     "hex": "#f7f7f5",
     "photo": "images/JC01J/arctic-white.jpg"
-   },
-   {
-    "name": "Hot Pink",
-    "hex": "#e0457b",
-    "photo": "images/JC01J/hot-pink.jpg"
    },
    {
     "name": "Electric Pink",
@@ -594,6 +589,11 @@ window.PRODUCTS = [
     "name": "Purple",
     "hex": "#6b2d8e",
     "photo": "images/JC01J/purple.jpg"
+   },
+   {
+    "name": "French Navy",
+    "hex": "#1f2a56",
+    "photo": "images/JC01J/french-navy.jpg"
    },
    {
     "name": "Sky Blue",
@@ -626,9 +626,9 @@ window.PRODUCTS = [
   "blurb": "A soft cotton crop top in lots of colours. A simple, comfortable choice for class.",
   "colours": [
    {
-    "name": "Sky Blue",
-    "hex": "#8fc7e8",
-    "photo": "images/TR019/sky-blue.jpg"
+    "name": "Light Pink",
+    "hex": "#f4c6cf",
+    "photo": "images/TR019/light-pink.jpg"
    },
    {
     "name": "Black",
@@ -659,11 +659,6 @@ window.PRODUCTS = [
     "name": "Heather Grey",
     "hex": "#b9b9b9",
     "photo": "images/TR019/heather-grey.jpg"
-   },
-   {
-    "name": "Light Pink",
-    "hex": "#f4c6cf",
-    "photo": "images/TR019/light-pink.jpg"
    },
    {
     "name": "Mulberry",
@@ -699,6 +694,11 @@ window.PRODUCTS = [
     "name": "Sage Green",
     "hex": "#9cae8e",
     "photo": "images/TR019/sage-green.jpg"
+   },
+   {
+    "name": "Sky Blue",
+    "hex": "#8fc7e8",
+    "photo": "images/TR019/sky-blue.jpg"
    },
    {
     "name": "Stone",
@@ -739,14 +739,14 @@ window.PRODUCTS = [
   "blurb": "A fitted stretch-cotton crop top that pairs perfectly with our stretch leggings.",
   "colours": [
    {
-    "name": "Black",
-    "hex": "#141414",
-    "photo": "images/SK106/black.jpg"
-   },
-   {
     "name": "White",
     "hex": "#f7f7f5",
     "photo": "images/SK106/white.jpg"
+   },
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/SK106/black.jpg"
    }
   ],
   "colourNote": "",
@@ -862,11 +862,6 @@ window.PRODUCTS = [
   "blurb": "A medium-support sports bra. The wide band is ideal for printing your school name.",
   "colours": [
    {
-    "name": "Navy",
-    "hex": "#1f2a56",
-    "photo": "images/TL371/navy.jpg"
-   },
-   {
     "name": "Black",
     "hex": "#141414",
     "photo": "images/TL371/black.jpg"
@@ -875,6 +870,11 @@ window.PRODUCTS = [
     "name": "Charcoal Grey",
     "hex": "#4a4a4a",
     "photo": "images/TL371/charcoal-grey.jpg"
+   },
+   {
+    "name": "Navy",
+    "hex": "#1f2a56",
+    "photo": "images/TL371/navy.jpg"
    },
    {
     "name": "Olive Green",
@@ -946,11 +946,6 @@ window.PRODUCTS = [
   "blurb": "Full-length stretch leggings made from recycled fabric, in sizes XXS to 4XL.",
   "colours": [
    {
-    "name": "Navy",
-    "hex": "#1f2a56",
-    "photo": "images/TR532/navy.jpg"
-   },
-   {
     "name": "Acid Wash",
     "hex": "#6c7480",
     "photo": "images/TR532/acid-wash.jpg"
@@ -959,6 +954,11 @@ window.PRODUCTS = [
     "name": "Black",
     "hex": "#141414",
     "photo": "images/TR532/black.jpg"
+   },
+   {
+    "name": "Navy",
+    "hex": "#1f2a56",
+    "photo": "images/TR532/navy.jpg"
    }
   ],
   "colourNote": "",
@@ -984,11 +984,6 @@ window.PRODUCTS = [
   "blurb": "Stretchy leggings with a handy pocket, in five colours.",
   "colours": [
    {
-    "name": "Navy",
-    "hex": "#1f2a56",
-    "photo": "images/TL370/navy.jpg"
-   },
-   {
     "name": "Black",
     "hex": "#141414",
     "photo": "images/TL370/black.jpg"
@@ -1002,6 +997,11 @@ window.PRODUCTS = [
     "name": "Deep Burgundy",
     "hex": "#5c1a2b",
     "photo": "images/TL370/deep-burgundy.jpg"
+   },
+   {
+    "name": "Navy",
+    "hex": "#1f2a56",
+    "photo": "images/TL370/navy.jpg"
    },
    {
     "name": "Olive Green",
@@ -1087,14 +1087,14 @@ window.PRODUCTS = [
   "blurb": "Kids' stretch leggings made from recycled fabric, matching our women's performance leggings.",
   "colours": [
    {
-    "name": "Navy",
-    "hex": "#1f2a56",
-    "photo": "images/TR31B/navy.jpg"
-   },
-   {
     "name": "Black",
     "hex": "#141414",
     "photo": "images/TR31B/black.jpg"
+   },
+   {
+    "name": "Navy",
+    "hex": "#1f2a56",
+    "photo": "images/TR31B/navy.jpg"
    }
   ],
   "colourNote": "",
@@ -1120,11 +1120,6 @@ window.PRODUCTS = [
   "blurb": "Light, stretchy kids' training leggings, ages 5/6 to 12/13.",
   "colours": [
    {
-    "name": "Navy",
-    "hex": "#1f2a56",
-    "photo": "images/TR17B/navy.jpg"
-   },
-   {
     "name": "Black",
     "hex": "#141414",
     "photo": "images/TR17B/black.jpg"
@@ -1133,6 +1128,11 @@ window.PRODUCTS = [
     "name": "Black Camo",
     "hex": "#2c2c2c",
     "photo": "images/TR17B/black-camo.jpg"
+   },
+   {
+    "name": "Navy",
+    "hex": "#1f2a56",
+    "photo": "images/TR17B/navy.jpg"
    }
   ],
   "colourNote": "",
@@ -1159,11 +1159,6 @@ window.PRODUCTS = [
   "blurb": "Soft cuffed joggers that match our hoodies and zoodies. Add your logo to the leg.",
   "colours": [
    {
-    "name": "New French Navy",
-    "hex": "#1f2a56",
-    "photo": "images/JH072/new-french-navy.jpg"
-   },
-   {
     "name": "Charcoal",
     "hex": "#4a4a4a",
     "photo": "images/JH072/charcoal.jpg"
@@ -1182,6 +1177,11 @@ window.PRODUCTS = [
     "name": "Jet Black",
     "hex": "#141414",
     "photo": "images/JH072/jet-black.jpg"
+   },
+   {
+    "name": "New French Navy",
+    "hex": "#1f2a56",
+    "photo": "images/JH072/new-french-navy.jpg"
    }
   ],
   "colourNote": "",
@@ -1206,11 +1206,6 @@ window.PRODUCTS = [
   "blurb": "Kids' cuffed joggers to match the kids' hoodies and zoodies.",
   "colours": [
    {
-    "name": "New French Navy",
-    "hex": "#1f2a56",
-    "photo": "images/JH72J/new-french-navy.jpg"
-   },
-   {
     "name": "Heather Grey",
     "hex": "#b9b9b9",
     "photo": "images/JH72J/heather-grey.jpg"
@@ -1219,6 +1214,11 @@ window.PRODUCTS = [
     "name": "Jet Black",
     "hex": "#141414",
     "photo": "images/JH72J/jet-black.jpg"
+   },
+   {
+    "name": "New French Navy",
+    "hex": "#1f2a56",
+    "photo": "images/JH72J/new-french-navy.jpg"
    }
   ],
   "colourNote": "",
@@ -1289,9 +1289,9 @@ window.PRODUCTS = [
   "blurb": "A light drawstring bag in 24 colours for shoes, water and a hoodie. Add a name so it never gets mixed up at class.",
   "colours": [
    {
-    "name": "Sky Blue",
-    "hex": "#8fc7e8",
-    "photo": "images/BG010/sky-blue.jpg"
+    "name": "Classic Pink",
+    "hex": "#f2a7c3",
+    "photo": "images/BG010/classic-pink.jpg"
    },
    {
     "name": "Black",
@@ -1317,11 +1317,6 @@ window.PRODUCTS = [
     "name": "Burgundy",
     "hex": "#6d1f33",
     "photo": "images/BG010/burgundy.jpg"
-   },
-   {
-    "name": "Classic Pink",
-    "hex": "#f2a7c3",
-    "photo": "images/BG010/classic-pink.jpg"
    },
    {
     "name": "Classic Red",
@@ -1394,6 +1389,11 @@ window.PRODUCTS = [
     "photo": "images/BG010/silver.jpg"
    },
    {
+    "name": "Sky Blue",
+    "hex": "#8fc7e8",
+    "photo": "images/BG010/sky-blue.jpg"
+   },
+   {
     "name": "Surf Blue",
     "hex": "#3fa7d6",
     "photo": "images/BG010/surf-blue.jpg"
@@ -1428,9 +1428,9 @@ window.PRODUCTS = [
   "blurb": "A small drawstring bag sized for ballet, tap or jazz shoes, with a name or logo on the front.",
   "colours": [
    {
-    "name": "French Navy",
-    "hex": "#1f2a56",
-    "photo": "images/BG540/french-navy.jpg"
+    "name": "Fuchsia",
+    "hex": "#d0237a",
+    "photo": "images/BG540/fuchsia.jpg"
    },
    {
     "name": "Black",
@@ -1448,9 +1448,9 @@ window.PRODUCTS = [
     "photo": "images/BG540/classic-red.jpg"
    },
    {
-    "name": "Fuchsia",
-    "hex": "#d0237a",
-    "photo": "images/BG540/fuchsia.jpg"
+    "name": "French Navy",
+    "hex": "#1f2a56",
+    "photo": "images/BG540/french-navy.jpg"
    },
    {
     "name": "Grey Marl",
@@ -1492,6 +1492,12 @@ window.PRODUCTS = [
   "blurb": "A small barrel bag for younger dancers, big enough for shoes, a snack and a spare top.",
   "colours": [
    {
+    "name": "Classic Pink/White",
+    "hex": "#f2a7c3",
+    "accent": "#f7f7f5",
+    "photo": "images/B140S/classic-pink-white.jpg"
+   },
+   {
     "name": "Black",
     "hex": "#141414",
     "photo": "images/B140S/black.jpg"
@@ -1501,12 +1507,6 @@ window.PRODUCTS = [
     "hex": "#141414",
     "accent": "#d0237a",
     "photo": "images/B140S/black-fuchsia.jpg"
-   },
-   {
-    "name": "Classic Pink/White",
-    "hex": "#f2a7c3",
-    "accent": "#f7f7f5",
-    "photo": "images/B140S/classic-pink-white.jpg"
    },
    {
     "name": "French Navy/Off White",
@@ -1533,6 +1533,12 @@ window.PRODUCTS = [
   "fabric": "600D Polyester",
   "blurb": "A roomy barrel bag with a shoulder strap in two-tone colours. Great for show days and exams.",
   "colours": [
+   {
+    "name": "Classic Pink/White",
+    "hex": "#f2a7c3",
+    "accent": "#f7f7f5",
+    "photo": "images/BG140/classic-pink-white.jpg"
+   },
    {
     "name": "Black",
     "hex": "#141414",
@@ -1561,12 +1567,6 @@ window.PRODUCTS = [
     "hex": "#6d1f33",
     "accent": "#f1eee6",
     "photo": "images/BG140/burgundy-off-white.jpg"
-   },
-   {
-    "name": "Classic Pink/White",
-    "hex": "#f2a7c3",
-    "accent": "#f7f7f5",
-    "photo": "images/BG140/classic-pink-white.jpg"
    },
    {
     "name": "Classic Red/Off White",
@@ -1615,6 +1615,106 @@ window.PRODUCTS = [
   "notes": ""
  },
  {
+  "code": "RL670",
+  "name": "Canvas tote bag",
+  "brand": "Nutshell",
+  "category": "bags",
+  "audience": "all",
+  "shape": "tote",
+  "price": 2.49,
+  "sizes": "One size",
+  "sizeList": [
+   "One size"
+  ],
+  "fabric": "100% Recycled cotton, 280gsm. One size (Bag: 38x42cmx10cm, Handle: 70x2.5cm)",
+  "blurb": "A big, sturdy tote in recycled cotton canvas with long handles. Perfect for class kit, shows and summer schools, and a great canvas for a school logo.",
+  "colours": [
+   {
+    "name": "Rose",
+    "hex": "#e9a8b6",
+    "photo": "images/RL670/rose.jpg"
+   },
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/RL670/black.jpg"
+   },
+   {
+    "name": "Blue Haze",
+    "hex": "#8fa7c4",
+    "photo": "images/RL670/blue-haze.jpg"
+   },
+   {
+    "name": "Bottle Green",
+    "hex": "#1f4d34",
+    "photo": "images/RL670/bottle-green.jpg"
+   },
+   {
+    "name": "Chestnut",
+    "hex": "#7b3f2a",
+    "photo": "images/RL670/chestnut.jpg"
+   },
+   {
+    "name": "Fern",
+    "hex": "#5f7f4a",
+    "photo": "images/RL670/fern.jpg"
+   },
+   {
+    "name": "Fire Red",
+    "hex": "#d32f2f",
+    "photo": "images/RL670/fire-red.jpg"
+   },
+   {
+    "name": "French Dark Navy",
+    "hex": "#1b2340",
+    "photo": "images/RL670/french-dark-navy.jpg"
+   },
+   {
+    "name": "Natural",
+    "hex": "#efe6d2",
+    "photo": "images/RL670/natural.jpg"
+   },
+   {
+    "name": "Orange",
+    "hex": "#ef7d22",
+    "photo": "images/RL670/orange.jpg"
+   },
+   {
+    "name": "Oxford Navy",
+    "hex": "#1c2541",
+    "photo": "images/RL670/oxford-navy.jpg"
+   },
+   {
+    "name": "Purple",
+    "hex": "#6b2d8e",
+    "photo": "images/RL670/purple.jpg"
+   },
+   {
+    "name": "Royal",
+    "hex": "#2447a8",
+    "photo": "images/RL670/royal.jpg"
+   },
+   {
+    "name": "Sand",
+    "hex": "#d8c3a0",
+    "photo": "images/RL670/sand.jpg"
+   },
+   {
+    "name": "Sunflower",
+    "hex": "#f5c518",
+    "photo": "images/RL670/sunflower.jpg"
+   },
+   {
+    "name": "White",
+    "hex": "#f7f7f5",
+    "photo": "images/RL670/white.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": "",
+  "eco": "100% recycled cotton"
+ },
+ {
   "code": "BG560",
   "name": "Training holdall",
   "brand": "BagBase",
@@ -1630,14 +1730,14 @@ window.PRODUCTS = [
   "blurb": "A compact holdall for older dancers, with room for kit, shoes and a change of clothes.",
   "colours": [
    {
-    "name": "Black",
-    "hex": "#141414",
-    "photo": "images/BG560/black.jpg"
-   },
-   {
     "name": "Fresh Pink",
     "hex": "#f4a9c4",
     "photo": "images/BG560/fresh-pink.jpg"
+   },
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "photo": "images/BG560/black.jpg"
    }
   ],
   "colourNote": "",
@@ -1717,6 +1817,11 @@ window.PRODUCTS = [
   "blurb": "Smooth, seamless shorts that move with you and sit flat under a crop top.",
   "colours": [
    {
+    "name": "Purple Marl",
+    "hex": "#6d5a86",
+    "photo": "images/TL301/purple-marl.jpg"
+   },
+   {
     "name": "Black",
     "hex": "#141414",
     "photo": "images/TL301/black.jpg"
@@ -1725,11 +1830,6 @@ window.PRODUCTS = [
     "name": "Dark Grey Marl",
     "hex": "#55575c",
     "photo": "images/TL301/dark-grey-marl.jpg"
-   },
-   {
-    "name": "Purple Marl",
-    "hex": "#6d5a86",
-    "photo": "images/TL301/purple-marl.jpg"
    }
   ],
   "colourNote": "",
@@ -1916,6 +2016,11 @@ window.PRODUCTS = [
   "blurb": "Soft jogger shorts to wear over leggings or to and from class, in sizes XXS to 4XL.",
   "colours": [
    {
+    "name": "White",
+    "hex": "#f7f7f5",
+    "photo": "images/TR062/white.jpg"
+   },
+   {
     "name": "Black",
     "hex": "#141414",
     "photo": "images/TR062/black.jpg"
@@ -1949,11 +2054,6 @@ window.PRODUCTS = [
     "name": "Stone",
     "hex": "#cbbfa8",
     "photo": "images/TR062/stone.jpg"
-   },
-   {
-    "name": "White",
-    "hex": "#f7f7f5",
-    "photo": "images/TR062/white.jpg"
    }
   ],
   "colourNote": "",
@@ -1984,11 +2084,6 @@ window.PRODUCTS = [
   "fabric": "100% Polyester interlock, 250gsm",
   "blurb": "A matching knitted tracksuit, top and pants, in two-tone team colours. The go-to kit for competitions.",
   "colours": [
-   {
-    "name": "Navy",
-    "hex": "#1f2a56",
-    "photo": "images/LV871-LV881/navy.jpg"
-   },
    {
     "name": "Black",
     "hex": "#141414",
@@ -2034,6 +2129,11 @@ window.PRODUCTS = [
     "name": "Burgundy",
     "hex": "#6d1f33",
     "photo": "images/LV871-LV881/burgundy.jpg"
+   },
+   {
+    "name": "Navy",
+    "hex": "#1f2a56",
+    "photo": "images/LV871-LV881/navy.jpg"
    },
    {
     "name": "Navy/Royal",
@@ -2090,11 +2190,6 @@ window.PRODUCTS = [
   "blurb": "The kids' version of our team tracksuit, ages 3/4 to 13, in the same colours as the adult one.",
   "colours": [
    {
-    "name": "Burgundy",
-    "hex": "#6d1f33",
-    "photo": "images/LV873-LV883/burgundy.jpg"
-   },
-   {
     "name": "Black",
     "hex": "#141414",
     "photo": "images/LV873-LV883/black.jpg"
@@ -2134,6 +2229,11 @@ window.PRODUCTS = [
     "hex": "#1f4d34",
     "accent": "#f7f7f5",
     "photo": "images/LV873-LV883/bottle-white.jpg"
+   },
+   {
+    "name": "Burgundy",
+    "hex": "#6d1f33",
+    "photo": "images/LV873-LV883/burgundy.jpg"
    },
    {
     "name": "Navy",
