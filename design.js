@@ -105,23 +105,37 @@
     const key = 'T' + JSON.stringify([L.text, L.font, L.size, L.bold, L.italic, L.upper, L.spacing, L.arc, L.ink, L.outline, L.outlineInk, L.shadow]);
     if(bitmaps[key]) return bitmaps[key];
     const fpx = L.size * PX;
-    try { await document.fonts.load(fontStr(L, 40), L.text); } catch(e){}
-    const fontReady = document.fonts.check(fontStr(L, 40), L.text);
+    const sample = L.text.replace(/\s+/g, ' ').trim() || 'A';   // line breaks are never "loaded", so check the letters only
+    try { await document.fonts.load(fontStr(L, 40), sample); } catch(e){}
+    const fontReady = document.fonts.check(fontStr(L, 40), sample);
     const m = document.createElement('canvas').getContext('2d'); m.font = fontStr(L, fpx);
-    const chars = [...(L.upper ? L.text.toUpperCase() : L.text)], gap = L.spacing / 100 * fpx;
-    const ws = chars.map(ch => m.measureText(ch).width), total = ws.reduce((a, b) => a + b, 0) + gap * Math.max(0, chars.length - 1);
-    // where each character sits: along a straight line, or along an arc
-    const theta = Math.abs(L.arc) / 100 * Math.PI, R = theta > 0.01 ? total / theta : 0, pos = [];
-    let run = -total / 2;
-    chars.forEach((ch, i) => {
-      const t = run + ws[i] / 2; run += ws[i] + gap;
-      if(!R) pos.push([t, 0, 0]);
-      else { const a = t / R; pos.push(L.arc > 0 ? [R * Math.sin(a), -R * Math.cos(a) + R, a] : [R * Math.sin(a), R * Math.cos(a) - R, -a]); }
+    // one or more lines (stacked words), each centred; every line follows the curve if there is one
+    const lines = (L.upper ? L.text.toUpperCase() : L.text).split('\n'), gap = L.spacing / 100 * fpx, lh = fpx * 1.12;
+    const chars = [], ws = [], pos = [];
+    lines.forEach((line, li) => {
+      const cs = [...line], lw = cs.map(ch => m.measureText(ch).width), total = lw.reduce((a, b) => a + b, 0) + gap * Math.max(0, cs.length - 1);
+      const theta = Math.abs(L.arc) / 100 * Math.PI, R = theta > 0.01 ? total / theta : 0, dy = (li - (lines.length - 1) / 2) * lh;
+      let run = -total / 2;
+      cs.forEach((ch, i) => {
+        const t = run + lw[i] / 2; run += lw[i] + gap;
+        if(!R) pos.push([t, dy, 0]);
+        else { const a = t / R; pos.push(L.arc > 0 ? [R * Math.sin(a), -R * Math.cos(a) + R + dy, a] : [R * Math.sin(a), R * Math.cos(a) - R + dy, -a]); }
+        chars.push(ch); ws.push(lw[i]);
+      });
     });
-    const ow = L.outline * fpx / 18, pad = fpx * 0.75 + ow + (L.shadow ? fpx * 0.1 : 0) + 4;
-    const xs = pos.map(p => p[0]), ys = pos.map(p => p[1]);
-    const minX = Math.min(...xs) - pad - Math.max(...ws) / 2, maxX = Math.max(...xs) + pad + Math.max(...ws) / 2;
-    const minY = Math.min(...ys) - pad, maxY = Math.max(...ys) + pad;
+    if(!chars.length){ chars.push(' '); ws.push(m.measureText(' ').width); pos.push([0, 0, 0]); }
+    // a snug box round the ink of every letter (measured, so script flourishes are never cut off),
+    // so text can grow to fill the print area; plus room for outline and shadow
+    m.textAlign = 'center'; m.textBaseline = 'middle';
+    const ow = L.outline * fpx / 18, extra = ow + (L.shadow ? fpx * 0.1 : 0) + fpx * 0.04 + 3;
+    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    chars.forEach((ch, i) => {
+      const mt = m.measureText(ch), [px, py, rot] = pos[i];
+      let l = mt.actualBoundingBoxLeft || ws[i] / 2, r = mt.actualBoundingBoxRight || ws[i] / 2, a = mt.actualBoundingBoxAscent || fpx / 2, dn = mt.actualBoundingBoxDescent || fpx / 2;
+      if(rot){ const e = Math.max(l, r, a, dn); l = r = a = dn = e; }   // curved text: allow for the tilt
+      minX = Math.min(minX, px - l); maxX = Math.max(maxX, px + r); minY = Math.min(minY, py - a); maxY = Math.max(maxY, py + dn);
+    });
+    minX -= extra; maxX += extra; minY -= extra; maxY += extra;
     const cv = document.createElement('canvas'); cv.width = Math.max(4, Math.ceil(maxX - minX)); cv.height = Math.max(4, Math.ceil(maxY - minY));
     const ctx = cv.getContext('2d'); ctx.font = fontStr(L, fpx); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
     const ink = inkOf(L.ink), oink = inkOf(L.outlineInk);
@@ -181,8 +195,9 @@
         <div class="opt"><h4>3. Add to your design</h4>
           <div class="d-tabs">${['text', 'graphics', 'upload', 'templates'].map(t => `<button type="button" data-tab="${t}" class="${t === 'text' ? 'on' : ''}" onclick="dzTab('${t}')">${{ text: 'Text', graphics: 'Graphics', upload: 'Upload', templates: 'Templates' }[t]}</button>`).join('')}</div>
           <div class="d-tabpane" data-pane="text">
-            <div class="d-row"><input id="dText" class="d-input" maxlength="40" placeholder="Start typing, e.g. Starlight Dance" autocomplete="off" oninput="dzTyping(this.value)" onkeydown="if(event.key==='Enter')dzAddText()"><button class="btn" type="button" onclick="dzAddText()">Add another</button></div>
-            <p class="meta">Your text appears on the garment as you type. Click a style to change it.</p>
+            <div class="d-row"><textarea id="dText" class="d-input" rows="2" maxlength="80" placeholder="Start typing, e.g. Starlight Dance" autocomplete="off" oninput="dzTyping(this.value)"></textarea><button class="btn" type="button" onclick="dzAddText()">Add another</button></div>
+            <div id="dCarry"></div>
+            <p class="meta">Your text appears on the garment as you type. Press Enter to stack words on a new line. Click a style to change it.</p>
             <div class="d-fonts" id="dFontPick">${FONTS.map((f, i) => `<button type="button" class="${i === 2 ? 'on' : ''}" style="font-family:${f.css};font-weight:${f.weight}" onclick="dzPickFont(${i})">${f.label}</button>`).join('')}</div>
           </div>
           <div class="d-tabpane" data-pane="graphics" hidden>
@@ -219,7 +234,7 @@
   window.initDesign = function(){
     drawAll();
     if(!window._dzKeys){ window._dzKeys = 1; document.addEventListener('keydown', onKey); window.addEventListener('resize', () => D && drawLayers());
-      if(document.fonts) document.fonts.addEventListener('loadingdone', () => { if(D && $('#dLayers')) drawLayers(); }); }
+      if(document.fonts) document.fonts.addEventListener('loadingdone', e => { if(e.fontfaces && e.fontfaces.length && D && $('#dLayers')) drawLayers(); }); }
     // start fetching every font now, so styles switch instantly
     if(document.fonts) FONTS.forEach(f => document.fonts.load(`${f.weight} 40px '${f.id}'`).catch(() => {}));
   };
@@ -236,7 +251,7 @@
     $('#dSizes').innerHTML = D.p.sizeList.map(s => `<label>${esc(s)}<input type="number" min="0" max="999" inputmode="numeric" placeholder="0" value="${D.sizes[s] || ''}" data-size="${esc(s)}" onfocus="this.select()" oninput="dzQty(this)" ${D.names.on ? 'disabled' : ''}></label>`).join('');
     if(!sidesFor().includes(D.side)) D.side = 'front';
     $('#dSides').innerHTML = sidesFor().map(s => `<button type="button" class="${s === D.side ? 'on' : ''}" onclick="dzSide('${s}')">${SIDE_LABEL[s]}${D.layers.some(L => L.side === s) ? ' •' : ''}</button>`).join('');
-    drawGarment(); drawLayers(); summary();
+    drawGarment(); drawLayers(); summary(); drawCarry();
   }
   function drawGarment(){
     $('#dGarment').innerHTML = garmentFor(D.side, D.p.colours[D.colour]);
@@ -295,10 +310,10 @@
     let h = `<h4>Selected: ${L.type === 'text' ? 'text' : L.type === 'art' ? 'graphic' : 'picture'}</h4>`;
     if(L.type === 'text'){
       markFont(L.font);
-      h += `<input class="d-input" id="dEditText" value="${esc(L.text)}" maxlength="40" oninput="dzSet('text', this.value, 1)" onchange="dzCommit()">
+      h += `<textarea class="d-input" id="dEditText" rows="2" maxlength="80" oninput="dzSet('text', this.value, 1)" onchange="dzCommit()">${esc(L.text)}</textarea>
         <label class="d-slider d-sel" style="margin-top:10px"><span>Font</span><select class="d-select" onchange="dzSet('font', +this.value)">${FONTS.map((f, i) => `<option value="${i}" ${i === L.font ? 'selected' : ''}>${f.label} (${f.id})</option>`).join('')}</select></label>
         <div class="d-toggles"><button type="button" class="${L.bold ? 'on' : ''}" onclick="dzSet('bold', ${!L.bold})"><b>B</b> Bold</button><button type="button" class="${L.italic ? 'on' : ''}" onclick="dzSet('italic', ${!L.italic})"><i>I</i> Italic</button><button type="button" class="${L.upper ? 'on' : ''}" onclick="dzSet('upper', ${!L.upper})">AA Capitals</button><button type="button" class="${L.shadow ? 'on' : ''}" onclick="dzSet('shadow', ${!L.shadow})">Shadow</button></div>
-        ${rng('Size', 'size', 3, 40, 0.5, L.size)}
+        ${rng('Size', 'size', 3, 80, 0.5, L.size)}
         ${rng('Spacing', 'spacing', -10, 80, 1, L.spacing)}
         ${rng('Curve', 'arc', -100, 100, 1, L.arc)}
         <p class="meta" style="margin:0 0 6px">Curve right for an arch, left for a smile.</p>
@@ -371,7 +386,7 @@
   };
   /* typing shows the text on the garment immediately; "Add another" starts a new line of text */
   window.dzTyping = v => {
-    const t = v.replace(/^\s+/, '');
+    const t = v.replace(/^\s+|\s+$/g, '');
     let L = D.layers.find(x => x.id === D.draftId);
     if(!t){ if(L){ D.layers = D.layers.filter(x => x !== L); D.draftId = null; D.sel = null; if(D.hist.length) D.hist.pop(); drawAll(); } return; }
     if(!L){
@@ -379,7 +394,7 @@
       L = addLayer({ type: 'text', text: t, font: D.font, size: Math.min(14, aw / 5), baseSize: Math.min(14, aw / 5), bold: false, italic: false, upper: false, spacing: 0, arc: 0, ink: D.inkChosen ? D.ink : contrastInk(), outline: 0, outlineInk: 1, shadow: false });
       D.draftId = L.id; drawAll();
     } else { L.text = t; D.sel = L.id; }
-    fitAfterDraw(L, true);
+    fitAfterDraw(L, true); drawCarry();
   };
   window.dzAddText = () => {
     const box = $('#dText');
@@ -420,7 +435,7 @@
   window.dzPlace = i => { const L = sel(); if(!L) return; remember(); const pr = presetsOf(L.side)[i], b = pr.box.slice();
     const along = /Down the sleeve/.test(pr.label); L.rot = along ? -90 : (Math.abs(L.rot || 0) === 90 ? 0 : L.rot);
     const bw = along ? b[3] : b[2], bh = along ? b[2] : b[3];
-    if(L.type === 'text'){ const s = Math.min(bw / (L._w || 1), bh / (L._h || 1)); L.size = Math.max(3, Math.min(40, L.size * s * 0.95)); }
+    if(L.type === 'text'){ const s = Math.min(bw / (L._w || 1), bh / (L._h || 1)); L.size = Math.max(3, Math.min(80, L.size * s * 0.95)); }
     else { const r = (L._h || 1) / (L._w || 1); L.w = Math.min(bw, bh / r); }
     L.x = b[0] + b[2] / 2; L.y = b[1] + b[3] / 2; drawLayers(); };
   window.dzCentre = () => { const L = sel(); if(!L) return; remember(); const [x, , w] = areaOf(L.side); L.x = x + w / 2; drawLayers(); };
@@ -446,7 +461,23 @@
     document.querySelectorAll('input[name=dMethod]').forEach(i => i.checked = i.value === 'print');
     drawAll(); toast('Design cleared. Undo brings it back.');
   };
-  window.dzSide = s => { D.side = s; D.sel = null; drawAll(); };
+  /* switching side keeps what's in the text box, and offers a one-click button to put it on this side too */
+  window.dzSide = s => { const dr = D.layers.find(x => x.id === D.draftId); if(dr && dr.side !== s) D.draftId = null; D.side = s; D.sel = null; drawAll(); };
+  function drawCarry(){
+    const el = $('#dCarry'), box = $('#dText'); if(!el || !box) return;
+    const t = box.value.replace(/^\s+|\s+$/g, ''), dr = D.layers.find(x => x.id === D.draftId);
+    const show = t && !(dr && dr.side === D.side) && !D.layers.some(x => x.side === D.side && x.type === 'text' && x.text === t);
+    el.innerHTML = show ? `<button type="button" class="btn ghost d-carry" onclick="dzCarry()">Add “${esc(t.replace(/\n/g, ' '))}” to the ${SIDE_LABEL[D.side].toLowerCase()}</button>` : '';
+  }
+  window.dzCarry = () => {
+    const t = $('#dText').value.replace(/^\s+|\s+$/g, ''); if(!t) return;
+    const src = D.layers.filter(x => x.type === 'text' && x.text === t).pop();   // same words elsewhere: copy their style
+    const [, , aw] = areaOf(D.side), size = Math.min(14, aw / 5);
+    const style = src ? Object.fromEntries(Object.entries(src).filter(([k]) => !k.startsWith('_') && !['id', 'side', 'x', 'y', 'isName'].includes(k)))
+      : { type: 'text', text: t, font: D.font, bold: false, italic: false, upper: false, spacing: 0, arc: 0, ink: D.inkChosen ? D.ink : contrastInk(), outline: 0, outlineInk: 1, shadow: false };
+    const L = addLayer({ ...style, side: D.side, size, baseSize: size });
+    D.draftId = L.id; drawAll(); fitAfterDraw(L, true);
+  };
   window.dzColour = i => { D.colour = i; drawAll(); };
   window.dzProduct = code => { const p = (window.PRODUCTS || []).find(x => x.code === code); if(!p) return;
     D.p = p; D.colour = 0; D.sizes = {}; D.layers = D.layers.filter(L => sidesFor().includes(L.side)); D.layers.forEach(clamp); D.sel = null; drawAll(); };
@@ -556,7 +587,7 @@
     const inkName = i => inkOf(i).name;
     return D.layers.map(L => `${SIDE_LABEL[L.side]}: ` + (L.type === 'image' ? `picture "${assets[L.asset].name}"${L.clean ? ' (white background removed)' : ''}`
       : L.type === 'art' ? `graphic "${((window.DESIGN_ART || []).find(a => a.id === L.art) || {}).label}" in ${inkName(L.ink)}`
-      : `text "${L.text}"${L.isName ? ' (each garment gets its own name)' : ''} in ${FONTS[L.font].label} (${FONTS[L.font].id})${L.bold ? ', bold' : ''}${L.italic ? ', italic' : ''}${L.upper ? ', capitals' : ''}${L.arc ? `, curved ${L.arc > 0 ? 'arch' : 'smile'}` : ''}, ${inkName(L.ink)}${L.outline ? `, ${inkName(L.outlineInk)} outline` : ''}${L.shadow ? ', shadow' : ''}`)).join('; ')
+      : `text "${L.text.replace(/\n/g, ' / ')}"${L.isName ? ' (each garment gets its own name)' : ''} in ${FONTS[L.font].label} (${FONTS[L.font].id})${L.bold ? ', bold' : ''}${L.italic ? ', italic' : ''}${L.upper ? ', capitals' : ''}${L.arc ? `, curved ${L.arc > 0 ? 'arch' : 'smile'}` : ''}, ${inkName(L.ink)}${L.outline ? `, ${inkName(L.outlineInk)} outline` : ''}${L.shadow ? ', shadow' : ''}`)).join('; ')
       + `. Finish: ${METHODS.find(m => m[0] === D.method)[1]}.`
       + (D.names.on ? ` Names: ${parseNames().filter(r => r.match).map(r => `${r.name} (${r.match})`).join(', ')}.` : '');
   }
