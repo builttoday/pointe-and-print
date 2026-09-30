@@ -149,6 +149,10 @@
   .size-grid label{border:1.5px solid var(--line);border-radius:10px;padding:6px 8px;text-align:center;font-size:.82rem}
   .size-grid input{width:100%;border:0;text-align:center;font-size:1rem;padding:4px 0;background:transparent}
   .size-grid label:focus-within{border-color:var(--ink)}
+  .size-btn{border:1.5px solid var(--line);border-radius:10px;padding:10px 6px;background:#fff;cursor:pointer;font:500 .88rem 'Jost',Arial,sans-serif;text-align:center}
+  .size-btn:hover{border-color:var(--ink)} .size-btn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .size-btn.sold{opacity:.5;cursor:not-allowed;background:var(--bg-soft)} .size-btn .st{display:block}
+  .b-sizes .size-btn{padding:6px 4px;font-size:.78rem} .b-sizes.need .size-btn{border-color:var(--rose)}
   .size-grid .st{display:block;font-size:.66rem;line-height:1.2;margin-top:1px} .st.ok{color:#1f6b45} .st.low{color:#b26a00} .st.due{color:#5f5b58} .st.out{color:#a33}
   .size-grid label.sold{opacity:.55;background:var(--bg-soft)} .size-grid label.sold input{cursor:not-allowed}
   .st-note{font-size:.72rem;font-weight:400;text-transform:none;letter-spacing:0;color:#1f6b45;margin-left:6px}
@@ -382,9 +386,10 @@ function stockNote(){
   return `<span class="st-note">Live stock, checked ${mins < 60 ? mins + ' min' : Math.round(mins / 60) + ' hr'} ago</span>`;
 }
 /* the size boxes for a colour: sold-out sizes can't be chosen */
+/* sizes are tap-to-select buttons: one of each size (William: no quantities; bigger orders use Get a quote) */
 function sizeGrid(p, c, sizes, handler, lockAll){
-  return p.sizeList.map(s => { const out = soldOut(c, s);
-    return `<label class="${out ? 'sold' : ''}">${esc(s)}<input type="number" min="0" max="999" inputmode="numeric" placeholder="0" value="${out ? '' : (sizes[s] || '')}" data-size="${esc(s)}" onfocus="this.select()" oninput="${handler}(this)" ${out || lockAll ? 'disabled' : ''}>${stockTag(c, s)}</label>`; }).join('');
+  return p.sizeList.map(s => { const out = soldOut(c, s), on = !out && sizes[s];
+    return `<button type="button" class="size-btn${on ? ' on' : ''}${out ? ' sold' : ''}" data-size="${esc(s)}" onclick="${handler}(this)" ${out || lockAll ? 'disabled' : ''} aria-pressed="${on ? 'true' : 'false'}">${esc(s)}${stockTag(c, s)}</button>`; }).join('');
 }
 
 /* ---------- basket (kept on this device) ---------- */
@@ -526,8 +531,8 @@ function product(code){
       <div class="opt"><h4>Colour <small id="colName">${esc(p.colours[0].name)}</small></h4>
         <div class="swatches">${p.colours.map((c, i) => `<button type="button" class="${i ? '' : 'on'}" style="background:${swBg(c)}" title="${esc(c.name)}" aria-label="${esc(c.name)}" onclick="pickColour(${i})"></button>`).join('')}</div></div>
 
-      <div class="opt"><h4>Sizes and quantities <small>${esc(p.sizes)}</small> ${stockNote()}</h4>
-        <div class="size-grid" id="sizeGrid">${sizeGrid(p, p.colours[0], {}, 'setSize')}</div></div>
+      <div class="opt"><h4>Sizes <small>${esc(p.sizes)} · tap the sizes you want</small> ${stockNote()}</h4>
+        <div class="size-grid" id="sizeGrid">${sizeGrid(p, p.colours[0], {}, 'setSize')}</div><p class="meta" style="margin:8px 0 0">One of each size. Need more, or kit for a whole class? <a href="#/contact">Get a free quote</a>.</p></div>
 
       <div class="opt"><h4>Decoration</h4><div class="deco">
         ${decoOpts.map(k => { const d = CONFIG.decoration[k]; const multi = k === 'backPrint' || k === 'name';
@@ -564,7 +569,7 @@ function pickColour(i){
   Object.keys(cur.sizes).forEach(s => { if(soldOut(c, s)) delete cur.sizes[s]; });   // drop sizes this colour has run out of
   $('#sizeGrid').innerHTML = sizeGrid(cur.p, c, cur.sizes, 'setSize'); renderSummary();
 }
-function setSize(el){ const v = Math.max(0, Math.min(999, parseInt(el.value, 10) || 0)); cur.sizes[el.dataset.size] = v; renderSummary(); }
+function setSize(btn){ const s = btn.dataset.size; if(cur.sizes[s]) delete cur.sizes[s]; else cur.sizes[s] = 1; btn.classList.toggle('on', !!cur.sizes[s]); btn.setAttribute('aria-pressed', cur.sizes[s] ? 'true' : 'false'); renderSummary(); }
 function setDeco(){
   cur.decos = [...document.querySelectorAll('.deco input:checked')].map(i => i.value).filter(v => v !== 'none');
   renderSummary();
@@ -573,7 +578,7 @@ function renderSummary(){
   const qty = Object.values(cur.sizes).reduce((a, b) => a + b, 0), pl = priceLine(cur.p, Math.max(qty, 1), cur.decos, cur.sizes);
   $('#summary').innerHTML = `
     <div class="line"><span>Price each (garment + decoration)</span><span>${gbp(pl.each)}</span></div>
-    <div class="line"><span>Quantity</span><span>${qty}</span></div>
+    <div class="line"><span>Sizes chosen</span><span>${qty}</span></div>
     ${pl.off && CONFIG.showPrices ? `<div class="line"><span>Bulk discount</span><span>−${Math.round(pl.off * 100)}%</span></div>` : ''}
     ${pl.setup && CONFIG.showPrices ? `<div class="line"><span>New artwork setup (one-off)</span><span>${gbp(pl.setup)}</span></div>` : ''}
     <div class="line total"><span>Estimated total</span><span>${qty ? gbp(pl.total) : '—'}</span></div>
@@ -582,7 +587,7 @@ function renderSummary(){
 function addToBasket(){
   const sizes = Object.fromEntries(Object.entries(cur.sizes).filter(([, v]) => v > 0));
   const qty = Object.values(sizes).reduce((a, b) => a + b, 0);
-  if(!qty){ toast('Add a quantity for at least one size'); return; }
+  if(!qty){ toast('Choose at least one size'); return; }
   basket.push({ code: cur.p.code, colour: cur.p.colours[cur.colour].name, hex: cur.p.colours[cur.colour].hex, accent: cur.p.colours[cur.colour].accent, sizes, qty, decos: cur.decos, notes: cur.notes });
   saveBasket(); toast(`Added ${qty} × ${cur.p.name}`);
 }
@@ -592,7 +597,7 @@ function basketView(){
   const rows = basket.map((i, k) => { const p = byCode(i.code), pl = priceLine(p, i.qty, i.decos, i.sizes);
     return `<div class="b-item"><div class="th">${i.design ? Object.values(i.design.previews).map(src => `<img src="${src}" alt="Your design">`).join("") : garmentSVG(p.shape, i.hex, { label: p.name, accent: i.accent })}</div>
       <div><h3>${esc(p.name)}</h3><p>${esc(i.colour)}${i.names ? ' · ' + Object.entries(i.sizes).map(([s, n]) => `${esc(s)} × ${n}`).join(', ') + ' (from your names list)' : ''}</p>
-      ${i.names ? '' : `<div class="size-grid b-sizes${i.qty ? '' : ' need'}">${p.sizeList.map(s => `<label>${esc(s)}<input type="number" min="0" max="999" inputmode="numeric" placeholder="0" value="${i.sizes[s] || ''}" onfocus="this.select()" onchange="setBasketSize(${k}, '${esc(s)}', this.value)"></label>`).join('')}</div>${i.qty ? '' : '<p class="need-note">Choose sizes and quantities for this item.</p>'}`}
+      ${i.names ? '' : `<div class="size-grid b-sizes${i.qty ? '' : ' need'}">${p.sizeList.map(s => `<button type="button" class="size-btn${i.sizes[s] ? ' on' : ''}" onclick="setBasketSize(${k}, '${esc(s)}', ${i.sizes[s] ? 0 : 1})">${esc(s)}</button>`).join('')}</div>${i.qty ? '' : '<p class="need-note">Tap the sizes you want for this item.</p>'}`}
       <p>${i.decos.length ? i.decos.map(d => esc(CONFIG.decoration[d].label)).join(' + ') : 'Plain'}</p>${i.notes ? `<p><i>“${esc(i.notes)}”</i></p>` : ''}${i.design ? `<p>Your design: ${esc(i.design.describe)}</p>` : ''}
       <button class="rm" onclick="removeItem(${k})">Remove</button></div><div><b>${gbp(pl.total - pl.setup)}</b></div></div>`; }).join('');
   return `<div class="page-head"><div class="wrap"><h1>Your basket</h1></div></div>
