@@ -292,7 +292,8 @@ const CONFIG = {
     sleeveEmb:   { label: 'Sleeve embroidery', each: 0 },
   },
   setupFee: {},   // one-off digitising fee for embroidery (example)
-  bulk: [ { from: 1, off: 0 }, { from: 10, off: 0.05 }, { from: 25, off: 0.10 }, { from: 50, off: 0.15 } ],
+  // no bulk discounts (William, 2026-09-30). To bring them back add tiers, e.g. { from: 10, off: 0.05 }.
+  bulk: [ { from: 1, off: 0 } ],
 };
 
 /* ---------- helpers ---------- */
@@ -468,7 +469,7 @@ function product(code){
       <div class="details">
         <details open><summary>About this garment</summary><p>${esc(p.fabric || '')}</p>${p.colourNote ? `<p>${esc(p.colourNote)}</p>` : ''}${p.notes ? `<p>${esc(p.notes)}</p>` : ''}</details>
         <details><summary>Your logo</summary><p>Upload your logo at checkout. Any clear image works; a PNG or vector file gives the sharpest result. We send you a free mock-up to approve before anything is made.</p></details>
-        ${!CONFIG.showPrices ? '' : ''}<details${CONFIG.showPrices ? '' : ' hidden'}><summary>Bulk pricing</summary><ul>${CONFIG.bulk.filter(t => t.off).map(t => `<li>${t.from}+ of one item: ${Math.round(t.off * 100)}% off</li>`).join('')}</ul></details>
+        ${!CONFIG.showPrices ? '' : ''}<details${CONFIG.showPrices && CONFIG.bulk.some(t => t.off) ? '' : ' hidden'}><summary>Bulk pricing</summary><ul>${CONFIG.bulk.filter(t => t.off).map(t => `<li>${t.from}+ of one item: ${Math.round(t.off * 100)}% off</li>`).join('')}</ul></details>
       </div>
     </div>
   </div></div>`;
@@ -513,7 +514,7 @@ function basketView(){
   <div class="wrap two"><div>${rows}</div>
   <div><div class="summary"><div class="line"><span>Items</span><span>${basket.reduce((s, i) => s + i.qty, 0)}</span></div>
     <div class="line total"><span>Estimated total</span><span>${gbp(basketTotal())}</span></div>
-    <div class="note">${CONFIG.showPrices ? 'Includes bulk discounts. ' : ''}Delivery and your final price are confirmed with your free mock-up.</div></div>
+    <div class="note">${CONFIG.showPrices && CONFIG.bulk.some(t => t.off) ? 'Includes bulk discounts. ' : ''}Delivery and your final price are confirmed with your free mock-up.</div></div>
     <div class="actions"><a class="btn" href="#/checkout" style="flex:1">Checkout</a></div>
     <p class="meta" style="margin-top:10px">Prefer to talk it through? <a href="#/contact">Ask for a quote instead</a>.</p></div></div>`;
 }
@@ -594,7 +595,7 @@ function schools(){
   return `<div class="page-head"><div class="wrap"><h1>Kit for dance schools</h1><p>Matching uniform and team kit for every class, with your logo.</p></div></div>
   <div class="prose">
     <h2>One order for the whole school</h2>
-    <p>Mix garments, colours and sizes in a single order: cropped hoodies for seniors, zoodies for the competition team, leggings and crop tops for class. Kids’ and adult sizes can go in the same order, and bulk discounts apply per item.</p>
+    <p>Mix garments, colours and sizes in a single order: cropped hoodies for seniors, zoodies for the competition team, leggings and crop tops for class. Kids’ and adult sizes can go in the same order.</p>
     <h2>Popular school kits</h2>
     <ul><li><b>Class uniform:</b> a crop top, leggings and a hoodie with your logo.</li>
       <li><b>Competition team:</b> matching zoodie and joggers (a tracksuit) with the team name on the back.</li>
@@ -613,7 +614,7 @@ function how(){
 }
 function faq(){
   const qs = [
-    ['Is there a minimum order?', 'Personalised items can be ordered one at a time, and we offer bulk discounts on larger orders.'],
+    ['Is there a minimum order?', 'No minimum: personalised items can be ordered one at a time.'],
     ['Can I see my design before it’s made?', 'Yes. Every order gets a free digital mock-up, and nothing is made until you approve it.'],
     ['What file should my logo be?', 'A PNG with a transparent background or a vector file (SVG, PDF, AI or EPS) is best, but send whatever you have and we’ll let you know.'],
     ['Do you do kids’ sizes?', 'Yes. Most hoodies, zoodies, joggers, tees and leggings come in kids’ sizes, so the whole school can match.'],
