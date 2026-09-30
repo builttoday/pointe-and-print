@@ -264,7 +264,7 @@
 <footer class="site"><div class="wrap">
   <div class="f-grid">
     <div><div class="brand" id="brandFoot" style="font-size:1.25rem"></div><p style="color:var(--ink-soft);max-width:22em">Custom dancewear for dance schools, teams and dancers. Your logo, your colours, adult and kids' sizes.</p></div>
-    <div><h4>Shop</h4><a href="#/shop/hoodies">Hoodies &amp; zoodies</a><a href="#/shop/tops">Crop tops &amp; tees</a><a href="#/shop/bottoms">Leggings &amp; joggers</a><a href="#/shop/shorts">Shorts</a><a href="#/shop/tracksuits">Tracksuits</a><a href="#/shop/bags">Bags</a><a href="#/shop/sustainable">Sustainable</a></div>
+    <div><h4>Shop</h4><a href="#/shop/hoodies">Hoodies &amp; zoodies</a><a href="#/shop/tops">Crop tops &amp; tees</a><a href="#/shop/bottoms">Leggings &amp; joggers</a><a href="#/shop/shorts">Shorts</a><a href="#/shop/tracksuits">Tracksuits</a><a href="#/shop/bags">Bags</a><a href="#/shop/premium">Premium</a><a href="#/shop/sustainable">Sustainable</a></div>
     <div><h4>Help</h4><a href="#/how">How it works</a><a href="#/schools">For dance schools</a><a href="#/faq">FAQs</a><a href="#/contact">Get a quote</a></div>
     <div><h4>Contact</h4><a id="footEmail" href="#"></a><a href="#/contact">Send us your logo</a></div>
   </div>
@@ -291,7 +291,7 @@ const CONFIG = {
   showPrices: true,
   // true = order and quote forms don't send; they say ordering opens soon. Set false once formEndpoint (and email) are set.
   previewOnly: true,
-  announce: 'Printed and embroidered to order · Adult and kids’ sizes · Free mock-up with every quote',
+  announce: 'Printed and embroidered to order · Adult and kids’ sizes · Free mock-up with every quote · UK delivery',
   // Prints are real prices (2026-09-30). EMBROIDERY PRICES ARE STILL EXAMPLES until William has them.
   decoration: {
     none:        { label: 'Plain (no decoration)', each: 0 },
@@ -599,7 +599,7 @@ function orderForm(kind){
       <label class="field"><span>Phone</span><input name="phone" type="tel" autocomplete="tel"></label>
       <label class="field"><span>Dance school, team or event</span><input name="organisation"></label>
       <label class="field"><span>Date you need it by</span><input name="needed_by" type="date"></label>
-      <label class="field"><span>Delivery postcode</span><input name="postcode" autocomplete="postal-code"></label>
+      <label class="field"><span>Delivery postcode (UK only)</span><input name="postcode" autocomplete="postal-code"></label>
       <label class="field full"><span>Your logo (PNG, JPG, PDF or SVG)</span><input name="logo" type="file" accept=".png,.jpg,.jpeg,.pdf,.svg,.ai,.eps"></label>
       <label class="field full"><span>${isQuote ? 'Tell us what you need *' : 'Anything else we should know?'}</span><textarea name="message" rows="5" ${isQuote ? 'required' : ''} placeholder="${isQuote ? 'e.g. 40 zoodies for our competition team, navy with our logo on the front, kids 5/6 to adult L' : ''}"></textarea></label>
     </div>
@@ -686,6 +686,7 @@ function how(){
 function faq(){
   const qs = [
     ['Is there a minimum order?', 'No minimum: personalised items can be ordered one at a time.'],
+    ['Where do you deliver?', 'We deliver to UK addresses only.'],
     ['Is there a setup charge?', 'Yes: a one-off £15 charge for setting up new artwork, once per order however many items it goes on. If you reorder with the same artwork, you don’t pay it again.'],
     ['Can I see my design before it’s made?', 'Yes. Every order gets a free digital mock-up, and nothing is made until you approve it.'],
     ['What file should my logo be?', 'A PNG with a transparent background or a vector file (SVG, PDF, AI or EPS) is best, but send whatever you have and we’ll let you know.'],
