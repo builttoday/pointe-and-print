@@ -515,7 +515,7 @@
   }
   function summary(){
     if(!$('#dSummary')) return;
-    const qty = Object.values(D.sizes).reduce((a, b) => a + b, 0), pl = priceLine(D.p, Math.max(qty, 1), decos());
+    const qty = Object.values(D.sizes).reduce((a, b) => a + b, 0), pl = priceLine(D.p, Math.max(qty, 1), decos(), D.sizes);
     $('#dSummary').innerHTML = `<div class="line"><span>${esc(D.p.name)}</span><span>${gbp(D.p.price)}</span></div>
       ${decos().map(d => `<div class="line"><span>${esc(CONFIG.decoration[d].label)}</span><span>${CONFIG.showPrices ? '+' + gbp(CONFIG.decoration[d].each) : '✓'}</span></div>`).join('')}
       <div class="line"><span>Quantity</span><span>${qty}</span></div>

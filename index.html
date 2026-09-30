@@ -327,15 +327,21 @@ function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add
 
 /* ---------- pricing ---------- */
 function discountFor(qty){ let off = 0; CONFIG.bulk.forEach(t => { if(qty >= t.from) off = t.off; }); return off; }
-function priceLine(p, qty, decos){
+// sizes = { 'XL': 3, '3XL': 1 }: bigger sizes can cost more (p.sizePrices); each = average across the sizes picked
+function garmentEach(p, sizes){
+  const n = sizes ? Object.values(sizes).reduce((a, b) => a + b, 0) : 0;
+  if(!n || !p.sizePrices) return p.price;
+  return Object.entries(sizes).reduce((s, [sz, k]) => s + k * (p.sizePrices[sz] ?? p.price), 0) / n;
+}
+function priceLine(p, qty, decos, sizes){
   const decoEach = decos.reduce((s, d) => s + (CONFIG.decoration[d] ? CONFIG.decoration[d].each : 0), 0);
-  const each = p.price + decoEach, off = discountFor(qty);
+  const each = garmentEach(p, sizes) + decoEach, off = discountFor(qty);
   const setup = decos.reduce((s, d) => s + (CONFIG.setupFee[d] || 0), 0);
   return { each, off, setup, total: each * qty * (1 - off) + setup };
 }
 function basketTotal(){
   // bulk discount is worked out per product line, on the total quantity of that line
-  return basket.reduce((s, i) => s + priceLine(byCode(i.code), i.qty, i.decos).total, 0);
+  return basket.reduce((s, i) => s + priceLine(byCode(i.code), i.qty, i.decos, i.sizes).total, 0);
 }
 
 /* ---------- views ---------- */
@@ -441,7 +447,7 @@ function product(code){
     <div>
       <div class="crumbs"><a href="#/shop">Shop</a> / <a href="#/shop/${p.category}">${esc((CATS.find(c => c.id === p.category) || {}).name || '')}</a></div>
       <h1>${esc(p.name)}</h1><div class="code">${esc(p.brand)} · Style ${esc(p.code)}</div>
-      <div class="from">${CONFIG.showPrices ? `From ${gbp(p.price)} <span class="meta" style="font-weight:400">plain · ${gbp(p.price + CONFIG.decoration.frontPrint.each)} with a printed logo</span>` : '£TBA <span class="meta" style="font-weight:400">· your price comes with your free mock-up</span>'}</div>
+      <div class="from">${CONFIG.showPrices ? `From ${gbp(p.price)} <span class="meta" style="font-weight:400">plain · ${gbp(p.price + CONFIG.decoration.frontPrint.each)} with a printed logo${p.sizePrices && Math.max(...Object.values(p.sizePrices)) > p.price ? ` · larger sizes up to ${gbp(Math.max(...Object.values(p.sizePrices)))}` : ''}</span>` : '£TBA <span class="meta" style="font-weight:400">· your price comes with your free mock-up</span>'}</div>
       <p style="color:var(--ink-soft)">${esc(p.blurb)}</p>
 
       <div class="opt"><h4>Colour <small id="colName">${esc(p.colours[0].name)}</small></h4>
@@ -479,7 +485,7 @@ function setDeco(){
   renderSummary();
 }
 function renderSummary(){
-  const qty = Object.values(cur.sizes).reduce((a, b) => a + b, 0), pl = priceLine(cur.p, Math.max(qty, 1), cur.decos);
+  const qty = Object.values(cur.sizes).reduce((a, b) => a + b, 0), pl = priceLine(cur.p, Math.max(qty, 1), cur.decos, cur.sizes);
   $('#summary').innerHTML = `
     <div class="line"><span>Price each (garment + decoration)</span><span>${gbp(pl.each)}</span></div>
     <div class="line"><span>Quantity</span><span>${qty}</span></div>
@@ -498,7 +504,7 @@ function addToBasket(){
 
 function basketView(){
   if(!basket.length) return `<div class="page-head"><div class="wrap"><h1>Your basket</h1></div></div><div class="wrap empty"><p>Your basket is empty.</p><a class="btn" href="#/shop">Start shopping</a></div>`;
-  const rows = basket.map((i, k) => { const p = byCode(i.code), pl = priceLine(p, i.qty, i.decos);
+  const rows = basket.map((i, k) => { const p = byCode(i.code), pl = priceLine(p, i.qty, i.decos, i.sizes);
     return `<div class="b-item"><div class="th">${i.design ? Object.values(i.design.previews).map(src => `<img src="${src}" alt="Your design">`).join("") : garmentSVG(p.shape, i.hex, { label: p.name, accent: i.accent })}</div>
       <div><h3>${esc(p.name)}</h3><p>${esc(i.colour)} · ${Object.entries(i.sizes).map(([s, n]) => `${esc(s)} × ${n}`).join(', ')}</p>
       <p>${i.decos.length ? i.decos.map(d => esc(CONFIG.decoration[d].label)).join(' + ') : 'Plain'}</p>${i.notes ? `<p><i>“${esc(i.notes)}”</i></p>` : ''}${i.design ? `<p>Your design: ${esc(i.design.describe)}</p>` : ''}
@@ -535,14 +541,14 @@ function checkout(){
   if(!basket.length) return basketView();
   return `<div class="page-head"><div class="wrap"><h1>Checkout</h1><p>Send your order and we’ll reply with a free mock-up and your final price.</p></div></div>
   <div class="wrap two"><div>${orderForm('order')}</div>
-  <div><div class="summary">${basket.map(i => { const p = byCode(i.code); return `<div class="line"><span>${i.qty} × ${esc(p.name)} (${esc(i.colour)})</span><span>${gbp(priceLine(p, i.qty, i.decos).total)}</span></div>`; }).join('')}
+  <div><div class="summary">${basket.map(i => { const p = byCode(i.code); return `<div class="line"><span>${i.qty} × ${esc(p.name)} (${esc(i.colour)})</span><span>${gbp(priceLine(p, i.qty, i.decos, i.sizes).total)}</span></div>`; }).join('')}
   <div class="line total"><span>Estimated total</span><span>${gbp(basketTotal())}</span></div></div></div></div>`;
 }
 function orderText(kind, fd){
   const lines = [`${kind === 'quote' ? 'QUOTE REQUEST' : 'ORDER'} from ${fd.get('name')} <${fd.get('email')}>`,
     `Phone: ${fd.get('phone') || '-'}`, `Organisation: ${fd.get('organisation') || '-'}`, `Needed by: ${fd.get('needed_by') || '-'}`, `Postcode: ${fd.get('postcode') || '-'}`, ''];
   if(kind !== 'quote'){ basket.forEach(i => { const p = byCode(i.code);
-    lines.push(`${i.qty} x ${p.code} ${p.name} - ${i.colour} - ${Object.entries(i.sizes).map(([s, n]) => s + ':' + n).join(', ')} - ${i.decos.map(d => CONFIG.decoration[d].label).join(' + ') || 'Plain'}${i.notes ? ' - Notes: ' + i.notes : ''}${i.design ? ' - DESIGN: ' + i.design.describe : ''}${CONFIG.showPrices ? ' - est. ' + gbp(priceLine(p, i.qty, i.decos).total) : ''}`); });
+    lines.push(`${i.qty} x ${p.code} ${p.name} - ${i.colour} - ${Object.entries(i.sizes).map(([s, n]) => s + ':' + n).join(', ')} - ${i.decos.map(d => CONFIG.decoration[d].label).join(' + ') || 'Plain'}${i.notes ? ' - Notes: ' + i.notes : ''}${i.design ? ' - DESIGN: ' + i.design.describe : ''}${CONFIG.showPrices ? ' - est. ' + gbp(priceLine(p, i.qty, i.decos, i.sizes).total) : ''}`); });
     lines.push(CONFIG.showPrices ? `Estimated total: ${gbp(basketTotal())}` : 'Prices: TBA (to confirm with mock-up)', ''); }
   lines.push('Message: ' + (fd.get('message') || '-'));
   return lines.join('\n');
