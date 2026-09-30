@@ -54,7 +54,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/JH016/model-1.jpg",
+   "images/JH016/model-2.jpg",
+   "images/JH016/model-3.jpg"
+  ]
  },
  {
   "code": "JH037",
@@ -102,7 +107,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "3 of 5 colours shown; ask for others.",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/JH037/model-1.jpg",
+   "images/JH037/model-2.jpg",
+   "images/JH037/model-3.jpg"
+  ]
  },
  {
   "code": "JH001",
@@ -225,7 +235,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "12 of 127 colours shown; ask for others.",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/JH001/model-1.jpg",
+   "images/JH001/model-2.jpg",
+   "images/JH001/model-3.jpg"
+  ]
  },
  {
   "code": "JH01J",
@@ -345,7 +360,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "12 of 54 colours shown; ask for others.",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/JH01J/model-1.jpg",
+   "images/JH01J/model-2.jpg",
+   "images/JH01J/model-3.jpg"
+  ]
  },
  {
   "code": "JH050",
@@ -451,7 +471,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "10 of 36 colours shown; ask for others.",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/JH050/model-1.jpg",
+   "images/JH050/model-2.jpg",
+   "images/JH050/model-3.jpg"
+  ]
  },
  {
   "code": "JH50J",
@@ -618,7 +643,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/JH50J/model-1.jpg",
+   "images/JH50J/model-2.jpg",
+   "images/JH50J/model-3.jpg"
+  ]
  },
  {
   "code": "JC001",
@@ -726,7 +756,12 @@ window.PRODUCTS = [
   ],
   "colourNote": "10 of 56 colours shown; ask for others.",
   "notes": "",
-  "eco": "100% recycled polyester"
+  "eco": "100% recycled polyester",
+  "models": [
+   "images/JC001/model-1.jpg",
+   "images/JC001/model-2.jpg",
+   "images/JC001/model-3.jpg"
+  ]
  },
  {
   "code": "JC01J",
@@ -830,7 +865,12 @@ window.PRODUCTS = [
   ],
   "colourNote": "10 of 31 colours shown; ask for others.",
   "notes": "",
-  "eco": "100% recycled polyester"
+  "eco": "100% recycled polyester",
+  "models": [
+   "images/JC01J/model-1.jpg",
+   "images/JC01J/model-2.jpg",
+   "images/JC01J/model-3.jpg"
+  ]
  },
  {
   "code": "TR019",
@@ -998,7 +1038,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/TR019/model-1.jpg",
+   "images/TR019/model-2.jpg",
+   "images/TR019/model-3.jpg"
+  ]
  },
  {
   "code": "SK106",
@@ -1037,7 +1082,11 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/SK106/model-1.jpg",
+   "images/SK106/model-2.jpg"
+  ]
  },
  {
   "code": "JC017",
@@ -1077,7 +1126,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/JC017/model-1.jpg",
+   "images/JC017/model-2.jpg",
+   "images/JC017/model-3.jpg"
+  ]
  },
  {
   "code": "SM106",
@@ -1107,7 +1161,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/SM106/model-1.jpg",
+   "images/SM106/model-2.jpg",
+   "images/SM106/model-3.jpg"
+  ]
  },
  {
   "code": "TL697",
@@ -1137,7 +1196,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/TL697/model-1.jpg",
+   "images/TL697/model-2.jpg",
+   "images/TL697/model-3.jpg"
+  ]
  },
  {
   "code": "TL371",
@@ -1194,7 +1258,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/TL371/model-1.jpg",
+   "images/TL371/model-2.jpg",
+   "images/TL371/model-3.jpg"
+  ]
  },
  {
   "code": "JC217",
@@ -1237,7 +1306,12 @@ window.PRODUCTS = [
   ],
   "colourNote": "",
   "notes": "",
-  "eco": "80% recycled polyester"
+  "eco": "80% recycled polyester",
+  "models": [
+   "images/JC217/model-1.jpg",
+   "images/JC217/model-2.jpg",
+   "images/JC217/model-3.jpg"
+  ]
  },
  {
   "code": "TR532",
@@ -1289,7 +1363,12 @@ window.PRODUCTS = [
   ],
   "colourNote": "",
   "notes": "",
-  "eco": "80% recycled polyester"
+  "eco": "80% recycled polyester",
+  "models": [
+   "images/TR532/model-1.jpg",
+   "images/TR532/model-2.jpg",
+   "images/TR532/model-3.jpg"
+  ]
  },
  {
   "code": "TL370",
@@ -1351,7 +1430,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/TL370/model-1.jpg",
+   "images/TL370/model-2.jpg",
+   "images/TL370/model-3.jpg"
+  ]
  },
  {
   "code": "SK064",
@@ -1382,7 +1466,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/SK064/model-1.jpg",
+   "images/SK064/model-2.jpg",
+   "images/SK064/model-3.jpg"
+  ]
  },
  {
   "code": "SM064",
@@ -1413,7 +1502,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/SM064/model-1.jpg",
+   "images/SM064/model-2.jpg",
+   "images/SM064/model-3.jpg"
+  ]
  },
  {
   "code": "TR31B",
@@ -1452,7 +1546,12 @@ window.PRODUCTS = [
   ],
   "colourNote": "",
   "notes": "",
-  "eco": "80% recycled polyester"
+  "eco": "80% recycled polyester",
+  "models": [
+   "images/TR31B/model-1.jpg",
+   "images/TR31B/model-2.jpg",
+   "images/TR31B/model-3.jpg"
+  ]
  },
  {
   "code": "TR17B",
@@ -1482,7 +1581,82 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "1 of 3 colours shown; ask for others.",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/TR17B/model-1.jpg",
+   "images/TR17B/model-2.jpg",
+   "images/TR17B/model-3.jpg"
+  ]
+ },
+ {
+  "code": "TR607",
+  "name": "Women's wide leg joggers",
+  "brand": "TriDri",
+  "category": "bottoms",
+  "audience": "women",
+  "shape": "joggers",
+  "price": 12.44,
+  "sizes": "XS – 2XL",
+  "sizeList": [
+   "XS",
+   "S",
+   "M",
+   "L",
+   "XL",
+   "2XL"
+  ],
+  "fabric": "60% Cotton, 40% Recycled polyester. Heather Grey: 90% Cotton, 10% Viscose",
+  "blurb": "Relaxed wide-leg joggers in soft cotton blend, perfect for warm-ups, travel and wearing to and from class.",
+  "colours": [
+   {
+    "name": "Stone",
+    "hex": "#cbbfa8",
+    "sku": [
+     "TR607STON"
+    ],
+    "photo": "images/TR607/stone.jpg"
+   },
+   {
+    "name": "Black",
+    "hex": "#141414",
+    "sku": [
+     "TR607BLAC"
+    ],
+    "photo": "images/TR607/black.jpg"
+   },
+   {
+    "name": "Charcoal",
+    "hex": "#4a4a4a",
+    "sku": [
+     "TR607CHAR"
+    ],
+    "photo": "images/TR607/charcoal.jpg"
+   },
+   {
+    "name": "Chocolate",
+    "hex": "#5a3a2a",
+    "sku": [
+     "TR607CHOC"
+    ],
+    "photo": "images/TR607/chocolate.jpg"
+   },
+   {
+    "name": "Heather Grey",
+    "hex": "#b9b9b9",
+    "sku": [
+     "TR607HGRE"
+    ],
+    "photo": "images/TR607/heather-grey.jpg"
+   }
+  ],
+  "colourNote": "",
+  "notes": "",
+  "eco": "40% recycled polyester",
+  "models": [
+   "images/TR607/model-1.jpg",
+   "images/TR607/model-2.jpg",
+   "images/TR607/model-3.jpg"
+  ]
  },
  {
   "code": "JH072",
@@ -1546,7 +1720,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/JH072/model-1.jpg",
+   "images/JH072/model-2.jpg",
+   "images/JH072/model-3.jpg"
+  ]
  },
  {
   "code": "JH72J",
@@ -1592,7 +1771,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/JH72J/model-1.jpg",
+   "images/JH72J/model-2.jpg",
+   "images/JH72J/model-3.jpg"
+  ]
  },
  {
   "code": "BG145",
@@ -1656,7 +1840,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/BG145/model-1.jpg",
+   "images/BG145/model-2.jpg",
+   "images/BG145/model-3.jpg"
+  ]
  },
  {
   "code": "BG010",
@@ -1867,7 +2056,11 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/BG010/model-1.jpg",
+   "images/BG010/model-2.jpg"
+  ]
  },
  {
   "code": "BG540",
@@ -1958,7 +2151,10 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/BG540/model-1.jpg"
+  ]
  },
  {
   "code": "B140S",
@@ -2147,7 +2343,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/BG140/model-1.jpg",
+   "images/BG140/model-2.jpg",
+   "images/BG140/model-3.jpg"
+  ]
  },
  {
   "code": "RL670",
@@ -2295,7 +2496,12 @@ window.PRODUCTS = [
   ],
   "colourNote": "",
   "notes": "",
-  "eco": "100% recycled cotton"
+  "eco": "100% recycled cotton",
+  "models": [
+   "images/RL670/model-1.jpg",
+   "images/RL670/model-2.jpg",
+   "images/RL670/model-3.jpg"
+  ]
  },
  {
   "code": "BG560",
@@ -2331,7 +2537,12 @@ window.PRODUCTS = [
   ],
   "colourNote": "",
   "notes": "",
-  "eco": "100% recycled polyester"
+  "eco": "100% recycled polyester",
+  "models": [
+   "images/BG560/model-1.jpg",
+   "images/BG560/model-2.jpg",
+   "images/BG560/model-3.jpg"
+  ]
  },
  {
   "code": "NK376",
@@ -2572,7 +2783,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/NK421/model-1.jpg",
+   "images/NK421/model-2.jpg",
+   "images/NK421/model-3.jpg"
+  ]
  },
  {
   "code": "NK387",
@@ -2670,7 +2886,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/UA048/model-1.jpg",
+   "images/UA048/model-2.jpg",
+   "images/UA048/model-3.jpg"
+  ]
  },
  {
   "code": "UA041",
@@ -2718,7 +2939,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/UA041/model-1.jpg",
+   "images/UA041/model-2.jpg",
+   "images/UA041/model-3.jpg"
+  ]
  },
  {
   "code": "AD054",
@@ -2758,7 +2984,12 @@ window.PRODUCTS = [
   ],
   "colourNote": "",
   "notes": "",
-  "eco": "91% recycled polyester"
+  "eco": "91% recycled polyester",
+  "models": [
+   "images/AD054/model-1.jpg",
+   "images/AD054/model-2.jpg",
+   "images/AD054/model-3.jpg"
+  ]
  },
  {
   "code": "UA017",
@@ -2809,7 +3040,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/UA017/model-1.jpg",
+   "images/UA017/model-2.jpg",
+   "images/UA017/model-3.jpg"
+  ]
  },
  {
   "code": "UA068",
@@ -2847,7 +3083,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/UA068/model-1.jpg",
+   "images/UA068/model-2.jpg",
+   "images/UA068/model-3.jpg"
+  ]
  },
  {
   "code": "AD201",
@@ -3001,7 +3242,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/SK427/model-1.jpg",
+   "images/SK427/model-2.jpg",
+   "images/SK427/model-3.jpg"
+  ]
  },
  {
   "code": "SM427",
@@ -3031,7 +3277,11 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/SM427/model-1.jpg",
+   "images/SM427/model-2.jpg"
+  ]
  },
  {
   "code": "TL301",
@@ -3076,7 +3326,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/TL301/model-1.jpg",
+   "images/TL301/model-2.jpg",
+   "images/TL301/model-3.jpg"
+  ]
  },
  {
   "code": "TL309",
@@ -3106,7 +3361,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/TL309/model-1.jpg",
+   "images/TL309/model-2.jpg",
+   "images/TL309/model-3.jpg"
+  ]
  },
  {
   "code": "TR046",
@@ -3141,7 +3401,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/TR046/model-1.jpg",
+   "images/TR046/model-2.jpg",
+   "images/TR046/model-3.jpg"
+  ]
  },
  {
   "code": "SK069",
@@ -3218,7 +3483,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/SK069/model-1.jpg",
+   "images/SK069/model-2.jpg",
+   "images/SK069/model-3.jpg"
+  ]
  },
  {
   "code": "SM069",
@@ -3266,7 +3536,11 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": ""
+  "notes": "",
+  "models": [
+   "images/SM069/model-1.jpg",
+   "images/SM069/model-2.jpg"
+  ]
  },
  {
   "code": "TR062",
@@ -3358,7 +3632,12 @@ window.PRODUCTS = [
   ],
   "colourNote": "",
   "notes": "",
-  "eco": "40% recycled polyester"
+  "eco": "40% recycled polyester",
+  "models": [
+   "images/TR062/model-1.jpg",
+   "images/TR062/model-2.jpg",
+   "images/TR062/model-3.jpg"
+  ]
  },
  {
   "code": "LV871/LV881",
@@ -3523,7 +3802,12 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": "Top and pants are sold as a set. Want just the top or just the pants? Ask for a quote."
+  "notes": "Top and pants are sold as a set. Want just the top or just the pants? Ask for a quote.",
+  "models": [
+   "images/LV871-LV881/model-1.jpg",
+   "images/LV871-LV881/model-2.jpg",
+   "images/LV871-LV881/model-3.jpg"
+  ]
  },
  {
   "code": "LV873/LV883",
@@ -3684,6 +3968,11 @@ window.PRODUCTS = [
    }
   ],
   "colourNote": "",
-  "notes": "Top and pants are sold as a set. Want just the top or just the pants? Ask for a quote."
+  "notes": "Top and pants are sold as a set. Want just the top or just the pants? Ask for a quote.",
+  "models": [
+   "images/LV873-LV883/model-1.jpg",
+   "images/LV873-LV883/model-2.jpg",
+   "images/LV873-LV883/model-3.jpg"
+  ]
  }
 ];
