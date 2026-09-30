@@ -563,7 +563,7 @@
       ${decos().map(d => `<div class="line"><span>${esc(CONFIG.decoration[d].label)}</span><span>${CONFIG.showPrices ? '+' + gbp(CONFIG.decoration[d].each) : '✓'}</span></div>`).join('')}
       <div class="line"><span>Quantity</span><span>${qty}</span></div>
       ${pl.off && CONFIG.showPrices ? `<div class="line"><span>Bulk discount</span><span>−${Math.round(pl.off * 100)}%</span></div>` : ''}
-      ${pl.setup && CONFIG.showPrices ? `<div class="line"><span>Embroidery setup (one-off)</span><span>${gbp(pl.setup)}</span></div>` : ''}
+      ${pl.setup && CONFIG.showPrices ? `<div class="line"><span>New artwork setup (one-off, per order)</span><span>${gbp(pl.setup)}</span></div>` : ''}
       <div class="line total"><span>Estimated total</span><span>${qty ? gbp(pl.total) : '—'}</span></div>
       <div class="note">We check every design and send you a mock-up before anything is made.</div>`;
   }
