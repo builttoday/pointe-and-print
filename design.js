@@ -221,7 +221,7 @@
         <div class="opt"><h4>5. Names for your team <small>optional</small></h4>
           <label class="row d-check"><input type="checkbox" id="dNamesOn" onchange="dzNamesOn(this.checked)"><div><b>A different name on each garment</b><small>Great for teams: one name per line, with the size</small></div></label>
           <div id="dNamesBox" hidden>
-            <textarea id="dNames" class="d-input" rows="5" placeholder="Ava, 7/8 yrs&#10;Mia, 9/11 yrs&#10;Lily, 7/8 yrs" oninput="dzNames(this.value)"></textarea>
+            <textarea id="dNames" class="d-input" rows="5" placeholder="Ocean, 9/11 yrs&#10;Tilly, 7/8 yrs" oninput="dzNames(this.value)"></textarea>
             <p class="meta" id="dNamesInfo"></p>
             <button type="button" class="btn ghost" onclick="dzNamePlaceholder()">Show where names go</button>
           </div></div>

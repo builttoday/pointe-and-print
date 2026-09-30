@@ -473,7 +473,7 @@ function product(code){
         ${decoOpts.map(k => { const d = CONFIG.decoration[k]; const multi = k === 'backPrint' || k === 'name';
           return `<label class="row"><input type="${multi ? 'checkbox' : 'radio'}" name="${multi ? 'deco_' + k : 'deco_front'}" value="${k}" ${k === 'frontPrint' ? 'checked' : ''} onchange="setDeco()"><div><b>${esc(d.label)}</b>${k === 'frontEmb' && CONFIG.setupFee.frontEmb && CONFIG.showPrices ? `<small>One-off setup ${gbp(CONFIG.setupFee.frontEmb)} per logo</small>` : ''}${k === 'name' ? '<small>Tell us the names in the notes below</small>' : ''}</div><span class="p">${d.each && CONFIG.showPrices ? '+' + gbp(d.each) : ''}</span></label>`; }).join('')}
       </div>
-      <label class="field"><span>Notes (names, logo position, anything else)</span><textarea rows="3" id="notes" oninput="cur.notes=this.value" placeholder="e.g. Logo on the left chest. Names: Ava, Mia, Lily…"></textarea></label></div>
+      <label class="field"><span>Notes (names, logo position, anything else)</span><textarea rows="3" id="notes" oninput="cur.notes=this.value" placeholder="e.g. Logo on the left chest. Names: Ocean, Tilly…"></textarea></label></div>
 
       <div class="summary" id="summary"></div>
       <div class="actions"><button class="btn" onclick="addToBasket()">Add to basket</button><a class="btn ghost" href="#/design/${encodeURIComponent(p.code)}">Design it yourself</a></div>
