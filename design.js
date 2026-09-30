@@ -226,7 +226,7 @@
             <button type="button" class="btn ghost" onclick="dzNamePlaceholder()">Show where names go</button>
           </div></div>
 
-        <div class="opt"><h4>6. Sizes and quantities <small id="dSizeRange"></small></h4><div class="size-grid" id="dSizes"></div></div>
+        <p class="meta" style="margin-top:18px">You’ll choose sizes and quantities in your basket.</p>
         <div class="summary" id="dSummary"></div>
         <div class="actions"><button class="btn" type="button" onclick="dzAddToBasket()">Add design to basket</button></div>
       </div>
@@ -248,9 +248,7 @@
     const ref = c.photo || D.p.photo;
     $('#dRef').innerHTML = ref ? `<img src="${esc(ref)}" alt="${esc(D.p.name)} in ${esc(c.name)}"><div><b>The real garment</b><small>${esc(D.p.name)} in ${esc(c.name)}. Your design is printed or embroidered onto this.</small></div>` : '';
     $('#dRef').hidden = !ref;
-    if(!D.names.on) Object.keys(D.sizes).forEach(s => { if(soldOut(c, s)) delete D.sizes[s]; });   // live stock: drop sold-out sizes
-    $('#dSizes').innerHTML = sizeGrid(D.p, c, D.sizes, 'dzQty', D.names.on);
-    $('#dSizeRange').innerHTML = esc(D.p.sizes) + ' ' + stockNote();
+    // sizes and quantities are chosen in the basket (William, 2026-09-30); team names still set them from the names list
     if(!sidesFor().includes(D.side)) D.side = 'front';
     $('#dSides').innerHTML = sidesFor().map(s => `<button type="button" class="${s === D.side ? 'on' : ''}" onclick="dzSide('${s}')">${SIDE_LABEL[s]}${D.layers.some(L => L.side === s) ? ' •' : ''}</button>`).join('');
     drawGarment(); drawLayers(); summary(); drawCarry();
@@ -493,7 +491,7 @@
     rows.forEach(r => { r.match = D.p.sizeList.find(s => norm(s) === norm(r.size)); });
     return rows;
   }
-  window.dzNamesOn = on => { D.names.on = on; $('#dNamesBox').hidden = !on; if(on) dzNames($('#dNames').value); else drawAll(); summary(); };
+  window.dzNamesOn = on => { D.names.on = on; $('#dNamesBox').hidden = !on; if(on) dzNames($('#dNames').value); else { D.sizes = {}; drawAll(); } summary(); };
   window.dzNames = v => {
     D.names.text = v; const rows = parseNames(), bad = rows.filter(r => !r.match);
     D.sizes = {}; rows.filter(r => r.match).forEach(r => { D.sizes[r.match] = (D.sizes[r.match] || 0) + 1; });
@@ -561,10 +559,9 @@
     const qty = Object.values(D.sizes).reduce((a, b) => a + b, 0), pl = priceLine(D.p, Math.max(qty, 1), decos(), D.sizes);
     $('#dSummary').innerHTML = `<div class="line"><span>${esc(D.p.name)}</span><span>${gbp(D.p.price)}</span></div>
       ${decos().map(d => `<div class="line"><span>${esc(CONFIG.decoration[d].label)}</span><span>${CONFIG.showPrices ? '+' + gbp(CONFIG.decoration[d].each) : '✓'}</span></div>`).join('')}
-      <div class="line"><span>Quantity</span><span>${qty}</span></div>
-      ${pl.off && CONFIG.showPrices ? `<div class="line"><span>Bulk discount</span><span>−${Math.round(pl.off * 100)}%</span></div>` : ''}
+      ${D.names.on ? `<div class="line"><span>Quantity (from your names list)</span><span>${qty}</span></div>` : ''}
+      <div class="line total"><span>Price each</span><span>${gbp(pl.each)}</span></div>
       ${pl.setup && CONFIG.showPrices ? `<div class="line"><span>New artwork setup (one-off, per order)</span><span>${gbp(pl.setup)}</span></div>` : ''}
-      <div class="line total"><span>Estimated total</span><span>${qty ? gbp(pl.total) : '—'}</span></div>
       <div class="note">We check every design and send you a mock-up before anything is made.</div>`;
   }
 
@@ -597,12 +594,12 @@
     const sizes = Object.fromEntries(Object.entries(D.sizes).filter(([, v]) => v > 0));
     const qty = Object.values(sizes).reduce((a, b) => a + b, 0);
     if(!D.layers.length){ toast('Add some text, a graphic or your logo first'); return; }
-    if(!qty){ toast(D.names.on ? 'Add at least one name with a size' : 'Add a quantity for at least one size'); return; }
+    if(D.names.on && !qty){ toast('Add at least one name with a size'); return; }
     const previews = {};
     for(const s of sidesFor().filter(s => D.layers.some(L => L.side === s))) previews[s] = (await renderSide(s, 320)).toDataURL('image/jpeg', 0.82);
     const c = D.p.colours[D.colour];
-    basket.push({ code: D.p.code, colour: c.name, hex: c.hex, accent: c.accent, sizes, qty, decos: decos(), notes: '', design: { previews, describe: describe(), assets: [...new Set(D.layers.filter(L => L.type === 'image').map(L => L.asset))] } });
-    saveBasket(); toast(`Added your design: ${qty} × ${D.p.name}`);
+    basket.push({ code: D.p.code, colour: c.name, hex: c.hex, accent: c.accent, sizes, qty, names: D.names.on, decos: decos(), notes: '', design: { previews, describe: describe(), assets: [...new Set(D.layers.filter(L => L.type === 'image').map(L => L.asset))] } });
+    saveBasket(); toast(qty ? `Added your design: ${qty} × ${D.p.name}` : 'Added your design. Choose sizes and quantities in your basket.');
   };
   window.designAssets = ids => (ids || []).map(id => assets[id]).filter(Boolean);
 })();

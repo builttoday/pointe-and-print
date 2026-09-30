@@ -168,6 +168,7 @@
   .b-item{display:grid;grid-template-columns:96px 1fr auto;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
   .b-item .th{background:var(--bg-soft);border-radius:10px;padding:8px} .b-item .th svg{height:80px;margin:auto}
   .b-item h3{margin:0;font-weight:500;font-size:1rem} .b-item p{margin:2px 0;font-size:.86rem;color:var(--ink-soft)}
+  .b-sizes{margin:8px 0 4px;grid-template-columns:repeat(auto-fill,minmax(62px,1fr))} .b-sizes label{padding:4px 6px;font-size:.78rem} .b-sizes.need label{border-color:var(--rose)} .need-note{color:var(--rose)!important;font-weight:500}
   .b-item .rm{background:none;border:0;color:var(--rose);cursor:pointer;font-size:.84rem;padding:0;margin-top:6px;text-decoration:underline}
   .empty{text-align:center;padding:60px 0;color:var(--ink-soft)}
   .notice{background:var(--blush);border-radius:12px;padding:14px 16px;font-size:.9rem;margin:14px 0}
@@ -400,7 +401,7 @@ function basketTotal(){
   return basket.reduce((s, i) => { const pl = priceLine(byCode(i.code), i.qty, i.decos, i.sizes); return s + pl.total - pl.setup; }, 0) + artworkCharge();
 }
 /* the new-artwork setup charge is once per order, if anything in the basket is printed or embroidered */
-const artworkCharge = () => basket.some(i => i.decos.length) ? (CONFIG.artworkFee || 0) : 0;
+const artworkCharge = () => basket.some(i => i.decos.length && i.qty) ? (CONFIG.artworkFee || 0) : 0;
 const artworkLine = () => artworkCharge() && CONFIG.showPrices ? `<div class="line"><span>New artwork setup (one-off)</span><span>${gbp(artworkCharge())}</span></div>` : '';
 
 /* ---------- views ---------- */
@@ -568,7 +569,8 @@ function basketView(){
   if(!basket.length) return `<div class="page-head"><div class="wrap"><h1>Your basket</h1></div></div><div class="wrap empty"><p>Your basket is empty.</p><a class="btn" href="#/shop">Start shopping</a></div>`;
   const rows = basket.map((i, k) => { const p = byCode(i.code), pl = priceLine(p, i.qty, i.decos, i.sizes);
     return `<div class="b-item"><div class="th">${i.design ? Object.values(i.design.previews).map(src => `<img src="${src}" alt="Your design">`).join("") : garmentSVG(p.shape, i.hex, { label: p.name, accent: i.accent })}</div>
-      <div><h3>${esc(p.name)}</h3><p>${esc(i.colour)} · ${Object.entries(i.sizes).map(([s, n]) => `${esc(s)} × ${n}`).join(', ')}</p>
+      <div><h3>${esc(p.name)}</h3><p>${esc(i.colour)}${i.names ? ' · ' + Object.entries(i.sizes).map(([s, n]) => `${esc(s)} × ${n}`).join(', ') + ' (from your names list)' : ''}</p>
+      ${i.names ? '' : `<div class="size-grid b-sizes${i.qty ? '' : ' need'}">${p.sizeList.map(s => `<label>${esc(s)}<input type="number" min="0" max="999" inputmode="numeric" placeholder="0" value="${i.sizes[s] || ''}" onfocus="this.select()" onchange="setBasketSize(${k}, '${esc(s)}', this.value)"></label>`).join('')}</div>${i.qty ? '' : '<p class="need-note">Choose sizes and quantities for this item.</p>'}`}
       <p>${i.decos.length ? i.decos.map(d => esc(CONFIG.decoration[d].label)).join(' + ') : 'Plain'}</p>${i.notes ? `<p><i>“${esc(i.notes)}”</i></p>` : ''}${i.design ? `<p>Your design: ${esc(i.design.describe)}</p>` : ''}
       <button class="rm" onclick="removeItem(${k})">Remove</button></div><div><b>${gbp(pl.total - pl.setup)}</b></div></div>`; }).join('');
   return `<div class="page-head"><div class="wrap"><h1>Your basket</h1></div></div>
@@ -576,10 +578,17 @@ function basketView(){
   <div><div class="summary"><div class="line"><span>Items</span><span>${basket.reduce((s, i) => s + i.qty, 0)}</span></div>
     ${artworkLine()}<div class="line total"><span>Estimated total</span><span>${gbp(basketTotal())}</span></div>
     <div class="note">${CONFIG.showPrices && CONFIG.bulk.some(t => t.off) ? 'Includes bulk discounts. ' : ''}Delivery and your final price are confirmed with your free mock-up.</div></div>
-    <div class="actions"><a class="btn" href="#/checkout" style="flex:1">Checkout</a></div>
+    <div class="actions"><a class="btn" href="#/checkout" style="flex:1" onclick="return basketReady()">Checkout</a></div>
     <p class="meta" style="margin-top:10px">Prefer to talk it through? <a href="#/contact">Ask for a quote instead</a>.</p></div></div>`;
 }
 function removeItem(k){ basket.splice(k, 1); saveBasket(); render(); }
+/* sizes and quantities can be set (or changed) in the basket; designs from the designer arrive without sizes */
+function setBasketSize(k, size, v){
+  const i = basket[k]; if(!i) return; const n = Math.max(0, Math.min(999, parseInt(v, 10) || 0));
+  if(n) i.sizes[size] = n; else delete i.sizes[size];
+  i.qty = Object.values(i.sizes).reduce((a, b) => a + b, 0); saveBasket(); render();
+}
+function basketReady(){ const i = basket.find(x => !x.qty); if(!i) return true; toast(`Choose sizes for your ${byCode(i.code).name}`); return false; }
 
 function orderForm(kind){
   const isQuote = kind === 'quote';
@@ -600,7 +609,7 @@ function orderForm(kind){
   </form><div id="formResult"></div>`;
 }
 function checkout(){
-  if(!basket.length) return basketView();
+  if(!basket.length || basket.some(i => !i.qty)) return basketView();
   return `<div class="page-head"><div class="wrap"><h1>Checkout</h1><p>Send your order and we’ll reply with a free mock-up and your final price.</p></div></div>
   <div class="wrap two"><div>${orderForm('order')}</div>
   <div><div class="summary">${basket.map(i => { const p = byCode(i.code); return `<div class="line"><span>${i.qty} × ${esc(p.name)} (${esc(i.colour)})</span><span>${gbp((pl => pl.total - pl.setup)(priceLine(p, i.qty, i.decos, i.sizes)))}</span></div>`; }).join('')}
