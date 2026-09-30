@@ -141,6 +141,9 @@
   .size-grid label{border:1.5px solid var(--line);border-radius:10px;padding:6px 8px;text-align:center;font-size:.82rem}
   .size-grid input{width:100%;border:0;text-align:center;font-size:1rem;padding:4px 0;background:transparent}
   .size-grid label:focus-within{border-color:var(--ink)}
+  .size-grid .st{display:block;font-size:.66rem;line-height:1.2;margin-top:1px} .st.ok{color:#1f6b45} .st.low{color:#b26a00} .st.due{color:#5f5b58} .st.out{color:#a33}
+  .size-grid label.sold{opacity:.55;background:var(--bg-soft)} .size-grid label.sold input{cursor:not-allowed}
+  .st-note{font-size:.72rem;font-weight:400;text-transform:none;letter-spacing:0;color:#1f6b45;margin-left:6px}
   .deco{display:grid;gap:10px}
   .deco label.row{display:flex;align-items:flex-start;gap:12px;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
   .deco label.row:has(input:checked){border-color:var(--ink);background:var(--bg-soft)}
@@ -331,6 +334,41 @@ function productPic(p, c, label){
   return src ? `<img class="photo" src="${esc(src)}" alt="${esc(label || p.name)}" loading="lazy">` : garmentSVG(p.shape, c.hex, { label: label || p.name, accent: c.accent });
 }
 
+/* ---------- live stock: stock.json is refreshed every hour from Ralawise by a GitHub Action ---------- */
+let STOCK = null;
+const sizeKey = s => s.replace(' yrs', '').replace(/[\s\/.]/g, '').toUpperCase().replace('XXS', '2XS').slice(0, 5);
+fetch('stock.json?t=' + Date.now()).then(r => r.ok ? r.json() : null).then(j => { if(j && j.stock){ STOCK = j; render(); } }).catch(() => {});
+/* stock for one colour and size: { n, next } (a tracksuit set counts the scarcer of top and pants), or null if not known */
+function stockOf(c, size){
+  if(!STOCK || !c || !c.sku) return null;
+  let n = Infinity, next = '';
+  for(const code of c.sku){
+    const v = STOCK.stock[code]; if(!v) return null;
+    const e = v[sizeKey(size)] || (Object.keys(v).length === 1 ? Object.values(v)[0] : null);
+    if(!e) return { n: 0, next: '', none: true };                  // this colour isn't made in this size
+    if(e[0] < n){ n = e[0]; next = e[0] === 0 ? e[1] : ''; }
+  }
+  return { n, next };
+}
+const soldOut = (c, size) => { const s = stockOf(c, size); return !!s && s.n === 0 && !s.next; };
+function stockTag(c, size){
+  const s = stockOf(c, size); if(!s) return '';
+  if(s.none) return '<small class="st out">Not in this colour</small>';
+  if(s.n >= 20) return '<small class="st ok">In stock</small>';
+  if(s.n > 0) return `<small class="st low">Only ${s.n} left</small>`;
+  return s.next ? `<small class="st due">Due ${s.next.slice(0, 5)}</small>` : '<small class="st out">Out of stock</small>';
+}
+function stockNote(){
+  if(!STOCK) return '';
+  const mins = Math.max(0, Math.round((Date.now() - Date.parse(STOCK.updated)) / 60000));
+  return `<span class="st-note">Live stock, checked ${mins < 60 ? mins + ' min' : Math.round(mins / 60) + ' hr'} ago</span>`;
+}
+/* the size boxes for a colour: sold-out sizes can't be chosen */
+function sizeGrid(p, c, sizes, handler, lockAll){
+  return p.sizeList.map(s => { const out = soldOut(c, s);
+    return `<label class="${out ? 'sold' : ''}">${esc(s)}<input type="number" min="0" max="999" inputmode="numeric" placeholder="0" value="${out ? '' : (sizes[s] || '')}" data-size="${esc(s)}" onfocus="this.select()" oninput="${handler}(this)" ${out || lockAll ? 'disabled' : ''}>${stockTag(c, s)}</label>`; }).join('');
+}
+
 /* ---------- basket (kept on this device) ---------- */
 let basket = [];
 try { basket = JSON.parse(localStorage.getItem('pp_basket') || '[]'); } catch(e){ basket = []; }
@@ -467,8 +505,8 @@ function product(code){
       <div class="opt"><h4>Colour <small id="colName">${esc(p.colours[0].name)}</small></h4>
         <div class="swatches">${p.colours.map((c, i) => `<button type="button" class="${i ? '' : 'on'}" style="background:${swBg(c)}" title="${esc(c.name)}" aria-label="${esc(c.name)}" onclick="pickColour(${i})"></button>`).join('')}</div></div>
 
-      <div class="opt"><h4>Sizes and quantities <small>${esc(p.sizes)}</small></h4>
-        <div class="size-grid">${p.sizeList.map(s => `<label>${esc(s)}<input type="number" min="0" max="999" inputmode="numeric" placeholder="0" data-size="${esc(s)}" onfocus="this.select()" oninput="setSize(this)"></label>`).join('')}</div></div>
+      <div class="opt"><h4>Sizes and quantities <small>${esc(p.sizes)}</small> ${stockNote()}</h4>
+        <div class="size-grid" id="sizeGrid">${sizeGrid(p, p.colours[0], {}, 'setSize')}</div></div>
 
       <div class="opt"><h4>Decoration</h4><div class="deco">
         ${decoOpts.map(k => { const d = CONFIG.decoration[k]; const multi = k === 'backPrint' || k === 'name';
@@ -492,6 +530,8 @@ function pickColour(i){
   $('#stage').innerHTML = productPic(cur.p, c);
   $('#colName').textContent = c.name;
   document.querySelectorAll('.swatches button').forEach((b, k) => b.classList.toggle('on', k === i));
+  Object.keys(cur.sizes).forEach(s => { if(soldOut(c, s)) delete cur.sizes[s]; });   // drop sizes this colour has run out of
+  $('#sizeGrid').innerHTML = sizeGrid(cur.p, c, cur.sizes, 'setSize'); renderSummary();
 }
 function setSize(el){ const v = Math.max(0, Math.min(999, parseInt(el.value, 10) || 0)); cur.sizes[el.dataset.size] = v; renderSummary(); }
 function setDeco(){

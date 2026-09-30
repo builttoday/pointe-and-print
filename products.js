@@ -23,21 +23,33 @@ window.PRODUCTS = [
    {
     "name": "Dusty Pink",
     "hex": "#d8a7ae",
+    "sku": [
+     "JH016DUPK"
+    ],
     "photo": "images/JH016/dusty-pink.jpg"
    },
    {
     "name": "Arctic White",
     "hex": "#f7f7f5",
+    "sku": [
+     "JH016AWHI"
+    ],
     "photo": "images/JH016/arctic-white.jpg"
    },
    {
     "name": "Heather Grey",
     "hex": "#b9b9b9",
+    "sku": [
+     "JH016HGRE"
+    ],
     "photo": "images/JH016/heather-grey.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JH016JBLA"
+    ],
     "photo": "images/JH016/jet-black.jpg"
    }
   ],
@@ -65,32 +77,31 @@ window.PRODUCTS = [
   "blurb": "A cropped sweatshirt with a short front zip and no hood. Neat, warm and easy to wear to the studio.",
   "colours": [
    {
-    "name": "Dusty Rose",
-    "hex": "#c98f98",
-    "photo": "images/JH037/dusty-rose.jpg"
-   },
-   {
-    "name": "Arctic White",
-    "hex": "#f7f7f5",
-    "photo": "images/JH037/arctic-white.jpg"
+    "name": "Lavender",
+    "hex": "#b8a5d9",
+    "sku": [
+     "JH037LAVE"
+    ],
+    "photo": "images/JH037/lavender.jpg"
    },
    {
     "name": "Deep Black",
     "hex": "#0b0b0b",
+    "sku": [
+     "JH037DPBK"
+    ],
     "photo": "images/JH037/deep-black.jpg"
-   },
-   {
-    "name": "Lavender",
-    "hex": "#b8a5d9",
-    "photo": "images/JH037/lavender.jpg"
    },
    {
     "name": "Sky Blue",
     "hex": "#8fc7e8",
+    "sku": [
+     "JH037SKYY"
+    ],
     "photo": "images/JH037/sky-blue.jpg"
    }
   ],
-  "colourNote": "",
+  "colourNote": "3 of 5 colours shown; ask for others.",
   "notes": ""
  },
  {
@@ -119,61 +130,97 @@ window.PRODUCTS = [
    {
     "name": "Hot Pink",
     "hex": "#e0457b",
+    "sku": [
+     "JH001HOPK"
+    ],
     "photo": "images/JH001/hot-pink.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JH001JBLA"
+    ],
     "photo": "images/JH001/jet-black.jpg"
    },
    {
     "name": "Deep Black",
     "hex": "#0b0b0b",
+    "sku": [
+     "JH001DPBK"
+    ],
     "photo": "images/JH001/deep-black.jpg"
    },
    {
     "name": "Arctic White",
     "hex": "#f7f7f5",
+    "sku": [
+     "JH001AWHI"
+    ],
     "photo": "images/JH001/arctic-white.jpg"
    },
    {
     "name": "Baby Pink",
     "hex": "#f5c9d6",
+    "sku": [
+     "JH001BAPK"
+    ],
     "photo": "images/JH001/baby-pink.jpg"
    },
    {
     "name": "Dusty Pink",
     "hex": "#d8a7ae",
+    "sku": [
+     "JH001DUPK"
+    ],
     "photo": "images/JH001/dusty-pink.jpg"
    },
    {
     "name": "Lilac",
     "hex": "#c9a9dc",
+    "sku": [
+     "JH001LILA"
+    ],
     "photo": "images/JH001/lilac.jpg"
    },
    {
     "name": "Digital Lavender",
     "hex": "#b9a8e0",
+    "sku": [
+     "JH001DLAV"
+    ],
     "photo": "images/JH001/digital-lavender.jpg"
    },
    {
     "name": "Purple",
     "hex": "#6b2d8e",
+    "sku": [
+     "JH001PURP"
+    ],
     "photo": "images/JH001/purple.jpg"
    },
    {
     "name": "Oxford Navy",
     "hex": "#1c2541",
+    "sku": [
+     "JH001OXNY"
+    ],
     "photo": "images/JH001/oxford-navy.jpg"
    },
    {
     "name": "Sky Blue",
     "hex": "#8fc7e8",
+    "sku": [
+     "JH001SKYY"
+    ],
     "photo": "images/JH001/sky-blue.jpg"
    },
    {
     "name": "Heather Grey",
     "hex": "#b9b9b9",
+    "sku": [
+     "JH001HGRE"
+    ],
     "photo": "images/JH001/heather-grey.jpg"
    }
   ],
@@ -203,61 +250,97 @@ window.PRODUCTS = [
    {
     "name": "Baby Pink",
     "hex": "#f5c9d6",
+    "sku": [
+     "JH01JBAPK"
+    ],
     "photo": "images/JH01J/baby-pink.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JH01JJBLA"
+    ],
     "photo": "images/JH01J/jet-black.jpg"
    },
    {
     "name": "Deep Black",
     "hex": "#0b0b0b",
+    "sku": [
+     "JH01JDPBK"
+    ],
     "photo": "images/JH01J/deep-black.jpg"
    },
    {
     "name": "Arctic White",
     "hex": "#f7f7f5",
+    "sku": [
+     "JH01JAWHI"
+    ],
     "photo": "images/JH01J/arctic-white.jpg"
    },
    {
     "name": "Hot Pink",
     "hex": "#e0457b",
+    "sku": [
+     "JH01JHOPK"
+    ],
     "photo": "images/JH01J/hot-pink.jpg"
    },
    {
     "name": "Dusty Pink",
     "hex": "#d8a7ae",
+    "sku": [
+     "JH01JDUPK"
+    ],
     "photo": "images/JH01J/dusty-pink.jpg"
    },
    {
     "name": "Candyfloss Pink",
     "hex": "#f7b8d2",
+    "sku": [
+     "JH01JCFPK"
+    ],
     "photo": "images/JH01J/candyfloss-pink.jpg"
    },
    {
     "name": "Lilac",
     "hex": "#c9a9dc",
+    "sku": [
+     "JH01JLILA"
+    ],
     "photo": "images/JH01J/lilac.jpg"
    },
    {
     "name": "Digital Lavender",
     "hex": "#b9a8e0",
+    "sku": [
+     "JH01JDLAV"
+    ],
     "photo": "images/JH01J/digital-lavender.jpg"
    },
    {
     "name": "Purple",
     "hex": "#6b2d8e",
+    "sku": [
+     "JH01JPURP"
+    ],
     "photo": "images/JH01J/purple.jpg"
    },
    {
     "name": "Oxford Navy",
     "hex": "#1c2541",
+    "sku": [
+     "JH01JOXNY"
+    ],
     "photo": "images/JH01J/oxford-navy.jpg"
    },
    {
     "name": "Heather Grey",
     "hex": "#b9b9b9",
+    "sku": [
+     "JH01JHGRE"
+    ],
     "photo": "images/JH01J/heather-grey.jpg"
    }
   ],
@@ -289,51 +372,81 @@ window.PRODUCTS = [
    {
     "name": "Dusty Pink",
     "hex": "#d8a7ae",
+    "sku": [
+     "JH050DUPK"
+    ],
     "photo": "images/JH050/dusty-pink.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JH050JBLA"
+    ],
     "photo": "images/JH050/jet-black.jpg"
    },
    {
     "name": "Deep Black",
     "hex": "#0b0b0b",
+    "sku": [
+     "JH050DPBK"
+    ],
     "photo": "images/JH050/deep-black.jpg"
    },
    {
     "name": "Arctic White",
     "hex": "#f7f7f5",
+    "sku": [
+     "JH050AWHI"
+    ],
     "photo": "images/JH050/arctic-white.jpg"
    },
    {
     "name": "Baby Pink",
     "hex": "#f5c9d6",
+    "sku": [
+     "JH050BAPK"
+    ],
     "photo": "images/JH050/baby-pink.jpg"
    },
    {
     "name": "Hot Pink",
     "hex": "#e0457b",
+    "sku": [
+     "JH050HOPK"
+    ],
     "photo": "images/JH050/hot-pink.jpg"
    },
    {
     "name": "Digital Lavender",
     "hex": "#b9a8e0",
+    "sku": [
+     "JH050DLAV"
+    ],
     "photo": "images/JH050/digital-lavender.jpg"
    },
    {
     "name": "Purple",
     "hex": "#6b2d8e",
+    "sku": [
+     "JH050PURP"
+    ],
     "photo": "images/JH050/purple.jpg"
    },
    {
     "name": "Oxford Navy",
     "hex": "#1c2541",
+    "sku": [
+     "JH050OXNY"
+    ],
     "photo": "images/JH050/oxford-navy.jpg"
    },
    {
     "name": "Heather Grey",
     "hex": "#b9b9b9",
+    "sku": [
+     "JH050HGRE"
+    ],
     "photo": "images/JH050/heather-grey.jpg"
    }
   ],
@@ -362,91 +475,145 @@ window.PRODUCTS = [
    {
     "name": "Hot Pink",
     "hex": "#e0457b",
+    "sku": [
+     "JH50JHOPK"
+    ],
     "photo": "images/JH50J/hot-pink.jpg"
    },
    {
     "name": "Arctic White",
     "hex": "#f7f7f5",
+    "sku": [
+     "JH50JAWHI"
+    ],
     "photo": "images/JH50J/arctic-white.jpg"
    },
    {
     "name": "Baby Pink",
     "hex": "#f5c9d6",
+    "sku": [
+     "JH50JBAPK"
+    ],
     "photo": "images/JH50J/baby-pink.jpg"
    },
    {
     "name": "Burgundy",
     "hex": "#6d1f33",
+    "sku": [
+     "JH50JBURG"
+    ],
     "photo": "images/JH50J/burgundy.jpg"
    },
    {
     "name": "Deep Black",
     "hex": "#0b0b0b",
+    "sku": [
+     "JH50JDPBK"
+    ],
     "photo": "images/JH50J/deep-black.jpg"
    },
    {
     "name": "Desert Sand",
     "hex": "#d9c3a0",
+    "sku": [
+     "JH50JDSAN"
+    ],
     "photo": "images/JH50J/desert-sand.jpg"
    },
    {
     "name": "Digital Lavender",
     "hex": "#b9a8e0",
+    "sku": [
+     "JH50JDLAV"
+    ],
     "photo": "images/JH50J/digital-lavender.jpg"
    },
    {
     "name": "Fire Red",
     "hex": "#d32f2f",
+    "sku": [
+     "JH50JFRED"
+    ],
     "photo": "images/JH50J/fire-red.jpg"
    },
    {
     "name": "Hawaiian Blue",
     "hex": "#1ba6c9",
+    "sku": [
+     "JH50JHBLU"
+    ],
     "photo": "images/JH50J/hawaiian-blue.jpg"
    },
    {
     "name": "Heather Grey",
     "hex": "#b9b9b9",
+    "sku": [
+     "JH50JHGRE"
+    ],
     "photo": "images/JH50J/heather-grey.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JH50JJBLA"
+    ],
     "photo": "images/JH50J/jet-black.jpg"
    },
    {
     "name": "Kelly Green",
     "hex": "#2e9e4f",
+    "sku": [
+     "JH50JKELL"
+    ],
     "photo": "images/JH50J/kelly-green.jpg"
    },
    {
     "name": "New French Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "JH50JNFNA"
+    ],
     "photo": "images/JH50J/new-french-navy.jpg"
    },
    {
     "name": "Oxford Navy",
     "hex": "#1c2541",
+    "sku": [
+     "JH50JOXNY"
+    ],
     "photo": "images/JH50J/oxford-navy.jpg"
    },
    {
     "name": "Purple",
     "hex": "#6b2d8e",
+    "sku": [
+     "JH50JPURP"
+    ],
     "photo": "images/JH50J/purple.jpg"
    },
    {
     "name": "Royal Blue",
     "hex": "#2447a8",
+    "sku": [
+     "JH50JROYA"
+    ],
     "photo": "images/JH50J/royal-blue.jpg"
    },
    {
     "name": "Sapphire Blue",
     "hex": "#1f5fbf",
+    "sku": [
+     "JH50JSAPP"
+    ],
     "photo": "images/JH50J/sapphire-blue.jpg"
    },
    {
     "name": "Sun Yellow",
     "hex": "#f7c948",
+    "sku": [
+     "JH50JSYEL"
+    ],
     "photo": "images/JH50J/sun-yellow.jpg"
    }
   ],
@@ -479,51 +646,81 @@ window.PRODUCTS = [
    {
     "name": "Baby Pink",
     "hex": "#f5c9d6",
+    "sku": [
+     "JC001BAPK"
+    ],
     "photo": "images/JC001/baby-pink.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JC001JBLA"
+    ],
     "photo": "images/JC001/jet-black.jpg"
    },
    {
     "name": "Arctic White",
     "hex": "#f7f7f5",
+    "sku": [
+     "JC001AWHI"
+    ],
     "photo": "images/JC001/arctic-white.jpg"
    },
    {
     "name": "Hot Pink",
     "hex": "#e0457b",
+    "sku": [
+     "JC001HOPK"
+    ],
     "photo": "images/JC001/hot-pink.jpg"
    },
    {
     "name": "Electric Pink",
     "hex": "#ff3d9a",
+    "sku": [
+     "JC001EPIN"
+    ],
     "photo": "images/JC001/electric-pink.jpg"
    },
    {
     "name": "Hyper Pink",
     "hex": "#ff4f9e",
+    "sku": [
+     "JC001HYPP"
+    ],
     "photo": "images/JC001/hyper-pink.jpg"
    },
    {
     "name": "Digital Lavender",
     "hex": "#b9a8e0",
+    "sku": [
+     "JC001DLAV"
+    ],
     "photo": "images/JC001/digital-lavender.jpg"
    },
    {
     "name": "Purple",
     "hex": "#6b2d8e",
+    "sku": [
+     "JC001PURP"
+    ],
     "photo": "images/JC001/purple.jpg"
    },
    {
     "name": "French Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "JC001FNAV"
+    ],
     "photo": "images/JC001/french-navy.jpg"
    },
    {
     "name": "Sky Blue",
     "hex": "#8fc7e8",
+    "sku": [
+     "JC001SKYY"
+    ],
     "photo": "images/JC001/sky-blue.jpg"
    }
   ],
@@ -553,51 +750,81 @@ window.PRODUCTS = [
    {
     "name": "Hot Pink",
     "hex": "#e0457b",
+    "sku": [
+     "JC01JHOPK"
+    ],
     "photo": "images/JC01J/hot-pink.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JC01JJBLA"
+    ],
     "photo": "images/JC01J/jet-black.jpg"
    },
    {
     "name": "Arctic White",
     "hex": "#f7f7f5",
+    "sku": [
+     "JC01JAWHI"
+    ],
     "photo": "images/JC01J/arctic-white.jpg"
    },
    {
     "name": "Electric Pink",
     "hex": "#ff3d9a",
+    "sku": [
+     "JC01JEPIN"
+    ],
     "photo": "images/JC01J/electric-pink.jpg"
    },
    {
     "name": "Hyper Pink",
     "hex": "#ff4f9e",
+    "sku": [
+     "JC01JHYPP"
+    ],
     "photo": "images/JC01J/hyper-pink.jpg"
    },
    {
     "name": "Magenta Magic",
     "hex": "#c2187a",
+    "sku": [
+     "JC01JMMAG"
+    ],
     "photo": "images/JC01J/magenta-magic.jpg"
    },
    {
     "name": "Digital Lavender",
     "hex": "#b9a8e0",
+    "sku": [
+     "JC01JDLAV"
+    ],
     "photo": "images/JC01J/digital-lavender.jpg"
    },
    {
     "name": "Purple",
     "hex": "#6b2d8e",
+    "sku": [
+     "JC01JPURP"
+    ],
     "photo": "images/JC01J/purple.jpg"
    },
    {
     "name": "French Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "JC01JFNAV"
+    ],
     "photo": "images/JC01J/french-navy.jpg"
    },
    {
     "name": "Sky Blue",
     "hex": "#8fc7e8",
+    "sku": [
+     "JC01JSKYY"
+    ],
     "photo": "images/JC01J/sky-blue.jpg"
    }
   ],
@@ -628,91 +855,145 @@ window.PRODUCTS = [
    {
     "name": "Light Pink",
     "hex": "#f4c6cf",
+    "sku": [
+     "TR019LPIN"
+    ],
     "photo": "images/TR019/light-pink.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TR019BLAC"
+    ],
     "photo": "images/TR019/black.jpg"
    },
    {
     "name": "Charcoal",
     "hex": "#4a4a4a",
+    "sku": [
+     "TR019CHAR"
+    ],
     "photo": "images/TR019/charcoal.jpg"
    },
    {
     "name": "Chocolate",
     "hex": "#5a3a2a",
+    "sku": [
+     "TR019CHOC"
+    ],
     "photo": "images/TR019/chocolate.jpg"
    },
    {
     "name": "Cornflower",
     "hex": "#6f8fd8",
+    "sku": [
+     "TR019CORN"
+    ],
     "photo": "images/TR019/cornflower.jpg"
    },
    {
     "name": "Dusky Pink",
     "hex": "#cf9aa0",
+    "sku": [
+     "TR019DSPK"
+    ],
     "photo": "images/TR019/dusky-pink.jpg"
    },
    {
     "name": "Heather Grey",
     "hex": "#b9b9b9",
+    "sku": [
+     "TR019HGRE"
+    ],
     "photo": "images/TR019/heather-grey.jpg"
    },
    {
     "name": "Mulberry",
     "hex": "#7a2446",
+    "sku": [
+     "TR019MULB"
+    ],
     "photo": "images/TR019/mulberry.jpg"
    },
    {
     "name": "Nude",
     "hex": "#d8b49a",
+    "sku": [
+     "TR019NUDE"
+    ],
     "photo": "images/TR019/nude.jpg"
    },
    {
     "name": "Olive",
     "hex": "#6b6b3a",
+    "sku": [
+     "TR019OLIV"
+    ],
     "photo": "images/TR019/olive.jpg"
    },
    {
     "name": "Orange",
     "hex": "#ef7d22",
+    "sku": [
+     "TR019ORAN"
+    ],
     "photo": "images/TR019/orange.jpg"
    },
    {
     "name": "Peppermint",
     "hex": "#a8dcc5",
+    "sku": [
+     "TR019PEPP"
+    ],
     "photo": "images/TR019/peppermint.jpg"
    },
    {
     "name": "Royal",
     "hex": "#2447a8",
+    "sku": [
+     "TR019ROYA"
+    ],
     "photo": "images/TR019/royal.jpg"
    },
    {
     "name": "Sage Green",
     "hex": "#9cae8e",
+    "sku": [
+     "TR019SAGE"
+    ],
     "photo": "images/TR019/sage-green.jpg"
    },
    {
     "name": "Sky Blue",
     "hex": "#8fc7e8",
+    "sku": [
+     "TR019SBLU"
+    ],
     "photo": "images/TR019/sky-blue.jpg"
    },
    {
     "name": "Stone",
     "hex": "#cbbfa8",
+    "sku": [
+     "TR019STON"
+    ],
     "photo": "images/TR019/stone.jpg"
    },
    {
     "name": "Teal",
     "hex": "#1f8a8a",
+    "sku": [
+     "TR019TEAL"
+    ],
     "photo": "images/TR019/teal.jpg"
    },
    {
     "name": "White",
     "hex": "#f7f7f5",
+    "sku": [
+     "TR019WHIT"
+    ],
     "photo": "images/TR019/white.jpg"
    }
   ],
@@ -741,11 +1022,17 @@ window.PRODUCTS = [
    {
     "name": "White",
     "hex": "#f7f7f5",
+    "sku": [
+     "SK106WHIT"
+    ],
     "photo": "images/SK106/white.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "SK106BLAC"
+    ],
     "photo": "images/SK106/black.jpg"
    }
   ],
@@ -775,11 +1062,17 @@ window.PRODUCTS = [
    {
     "name": "Arctic White",
     "hex": "#f7f7f5",
+    "sku": [
+     "JC017AWHI"
+    ],
     "photo": "images/JC017/arctic-white.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JC017JBLA"
+    ],
     "photo": "images/JC017/jet-black.jpg"
    }
   ],
@@ -807,6 +1100,9 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "SM106BLAC"
+    ],
     "photo": "images/SM106/black.jpg"
    }
   ],
@@ -834,6 +1130,9 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TL697BLAC"
+    ],
     "photo": "images/TL697/black.jpg"
    }
   ],
@@ -864,21 +1163,33 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TL371BLAC"
+    ],
     "photo": "images/TL371/black.jpg"
    },
    {
     "name": "Charcoal Grey",
     "hex": "#4a4a4a",
+    "sku": [
+     "TL371CHGY"
+    ],
     "photo": "images/TL371/charcoal-grey.jpg"
    },
    {
     "name": "Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "TL371NAVY"
+    ],
     "photo": "images/TL371/navy.jpg"
    },
    {
     "name": "Olive Green",
     "hex": "#5f6a3a",
+    "sku": [
+     "TL371OLIV"
+    ],
     "photo": "images/TL371/olive-green.jpg"
    }
   ],
@@ -910,11 +1221,17 @@ window.PRODUCTS = [
    {
     "name": "Digital Lavender",
     "hex": "#b9a8e0",
+    "sku": [
+     "JC217DLAV"
+    ],
     "photo": "images/JC217/digital-lavender.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JC217JBLA"
+    ],
     "photo": "images/JC217/jet-black.jpg"
    }
   ],
@@ -948,16 +1265,25 @@ window.PRODUCTS = [
    {
     "name": "Acid Wash",
     "hex": "#6c7480",
+    "sku": [
+     "TR532ACWA"
+    ],
     "photo": "images/TR532/acid-wash.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TR532BLAC"
+    ],
     "photo": "images/TR532/black.jpg"
    },
    {
     "name": "Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "TR532NAVY"
+    ],
     "photo": "images/TR532/navy.jpg"
    }
   ],
@@ -986,26 +1312,41 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TL370BLAC"
+    ],
     "photo": "images/TL370/black.jpg"
    },
    {
     "name": "Charcoal Grey",
     "hex": "#4a4a4a",
+    "sku": [
+     "TL370CHGY"
+    ],
     "photo": "images/TL370/charcoal-grey.jpg"
    },
    {
     "name": "Deep Burgundy",
     "hex": "#5c1a2b",
+    "sku": [
+     "TL370DBUR"
+    ],
     "photo": "images/TL370/deep-burgundy.jpg"
    },
    {
     "name": "Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "TL370NAVY"
+    ],
     "photo": "images/TL370/navy.jpg"
    },
    {
     "name": "Olive Green",
     "hex": "#5f6a3a",
+    "sku": [
+     "TL370OLIV"
+    ],
     "photo": "images/TL370/olive-green.jpg"
    }
   ],
@@ -1034,6 +1375,9 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "SK064BLAC"
+    ],
     "photo": "images/SK064/black.jpg"
    }
   ],
@@ -1062,6 +1406,9 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "SM064BLAC"
+    ],
     "photo": "images/SM064/black.jpg"
    }
   ],
@@ -1089,11 +1436,17 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TR31BBLAC"
+    ],
     "photo": "images/TR31B/black.jpg"
    },
    {
     "name": "Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "TR31BNAVY"
+    ],
     "photo": "images/TR31B/navy.jpg"
    }
   ],
@@ -1122,20 +1475,13 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TR17BBLAC"
+    ],
     "photo": "images/TR17B/black.jpg"
-   },
-   {
-    "name": "Black Camo",
-    "hex": "#2c2c2c",
-    "photo": "images/TR17B/black-camo.jpg"
-   },
-   {
-    "name": "Navy",
-    "hex": "#1f2a56",
-    "photo": "images/TR17B/navy.jpg"
    }
   ],
-  "colourNote": "",
+  "colourNote": "1 of 3 colours shown; ask for others.",
   "notes": ""
  },
  {
@@ -1161,26 +1507,41 @@ window.PRODUCTS = [
    {
     "name": "Heather Grey",
     "hex": "#b9b9b9",
+    "sku": [
+     "JH072HGRE"
+    ],
     "photo": "images/JH072/heather-grey.jpg"
    },
    {
     "name": "Charcoal",
     "hex": "#4a4a4a",
+    "sku": [
+     "JH072CHAR"
+    ],
     "photo": "images/JH072/charcoal.jpg"
    },
    {
     "name": "Deep Black",
     "hex": "#0b0b0b",
+    "sku": [
+     "JH072DPBK"
+    ],
     "photo": "images/JH072/deep-black.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JH072JBLA"
+    ],
     "photo": "images/JH072/jet-black.jpg"
    },
    {
     "name": "New French Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "JH072NFNA"
+    ],
     "photo": "images/JH072/new-french-navy.jpg"
    }
   ],
@@ -1208,16 +1569,25 @@ window.PRODUCTS = [
    {
     "name": "Heather Grey",
     "hex": "#b9b9b9",
+    "sku": [
+     "JH72JHGRE"
+    ],
     "photo": "images/JH72J/heather-grey.jpg"
    },
    {
     "name": "Jet Black",
     "hex": "#141414",
+    "sku": [
+     "JH72JJBLA"
+    ],
     "photo": "images/JH72J/jet-black.jpg"
    },
    {
     "name": "New French Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "JH72JNFNA"
+    ],
     "photo": "images/JH72J/new-french-navy.jpg"
    }
   ],
@@ -1243,30 +1613,45 @@ window.PRODUCTS = [
     "name": "Classic Pink/Light Grey",
     "hex": "#f2a7c3",
     "accent": "#cfcfcf",
+    "sku": [
+     "BG145CPLG_COLOUR"
+    ],
     "photo": "images/BG145/classic-pink-light-grey.jpg"
    },
    {
     "name": "Black/Fuchsia",
     "hex": "#141414",
     "accent": "#d0237a",
+    "sku": [
+     "BG145BKFU_COLOUR"
+    ],
     "photo": "images/BG145/black-fuchsia.jpg"
    },
    {
     "name": "Black/White",
     "hex": "#141414",
     "accent": "#f7f7f5",
+    "sku": [
+     "BG145BKWH_COLOUR"
+    ],
     "photo": "images/BG145/black-white.jpg"
    },
    {
     "name": "Fuchsia/Black",
     "hex": "#d0237a",
     "accent": "#141414",
+    "sku": [
+     "BG145FUBK_COLOUR"
+    ],
     "photo": "images/BG145/fuchsia-black.jpg"
    },
    {
     "name": "Purple/Light Grey",
     "hex": "#6b2d8e",
     "accent": "#cfcfcf",
+    "sku": [
+     "BG145PULG_COLOUR"
+    ],
     "photo": "images/BG145/purple-light-grey.jpg"
    }
   ],
@@ -1291,121 +1676,193 @@ window.PRODUCTS = [
    {
     "name": "Classic Pink",
     "hex": "#f2a7c3",
+    "sku": [
+     "BG010PINK_COLOUR"
+    ],
     "photo": "images/BG010/classic-pink.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "BG010BLAC_COLOUR"
+    ],
     "photo": "images/BG010/black.jpg"
    },
    {
     "name": "Bottle Green",
     "hex": "#1f4d34",
+    "sku": [
+     "BG010BOTT_COLOUR"
+    ],
     "photo": "images/BG010/bottle-green.jpg"
    },
    {
     "name": "Bright Red",
     "hex": "#d7262e",
+    "sku": [
+     "BG010BRED_COLOUR"
+    ],
     "photo": "images/BG010/bright-red.jpg"
    },
    {
     "name": "Bright Royal",
     "hex": "#2447a8",
+    "sku": [
+     "BG010BROY_COLOUR"
+    ],
     "photo": "images/BG010/bright-royal.jpg"
    },
    {
     "name": "Burgundy",
     "hex": "#6d1f33",
+    "sku": [
+     "BG010BURG_COLOUR"
+    ],
     "photo": "images/BG010/burgundy.jpg"
    },
    {
     "name": "Classic Red",
     "hex": "#c62828",
+    "sku": [
+     "BG010CRED_COLOUR"
+    ],
     "photo": "images/BG010/classic-red.jpg"
    },
    {
     "name": "Fluorescent Orange",
     "hex": "#ff7a1a",
+    "sku": [
+     "BG010FORA_COLOUR"
+    ],
     "photo": "images/BG010/fluorescent-orange.jpg"
    },
    {
     "name": "Fluorescent Yellow",
     "hex": "#e8f53a",
+    "sku": [
+     "BG010FYEL_COLOUR"
+    ],
     "photo": "images/BG010/fluorescent-yellow.jpg"
    },
    {
     "name": "French Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "BG010FNAV_COLOUR"
+    ],
     "photo": "images/BG010/french-navy.jpg"
    },
    {
     "name": "Fuchsia",
     "hex": "#d0237a",
+    "sku": [
+     "BG010FUCH_COLOUR"
+    ],
     "photo": "images/BG010/fuchsia.jpg"
    },
    {
     "name": "Graphite Grey",
     "hex": "#4b4f55",
+    "sku": [
+     "BG010GRAP_COLOUR"
+    ],
     "photo": "images/BG010/graphite-grey.jpg"
    },
    {
     "name": "Kelly Green",
     "hex": "#2e9e4f",
+    "sku": [
+     "BG010KELL_COLOUR"
+    ],
     "photo": "images/BG010/kelly-green.jpg"
    },
    {
     "name": "Light Grey",
     "hex": "#cfcfcf",
+    "sku": [
+     "BG010LGRE_COLOUR"
+    ],
     "photo": "images/BG010/light-grey.jpg"
    },
    {
     "name": "Lime",
     "hex": "#a6d93b",
+    "sku": [
+     "BG010LIME_COLOUR"
+    ],
     "photo": "images/BG010/lime.jpg"
    },
    {
     "name": "Ocean Blue",
     "hex": "#1c6fa8",
+    "sku": [
+     "BG010OCBL_COLOUR"
+    ],
     "photo": "images/BG010/ocean-blue.jpg"
    },
    {
     "name": "Orange",
     "hex": "#ef7d22",
+    "sku": [
+     "BG010ORAN_COLOUR"
+    ],
     "photo": "images/BG010/orange.jpg"
    },
    {
     "name": "Purple",
     "hex": "#6b2d8e",
+    "sku": [
+     "BG010PURP_COLOUR"
+    ],
     "photo": "images/BG010/purple.jpg"
    },
    {
     "name": "Sapphire Blue",
     "hex": "#1f5fbf",
+    "sku": [
+     "BG010SAPP_COLOUR"
+    ],
     "photo": "images/BG010/sapphire-blue.jpg"
    },
    {
     "name": "Silver",
     "hex": "#c4c7cc",
+    "sku": [
+     "BG010SILV_COLOUR"
+    ],
     "photo": "images/BG010/silver.jpg"
    },
    {
     "name": "Sky Blue",
     "hex": "#8fc7e8",
+    "sku": [
+     "BG010SKYY_COLOUR"
+    ],
     "photo": "images/BG010/sky-blue.jpg"
    },
    {
     "name": "Surf Blue",
     "hex": "#3fa7d6",
+    "sku": [
+     "BG010SUBL_COLOUR"
+    ],
     "photo": "images/BG010/surf-blue.jpg"
    },
    {
     "name": "White",
     "hex": "#f7f7f5",
+    "sku": [
+     "BG010WHIT_COLOUR"
+    ],
     "photo": "images/BG010/white.jpg"
    },
    {
     "name": "Yellow",
     "hex": "#f7d43a",
+    "sku": [
+     "BG010YELL_COLOUR"
+    ],
     "photo": "images/BG010/yellow.jpg"
    }
   ],
@@ -1430,46 +1887,73 @@ window.PRODUCTS = [
    {
     "name": "Fuchsia",
     "hex": "#d0237a",
+    "sku": [
+     "BG540FUCH_COLOUR"
+    ],
     "photo": "images/BG540/fuchsia.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "BG540BLAC_COLOUR"
+    ],
     "photo": "images/BG540/black.jpg"
    },
    {
     "name": "Bright Royal",
     "hex": "#2447a8",
+    "sku": [
+     "BG540BROY_COLOUR"
+    ],
     "photo": "images/BG540/bright-royal.jpg"
    },
    {
     "name": "Classic Red",
     "hex": "#c62828",
+    "sku": [
+     "BG540CRED_COLOUR"
+    ],
     "photo": "images/BG540/classic-red.jpg"
    },
    {
     "name": "French Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "BG540FNAV_COLOUR"
+    ],
     "photo": "images/BG540/french-navy.jpg"
    },
    {
     "name": "Grey Marl",
     "hex": "#a9a9ab",
+    "sku": [
+     "BG540GMAR_COLOUR"
+    ],
     "photo": "images/BG540/grey-marl.jpg"
    },
    {
     "name": "Ice Grey",
     "hex": "#dfe3e6",
+    "sku": [
+     "BG540ICGY_COLOUR"
+    ],
     "photo": "images/BG540/ice-grey.jpg"
    },
    {
     "name": "Lime Green",
     "hex": "#9bd63b",
+    "sku": [
+     "BG540LIME_COLOUR"
+    ],
     "photo": "images/BG540/lime-green.jpg"
    },
    {
     "name": "Orange",
     "hex": "#ef7d22",
+    "sku": [
+     "BG540ORAN_COLOUR"
+    ],
     "photo": "images/BG540/orange.jpg"
    }
   ],
@@ -1495,23 +1979,35 @@ window.PRODUCTS = [
     "name": "Classic Pink/White",
     "hex": "#f2a7c3",
     "accent": "#f7f7f5",
+    "sku": [
+     "B140SCPWH_COLOUR"
+    ],
     "photo": "images/B140S/classic-pink-white.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "B140SBKBK_COLOUR"
+    ],
     "photo": "images/B140S/black.jpg"
    },
    {
     "name": "Black/Fuchsia",
     "hex": "#141414",
     "accent": "#d0237a",
+    "sku": [
+     "B140SBKFU_COLOUR"
+    ],
     "photo": "images/B140S/black-fuchsia.jpg"
    },
    {
     "name": "French Navy/Off White",
     "hex": "#1f2a56",
     "accent": "#f1eee6",
+    "sku": [
+     "B140SFNOW_COLOUR"
+    ],
     "photo": "images/B140S/french-navy-off-white.jpg"
    }
   ],
@@ -1537,77 +2033,116 @@ window.PRODUCTS = [
     "name": "Classic Pink/White",
     "hex": "#f2a7c3",
     "accent": "#f7f7f5",
+    "sku": [
+     "BG140CPWH_COLOUR"
+    ],
     "photo": "images/BG140/classic-pink-white.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "BG140BKBK_COLOUR"
+    ],
     "photo": "images/BG140/black.jpg"
    },
    {
     "name": "Black/Fuchsia",
     "hex": "#141414",
     "accent": "#d0237a",
+    "sku": [
+     "BG140BKFU_COLOUR"
+    ],
     "photo": "images/BG140/black-fuchsia.jpg"
    },
    {
     "name": "Black/Grey",
     "hex": "#141414",
     "accent": "#9a9a9a",
+    "sku": [
+     "BG140BKGY_COLOUR"
+    ],
     "photo": "images/BG140/black-grey.jpg"
    },
    {
     "name": "Bright Royal/Off White",
     "hex": "#2447a8",
     "accent": "#f1eee6",
+    "sku": [
+     "BG140BROW_COLOUR"
+    ],
     "photo": "images/BG140/bright-royal-off-white.jpg"
    },
    {
     "name": "Burgundy/Off White",
     "hex": "#6d1f33",
     "accent": "#f1eee6",
+    "sku": [
+     "BG140BUOW_COLOUR"
+    ],
     "photo": "images/BG140/burgundy-off-white.jpg"
    },
    {
     "name": "Classic Red/Off White",
     "hex": "#c62828",
     "accent": "#f1eee6",
+    "sku": [
+     "BG140CROW_COLOUR"
+    ],
     "photo": "images/BG140/classic-red-off-white.jpg"
    },
    {
     "name": "French Navy/Classic Red",
     "hex": "#1f2a56",
     "accent": "#c62828",
+    "sku": [
+     "BG140FNCR_COLOUR"
+    ],
     "photo": "images/BG140/french-navy-classic-red.jpg"
    },
    {
     "name": "French Navy/Off White",
     "hex": "#1f2a56",
     "accent": "#f1eee6",
+    "sku": [
+     "BG140FNOW_COLOUR"
+    ],
     "photo": "images/BG140/french-navy-off-white.jpg"
    },
    {
     "name": "Grey Marl/Black",
     "hex": "#a9a9ab",
     "accent": "#141414",
+    "sku": [
+     "BG140GMBK_COLOUR"
+    ],
     "photo": "images/BG140/grey-marl-black.jpg"
    },
    {
     "name": "Kelly Green/Off White",
     "hex": "#2e9e4f",
     "accent": "#f1eee6",
+    "sku": [
+     "BG140KGOW_COLOUR"
+    ],
     "photo": "images/BG140/kelly-green-off-white.jpg"
    },
    {
     "name": "Light Grey/French Navy",
     "hex": "#cfcfcf",
     "accent": "#1f2a56",
+    "sku": [
+     "BG140LGFN_COLOUR"
+    ],
     "photo": "images/BG140/light-grey-french-navy.jpg"
    },
    {
     "name": "Mint Green/White",
     "hex": "#aee3cb",
     "accent": "#f7f7f5",
+    "sku": [
+     "BG140MGWH_COLOUR"
+    ],
     "photo": "images/BG140/mint-green-white.jpg"
    }
   ],
@@ -1632,81 +2167,129 @@ window.PRODUCTS = [
    {
     "name": "Rose",
     "hex": "#e9a8b6",
+    "sku": [
+     "RL670ROSE_COLOUR"
+    ],
     "photo": "images/RL670/rose.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "RL670BLAC_COLOUR"
+    ],
     "photo": "images/RL670/black.jpg"
    },
    {
     "name": "Blue Haze",
     "hex": "#8fa7c4",
+    "sku": [
+     "RL670BLHA_COLOUR"
+    ],
     "photo": "images/RL670/blue-haze.jpg"
    },
    {
     "name": "Bottle Green",
     "hex": "#1f4d34",
+    "sku": [
+     "RL670BOGR_COLOUR"
+    ],
     "photo": "images/RL670/bottle-green.jpg"
    },
    {
     "name": "Chestnut",
     "hex": "#7b3f2a",
+    "sku": [
+     "RL670CHES_COLOUR"
+    ],
     "photo": "images/RL670/chestnut.jpg"
    },
    {
     "name": "Fern",
     "hex": "#5f7f4a",
+    "sku": [
+     "RL670FERN_COLOUR"
+    ],
     "photo": "images/RL670/fern.jpg"
    },
    {
     "name": "Fire Red",
     "hex": "#d32f2f",
+    "sku": [
+     "RL670FRED_COLOUR"
+    ],
     "photo": "images/RL670/fire-red.jpg"
    },
    {
     "name": "French Dark Navy",
     "hex": "#1b2340",
+    "sku": [
+     "RL670FDNY_COLOUR"
+    ],
     "photo": "images/RL670/french-dark-navy.jpg"
    },
    {
     "name": "Natural",
     "hex": "#efe6d2",
+    "sku": [
+     "RL670NATU_COLOUR"
+    ],
     "photo": "images/RL670/natural.jpg"
    },
    {
     "name": "Orange",
     "hex": "#ef7d22",
+    "sku": [
+     "RL670ORAN_COLOUR"
+    ],
     "photo": "images/RL670/orange.jpg"
    },
    {
     "name": "Oxford Navy",
     "hex": "#1c2541",
+    "sku": [
+     "RL670OXNY_COLOUR"
+    ],
     "photo": "images/RL670/oxford-navy.jpg"
    },
    {
     "name": "Purple",
     "hex": "#6b2d8e",
+    "sku": [
+     "RL670PURP_COLOUR"
+    ],
     "photo": "images/RL670/purple.jpg"
    },
    {
     "name": "Royal",
     "hex": "#2447a8",
+    "sku": [
+     "RL670ROYA_COLOUR"
+    ],
     "photo": "images/RL670/royal.jpg"
    },
    {
     "name": "Sand",
     "hex": "#d8c3a0",
+    "sku": [
+     "RL670SAND_COLOUR"
+    ],
     "photo": "images/RL670/sand.jpg"
    },
    {
     "name": "Sunflower",
     "hex": "#f5c518",
+    "sku": [
+     "RL670SUNF_COLOUR"
+    ],
     "photo": "images/RL670/sunflower.jpg"
    },
    {
     "name": "White",
     "hex": "#f7f7f5",
+    "sku": [
+     "RL670WHIT_COLOUR"
+    ],
     "photo": "images/RL670/white.jpg"
    }
   ],
@@ -1732,11 +2315,17 @@ window.PRODUCTS = [
    {
     "name": "Fresh Pink",
     "hex": "#f4a9c4",
+    "sku": [
+     "BG560FRPI_COLOUR"
+    ],
     "photo": "images/BG560/fresh-pink.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "BG560BLAC_COLOUR"
+    ],
     "photo": "images/BG560/black.jpg"
    }
   ],
@@ -1768,12 +2357,18 @@ window.PRODUCTS = [
     "name": "Cosmic Fuchsia/White",
     "hex": "#d4337f",
     "accent": "#f7f7f5",
+    "sku": [
+     "NK376CFWH"
+    ],
     "photo": "images/NK376/cosmic-fuchsia-white.jpg"
    },
    {
     "name": "Iron Grey/Heather/White",
     "hex": "#6b6e73",
     "accent": "#b9b9b9",
+    "sku": [
+     "NK376IGHW"
+    ],
     "photo": "images/NK376/iron-grey-heather-white.jpg"
    }
   ],
@@ -1803,18 +2398,27 @@ window.PRODUCTS = [
     "name": "Black/White",
     "hex": "#141414",
     "accent": "#f7f7f5",
+    "sku": [
+     "NK379BKWH"
+    ],
     "photo": "images/NK379/black-white.jpg"
    },
    {
     "name": "Smoke Grey/Heather/Black",
     "hex": "#8a8d91",
     "accent": "#b9b9b9",
+    "sku": [
+     "NK379SGHB"
+    ],
     "photo": "images/NK379/smoke-grey-heather-black.jpg"
    },
    {
     "name": "White/Black",
     "hex": "#f7f7f5",
     "accent": "#141414",
+    "sku": [
+     "NK379WHBK"
+    ],
     "photo": "images/NK379/white-black.jpg"
    }
   ],
@@ -1845,6 +2449,9 @@ window.PRODUCTS = [
     "name": "Black/Dark Smoke Grey",
     "hex": "#141414",
     "accent": "#4b4d52",
+    "sku": [
+     "NK381BDSG"
+    ],
     "photo": "images/NK381/black-dark-smoke-grey.jpg"
    }
   ],
@@ -1874,22 +2481,22 @@ window.PRODUCTS = [
     "name": "Black/White",
     "hex": "#141414",
     "accent": "#f7f7f5",
+    "sku": [
+     "NK375BKWH"
+    ],
     "photo": "images/NK375/black-white.jpg"
-   },
-   {
-    "name": "Cosmic Fuchsia/White",
-    "hex": "#d4337f",
-    "accent": "#f7f7f5",
-    "photo": "images/NK375/cosmic-fuchsia-white.jpg"
    },
    {
     "name": "Particle Grey/Heather/Black",
     "hex": "#b7b9b8",
     "accent": "#b9b9b9",
+    "sku": [
+     "NK375PGHB"
+    ],
     "photo": "images/NK375/particle-grey-heather-black.jpg"
    }
   ],
-  "colourNote": "",
+  "colourNote": "2 of 3 colours shown; ask for others.",
   "notes": "",
   "eco": "100% recycled polyester"
  },
@@ -1917,6 +2524,9 @@ window.PRODUCTS = [
     "name": "Black/Reflective Silver",
     "hex": "#141414",
     "accent": "#c9ccd1",
+    "sku": [
+     "NK374BKRS"
+    ],
     "photo": "images/NK374/black-reflective-silver.jpg"
    }
   ],
@@ -1946,45 +2556,23 @@ window.PRODUCTS = [
     "name": "Black/White",
     "hex": "#141414",
     "accent": "#f7f7f5",
+    "sku": [
+     "NK421BKWH"
+    ],
     "photo": "images/NK421/black-white.jpg"
    },
    {
     "name": "White/Black",
     "hex": "#f7f7f5",
     "accent": "#141414",
+    "sku": [
+     "NK421WHBK"
+    ],
     "photo": "images/NK421/white-black.jpg"
    }
   ],
   "colourNote": "",
   "notes": ""
- },
- {
-  "code": "NK344",
-  "name": "Nike Victory polo (solid)",
-  "brand": "Nike",
-  "category": "premium",
-  "audience": "women",
-  "shape": "tee",
-  "price": 10.0,
-  "sizes": "XS – XL",
-  "sizeList": [
-   "XS",
-   "S",
-   "XL"
-  ],
-  "fabric": "100% Recycled polyester, 190gsm",
-  "blurb": "A Nike polo in recycled polyester for teachers and staff. Clearance stock, limited sizes.",
-  "colours": [
-   {
-    "name": "White/Black",
-    "hex": "#f7f7f5",
-    "accent": "#141414",
-    "photo": "images/NK344/white-black.jpg"
-   }
-  ],
-  "colourNote": "",
-  "notes": "",
-  "eco": "100% recycled polyester"
  },
  {
   "code": "NK387",
@@ -2008,26 +2596,30 @@ window.PRODUCTS = [
    {
     "name": "Black/Black/White",
     "hex": "#141414",
+    "sku": [
+     "NK387BKBW"
+    ],
     "photo": "images/NK387/black-black-white.jpg"
    },
    {
     "name": "Dark Grey Heather/Matte Silver/White",
     "hex": "#5d5f63",
     "accent": "#b5b8bc",
+    "sku": [
+     "NK387DMSW"
+    ],
     "photo": "images/NK387/dark-grey-heather-matte-silver-white.jpg"
-   },
-   {
-    "name": "Midnight Navy/Midnight Navy/White",
-    "hex": "#1b2340",
-    "photo": "images/NK387/midnight-navy-midnight-navy-white.jpg"
    },
    {
     "name": "White/White/Black",
     "hex": "#f7f7f5",
+    "sku": [
+     "NK387WWBK"
+    ],
     "photo": "images/NK387/white-white-black.jpg"
    }
   ],
-  "colourNote": "",
+  "colourNote": "3 of 4 colours shown; ask for others.",
   "notes": ""
  },
  {
@@ -2054,17 +2646,26 @@ window.PRODUCTS = [
     "name": "Black/White",
     "hex": "#141414",
     "accent": "#f7f7f5",
+    "sku": [
+     "UA048BKWH"
+    ],
     "photo": "images/UA048/black-white.jpg"
    },
    {
     "name": "Castlerock Light Heather",
     "hex": "#b8b9ba",
+    "sku": [
+     "UA048CALH"
+    ],
     "photo": "images/UA048/castlerock-light-heather.jpg"
    },
    {
     "name": "Midnight Navy/White",
     "hex": "#1b2340",
     "accent": "#f7f7f5",
+    "sku": [
+     "UA048MNWH"
+    ],
     "photo": "images/UA048/midnight-navy-white.jpg"
    }
   ],
@@ -2094,16 +2695,25 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "UA041BLAC"
+    ],
     "photo": "images/UA041/black.jpg"
    },
    {
     "name": "Castlerock Light Heather",
     "hex": "#b8b9ba",
+    "sku": [
+     "UA041CALH"
+    ],
     "photo": "images/UA041/castlerock-light-heather.jpg"
    },
    {
     "name": "Midnight Navy",
     "hex": "#1b2340",
+    "sku": [
+     "UA041MNAV"
+    ],
     "photo": "images/UA041/midnight-navy.jpg"
    }
   ],
@@ -2132,11 +2742,17 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "AD054BLAC"
+    ],
     "photo": "images/AD054/black.jpg"
    },
    {
     "name": "Collegiate Navy",
     "hex": "#1e2a4a",
+    "sku": [
+     "AD054CONY"
+    ],
     "photo": "images/AD054/collegiate-navy.jpg"
    }
   ],
@@ -2168,18 +2784,27 @@ window.PRODUCTS = [
     "name": "Academy Navy/Steel",
     "hex": "#26324f",
     "accent": "#7f868e",
+    "sku": [
+     "UA017ANST"
+    ],
     "photo": "images/UA017/academy-navy-steel.jpg"
    },
    {
     "name": "Black/Graphite",
     "hex": "#141414",
     "accent": "#3d4146",
+    "sku": [
+     "UA017BKGP"
+    ],
     "photo": "images/UA017/black-graphite.jpg"
    },
    {
     "name": "Steel/Black",
     "hex": "#7f868e",
     "accent": "#141414",
+    "sku": [
+     "UA017STBK"
+    ],
     "photo": "images/UA017/steel-black.jpg"
    }
   ],
@@ -2207,11 +2832,17 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "UA068BLAC"
+    ],
     "photo": "images/UA068/black.jpg"
    },
    {
     "name": "Castle Rock Grey",
     "hex": "#8e9093",
+    "sku": [
+     "UA068CARG"
+    ],
     "photo": "images/UA068/castle-rock-grey.jpg"
    }
   ],
@@ -2236,6 +2867,9 @@ window.PRODUCTS = [
    {
     "name": "Legend Ink",
     "hex": "#232c3d",
+    "sku": [
+     "AD201LEIN_COLOUR"
+    ],
     "photo": "images/AD201/legend-ink.jpg"
    }
   ],
@@ -2263,11 +2897,17 @@ window.PRODUCTS = [
    {
     "name": "White",
     "hex": "#f7f7f5",
+    "sku": [
+     "NK360WHIT"
+    ],
     "photo": "images/NK360/white.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "NK360BLAC"
+    ],
     "photo": "images/NK360/black.jpg"
    }
   ],
@@ -2294,6 +2934,9 @@ window.PRODUCTS = [
    {
     "name": "White",
     "hex": "#f7f7f5",
+    "sku": [
+     "AD095WHIT"
+    ],
     "photo": "images/AD095/white.jpg"
    }
   ],
@@ -2320,6 +2963,9 @@ window.PRODUCTS = [
    {
     "name": "White",
     "hex": "#f7f7f5",
+    "sku": [
+     "AD094WHIT"
+    ],
     "photo": "images/AD094/white.jpg"
    }
   ],
@@ -2348,6 +2994,9 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "SK427BKBK"
+    ],
     "photo": "images/SK427/black.jpg"
    }
   ],
@@ -2375,6 +3024,9 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "SM427BKBK"
+    ],
     "photo": "images/SM427/black.jpg"
    }
   ],
@@ -2401,16 +3053,25 @@ window.PRODUCTS = [
    {
     "name": "Purple Marl",
     "hex": "#6d5a86",
+    "sku": [
+     "TL301PUMA"
+    ],
     "photo": "images/TL301/purple-marl.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TL301BLAC"
+    ],
     "photo": "images/TL301/black.jpg"
    },
    {
     "name": "Dark Grey Marl",
     "hex": "#55575c",
+    "sku": [
+     "TL301DGMA"
+    ],
     "photo": "images/TL301/dark-grey-marl.jpg"
    }
   ],
@@ -2438,6 +3099,9 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TL309BLAC"
+    ],
     "photo": "images/TL309/black.jpg"
    }
   ],
@@ -2470,6 +3134,9 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TR046BLAC"
+    ],
     "photo": "images/TR046/black.jpg"
    }
   ],
@@ -2500,35 +3167,53 @@ window.PRODUCTS = [
     "name": "Red/Yellow",
     "hex": "#c62828",
     "accent": "#f7d43a",
+    "sku": [
+     "SK069RDYE"
+    ],
     "photo": "images/SK069/red-yellow.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "SK069BKBK"
+    ],
     "photo": "images/SK069/black.jpg"
    },
    {
     "name": "Black/White",
     "hex": "#141414",
     "accent": "#f7f7f5",
+    "sku": [
+     "SK069BKWH"
+    ],
     "photo": "images/SK069/black-white.jpg"
    },
    {
     "name": "Heather Grey/Black",
     "hex": "#b9b9b9",
     "accent": "#141414",
+    "sku": [
+     "SK069HGBK"
+    ],
     "photo": "images/SK069/heather-grey-black.jpg"
    },
    {
     "name": "Navy/White",
     "hex": "#1f2a56",
     "accent": "#f7f7f5",
+    "sku": [
+     "SK069NYWH"
+    ],
     "photo": "images/SK069/navy-white.jpg"
    },
    {
     "name": "Red/White",
     "hex": "#c62828",
     "accent": "#f7f7f5",
+    "sku": [
+     "SK069RDWH"
+    ],
     "photo": "images/SK069/red-white.jpg"
    }
   ],
@@ -2557,17 +3242,26 @@ window.PRODUCTS = [
     "name": "Navy/White",
     "hex": "#1f2a56",
     "accent": "#f7f7f5",
+    "sku": [
+     "SM069NYWH"
+    ],
     "photo": "images/SM069/navy-white.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "SM069BKBK"
+    ],
     "photo": "images/SM069/black.jpg"
    },
    {
     "name": "Black/White",
     "hex": "#141414",
     "accent": "#f7f7f5",
+    "sku": [
+     "SM069BKWH"
+    ],
     "photo": "images/SM069/black-white.jpg"
    }
   ],
@@ -2600,41 +3294,65 @@ window.PRODUCTS = [
    {
     "name": "White",
     "hex": "#f7f7f5",
+    "sku": [
+     "TR062WHIT"
+    ],
     "photo": "images/TR062/white.jpg"
    },
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "TR062BLAC"
+    ],
     "photo": "images/TR062/black.jpg"
    },
    {
     "name": "Charcoal",
     "hex": "#4a4a4a",
+    "sku": [
+     "TR062CHAR"
+    ],
     "photo": "images/TR062/charcoal.jpg"
    },
    {
     "name": "Heather Grey",
     "hex": "#b9b9b9",
+    "sku": [
+     "TR062HGRE"
+    ],
     "photo": "images/TR062/heather-grey.jpg"
    },
    {
     "name": "Nude",
     "hex": "#d8b49a",
+    "sku": [
+     "TR062NUDE"
+    ],
     "photo": "images/TR062/nude.jpg"
    },
    {
     "name": "Olive",
     "hex": "#6b6b3a",
+    "sku": [
+     "TR062OLIV"
+    ],
     "photo": "images/TR062/olive.jpg"
    },
    {
     "name": "Sage Green",
     "hex": "#9cae8e",
+    "sku": [
+     "TR062SAGE"
+    ],
     "photo": "images/TR062/sage-green.jpg"
    },
    {
     "name": "Stone",
     "hex": "#cbbfa8",
+    "sku": [
+     "TR062STON"
+    ],
     "photo": "images/TR062/stone.jpg"
    }
   ],
@@ -2669,82 +3387,138 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "LV871BLAC",
+     "LV881BKBK"
+    ],
     "photo": "images/LV871-LV881/black.jpg"
    },
    {
     "name": "Black/Emerald",
     "hex": "#141414",
     "accent": "#1a8f5a",
+    "sku": [
+     "LV871BKEM",
+     "LV881BKEM"
+    ],
     "photo": "images/LV871-LV881/black-emerald.jpg"
    },
    {
     "name": "Black/Gold",
     "hex": "#141414",
     "accent": "#c9a227",
+    "sku": [
+     "LV871BKGO",
+     "LV881BKGO"
+    ],
     "photo": "images/LV871-LV881/black-gold.jpg"
    },
    {
     "name": "Black/Gunmetal Grey",
     "hex": "#141414",
     "accent": "#5a5f66",
+    "sku": [
+     "LV871BKGU",
+     "LV881BKGU"
+    ],
     "photo": "images/LV871-LV881/black-gunmetal-grey.jpg"
    },
    {
     "name": "Black/Red",
     "hex": "#141414",
     "accent": "#c62828",
+    "sku": [
+     "LV871BKRD",
+     "LV881BKRD"
+    ],
     "photo": "images/LV871-LV881/black-red.jpg"
    },
    {
     "name": "Black/White",
     "hex": "#141414",
     "accent": "#f7f7f5",
+    "sku": [
+     "LV871BKWH",
+     "LV881BKWH"
+    ],
     "photo": "images/LV871-LV881/black-white.jpg"
    },
    {
     "name": "Bottle/White",
     "hex": "#1f4d34",
     "accent": "#f7f7f5",
+    "sku": [
+     "LV871BGWH",
+     "LV881BGWH"
+    ],
     "photo": "images/LV871-LV881/bottle-white.jpg"
    },
    {
     "name": "Burgundy",
     "hex": "#6d1f33",
+    "sku": [
+     "LV871BURG",
+     "LV881BURG"
+    ],
     "photo": "images/LV871-LV881/burgundy.jpg"
    },
    {
     "name": "Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "LV871NAVY",
+     "LV881NAVY"
+    ],
     "photo": "images/LV871-LV881/navy.jpg"
    },
    {
     "name": "Navy/Royal",
     "hex": "#1f2a56",
     "accent": "#2447a8",
+    "sku": [
+     "LV871NYRB",
+     "LV881NYRB"
+    ],
     "photo": "images/LV871-LV881/navy-royal.jpg"
    },
    {
     "name": "Navy/Sky",
     "hex": "#1f2a56",
     "accent": "#8fc7e8",
+    "sku": [
+     "LV871NYSK",
+     "LV881NYSK"
+    ],
     "photo": "images/LV871-LV881/navy-sky.jpg"
    },
    {
     "name": "Navy/White",
     "hex": "#1f2a56",
     "accent": "#f7f7f5",
+    "sku": [
+     "LV871NYWH",
+     "LV881NYWH"
+    ],
     "photo": "images/LV871-LV881/navy-white.jpg"
    },
    {
     "name": "Red/White",
     "hex": "#c62828",
     "accent": "#f7f7f5",
+    "sku": [
+     "LV871RDWH",
+     "LV881RDWH"
+    ],
     "photo": "images/LV871-LV881/red-white.jpg"
    },
    {
     "name": "Royal/White",
     "hex": "#2447a8",
     "accent": "#f7f7f5",
+    "sku": [
+     "LV871RBWH",
+     "LV881RBWH"
+    ],
     "photo": "images/LV871-LV881/royal-white.jpg"
    }
   ],
@@ -2774,82 +3548,138 @@ window.PRODUCTS = [
    {
     "name": "Black",
     "hex": "#141414",
+    "sku": [
+     "LV873BLAC",
+     "LV883BKBK"
+    ],
     "photo": "images/LV873-LV883/black.jpg"
    },
    {
     "name": "Black/Emerald",
     "hex": "#141414",
     "accent": "#1a8f5a",
+    "sku": [
+     "LV873BKEM",
+     "LV883BKEM"
+    ],
     "photo": "images/LV873-LV883/black-emerald.jpg"
    },
    {
     "name": "Black/Gold",
     "hex": "#141414",
     "accent": "#c9a227",
+    "sku": [
+     "LV873BKGO",
+     "LV883BKGO"
+    ],
     "photo": "images/LV873-LV883/black-gold.jpg"
    },
    {
     "name": "Black/Gunmetal Grey",
     "hex": "#141414",
     "accent": "#5a5f66",
+    "sku": [
+     "LV873BKGU",
+     "LV883BKGU"
+    ],
     "photo": "images/LV873-LV883/black-gunmetal-grey.jpg"
    },
    {
     "name": "Black/Red",
     "hex": "#141414",
     "accent": "#c62828",
+    "sku": [
+     "LV873BKRD",
+     "LV883BKRD"
+    ],
     "photo": "images/LV873-LV883/black-red.jpg"
    },
    {
     "name": "Black/White",
     "hex": "#141414",
     "accent": "#f7f7f5",
+    "sku": [
+     "LV873BKWH",
+     "LV883BKWH"
+    ],
     "photo": "images/LV873-LV883/black-white.jpg"
    },
    {
     "name": "Bottle/White",
     "hex": "#1f4d34",
     "accent": "#f7f7f5",
+    "sku": [
+     "LV873BOTW",
+     "LV883BOTW"
+    ],
     "photo": "images/LV873-LV883/bottle-white.jpg"
    },
    {
     "name": "Burgundy",
     "hex": "#6d1f33",
+    "sku": [
+     "LV873BURG",
+     "LV883BURG"
+    ],
     "photo": "images/LV873-LV883/burgundy.jpg"
    },
    {
     "name": "Navy",
     "hex": "#1f2a56",
+    "sku": [
+     "LV873NAVY",
+     "LV883NAVY"
+    ],
     "photo": "images/LV873-LV883/navy.jpg"
    },
    {
     "name": "Navy/Royal",
     "hex": "#1f2a56",
     "accent": "#2447a8",
+    "sku": [
+     "LV873NYRB",
+     "LV883NYRB"
+    ],
     "photo": "images/LV873-LV883/navy-royal.jpg"
    },
    {
     "name": "Navy/Sky",
     "hex": "#1f2a56",
     "accent": "#8fc7e8",
+    "sku": [
+     "LV873NYSK",
+     "LV883NYSK"
+    ],
     "photo": "images/LV873-LV883/navy-sky.jpg"
    },
    {
     "name": "Navy/White",
     "hex": "#1f2a56",
     "accent": "#f7f7f5",
+    "sku": [
+     "LV873NYWH",
+     "LV883NYWH"
+    ],
     "photo": "images/LV873-LV883/navy-white.jpg"
    },
    {
     "name": "Red/White",
     "hex": "#c62828",
     "accent": "#f7f7f5",
+    "sku": [
+     "LV873RDWH",
+     "LV883RDWH"
+    ],
     "photo": "images/LV873-LV883/red-white.jpg"
    },
    {
     "name": "Royal/White",
     "hex": "#2447a8",
     "accent": "#f7f7f5",
+    "sku": [
+     "LV873RBWH",
+     "LV883RBWH"
+    ],
     "photo": "images/LV873-LV883/royal-white.jpg"
    }
   ],

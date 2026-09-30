@@ -248,8 +248,9 @@
     const ref = c.photo || D.p.photo;
     $('#dRef').innerHTML = ref ? `<img src="${esc(ref)}" alt="${esc(D.p.name)} in ${esc(c.name)}"><div><b>The real garment</b><small>${esc(D.p.name)} in ${esc(c.name)}. Your design is printed or embroidered onto this.</small></div>` : '';
     $('#dRef').hidden = !ref;
-    $('#dSizeRange').textContent = D.p.sizes;
-    $('#dSizes').innerHTML = D.p.sizeList.map(s => `<label>${esc(s)}<input type="number" min="0" max="999" inputmode="numeric" placeholder="0" value="${D.sizes[s] || ''}" data-size="${esc(s)}" onfocus="this.select()" oninput="dzQty(this)" ${D.names.on ? 'disabled' : ''}></label>`).join('');
+    if(!D.names.on) Object.keys(D.sizes).forEach(s => { if(soldOut(c, s)) delete D.sizes[s]; });   // live stock: drop sold-out sizes
+    $('#dSizes').innerHTML = sizeGrid(D.p, c, D.sizes, 'dzQty', D.names.on);
+    $('#dSizeRange').innerHTML = esc(D.p.sizes) + ' ' + stockNote();
     if(!sidesFor().includes(D.side)) D.side = 'front';
     $('#dSides').innerHTML = sidesFor().map(s => `<button type="button" class="${s === D.side ? 'on' : ''}" onclick="dzSide('${s}')">${SIDE_LABEL[s]}${D.layers.some(L => L.side === s) ? ' •' : ''}</button>`).join('');
     drawGarment(); drawLayers(); summary(); drawCarry();
