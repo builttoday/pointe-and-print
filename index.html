@@ -327,6 +327,8 @@ const CATS = [
 const inCat = (p, id) => id === 'sustainable' ? !!p.eco : p.category === id;
 // categories with at least one product (a new, still-empty category such as Premium stays hidden until it has products)
 const liveCats = () => CATS.filter(c => P().some(p => inCat(p, c.id)));
+// bump when a home page picture is replaced, so browsers fetch the new one instead of an old saved copy
+const HOMEV = '2';
 const P = () => window.PRODUCTS || [];
 const byCode = code => P().find(p => p.code === code);
 const swBg = c => c.accent ? `linear-gradient(135deg, ${c.hex} 50%, ${c.accent} 50%)` : c.hex;
@@ -407,17 +409,17 @@ const artworkLine = () => artworkCharge() && CONFIG.showPrices ? `<div class="li
 /* ---------- views ---------- */
 function home(){
   const slides = [
-    { k: 'Dance school kit', h: 'Your school.<br>Your colours.<br>Your kit.', p: 'Hoodies, zoodies, crop tops, shorts and leggings with your dance school’s logo, in adult and kids’ sizes.', img: 'images/home/hero-school.jpg', alt: 'Two dancers in black cycling shorts and crop tops', cta: ['#/schools', 'Kit out your school'] },
-    { k: 'Competition season', h: 'Walk in<br>as a team.', p: 'Matching tracksuits and zoodies with your team name, printed or embroidered, ready for the big day.', img: 'images/home/hero-competition.jpg', alt: 'Two dancers in matching navy and sky team tracksuits', cta: ['#/shop/tracksuits', 'Shop tracksuits'] },
-    { k: 'Made for one', h: 'Their name,<br>on their kit.', p: 'Personalise a crop top, hoodie or dance bag with a name or initials. A gift they’ll actually wear.', img: 'images/home/hero-personal.jpg', alt: 'A smiling young dancer mid-kick in a black crop top and shorts', cta: ['#/shop', 'Personalise something'] },
+    { k: 'Dance school kit', h: 'Your school.<br>Your colours.<br>Your kit.', p: 'Hoodies, zoodies, crop tops, shorts and leggings with your dance school’s logo, in adult and kids’ sizes.', img: `images/home/hero-school.jpg?v=${HOMEV}`, alt: 'Two dancers in black cycling shorts and crop tops', cta: ['#/schools', 'Kit out your school'] },
+    { k: 'Competition season', h: 'Walk in<br>as a team.', p: 'Matching tracksuits and zoodies with your team name, printed or embroidered, ready for the big day.', img: `images/home/hero-competition.jpg?v=${HOMEV}`, alt: 'Two dancers in matching navy and sky team tracksuits', cta: ['#/shop/tracksuits', 'Shop tracksuits'] },
+    { k: 'Made for one', h: 'Their name,<br>on their kit.', p: 'Personalise a crop top, hoodie or dance bag with a name or initials. A gift they’ll actually wear.', img: `images/home/hero-personal.jpg?v=${HOMEV}`, alt: 'A smiling young dancer mid-kick in a black crop top and shorts', cta: ['#/shop', 'Personalise something'] },
   ];
-  const cats = liveCats().map(c => `<a class="cat" href="#/shop/${c.id}"><img src="images/home/cat-${c.id}.jpg" alt="" loading="lazy"><span>${esc(c.name)}</span></a>`).join('');
+  const cats = liveCats().map(c => `<a class="cat" href="#/shop/${c.id}"><img src="images/home/cat-${c.id}.jpg?v=${HOMEV}" alt="" loading="lazy"><span>${esc(c.name)}</span></a>`).join('');
   const occ = [
     ['School uniform', 'Matching kit for every class, from tots to seniors.', '#/schools', 'school', '', '#5a2233'],
     ['Competition kit', 'Team tracksuits and zoodies that look sharp on stage and off.', '#/shop/tracksuits', 'competition', '', '#0e1430'],
     ['Show & event merch', 'Hoodies, tees and shorts for shows, festivals and nationals.', '#/contact', 'show', '', '#2b2b2b'],
     ['Personalised gifts', 'A name on a dance bag or crop top. No minimum.', '#/shop/bags', 'gifts', '', '#a0566b'],
-  ].map(o => `<a class="occ" href="${o[2]}" style="background:${o[5]}"><div class="bg"><img src="images/home/occ-${o[3]}.jpg" alt="" loading="lazy"></div><h3>${o[0]}</h3><p>${o[1]}</p></a>`).join('');
+  ].map(o => `<a class="occ" href="${o[2]}" style="background:${o[5]}"><div class="bg"><img src="images/home/occ-${o[3]}.jpg?v=${HOMEV}" alt="" loading="lazy"></div><h3>${o[0]}</h3><p>${o[1]}</p></a>`).join('');
   return `
   <section class="hero"><div class="wrap">
     ${slides.map((s, i) => `<div class="slide${i ? '' : ' on'}"><div><div class="kicker upper">${s.k}</div><h1>${s.h}</h1><p>${s.p}</p>
@@ -435,7 +437,7 @@ function home(){
     <div class="design-band"><div><div class="upper" style="font-size:.76rem;color:var(--rose);font-weight:600">New</div><h2>Design your own kit</h2>
       <p>Pick a hoodie, tracksuit or crop top, add your logo and text, drag it into place and see exactly how it will look, front and back.</p>
       <a class="btn" href="#/design">Start designing</a></div>
-      <div class="art"><img src="images/home/design.jpg" alt="A dancer in a lavender cropped quarter-zip" loading="lazy"></div></div>
+      <div class="art"><img src="images/home/design.jpg?v=${HOMEV}" alt="A dancer in a lavender cropped quarter-zip" loading="lazy"></div></div>
   </div></section>
 
   <section class="block soft"><div class="wrap">
